@@ -1,0 +1,2 @@
+touch user.model.ts user.controller.ts user.route.ts user.interface.ts user.validation.ts user.service.ts
+
