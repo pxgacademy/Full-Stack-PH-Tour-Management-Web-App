@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 // app.use("/api", router);
 
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Welcome to PH Tour Management Server" });
+});
+
 // Global Error Handler
 app.use(globalErrorHandler);
 
@@ -25,3 +29,9 @@ app.use((req: Request, res: Response) => {
 });
 
 export default app;
+
+/**
+ * unhandled rejection error
+ * uncaught rejection error
+ * signal terminal sigterm
+ */
