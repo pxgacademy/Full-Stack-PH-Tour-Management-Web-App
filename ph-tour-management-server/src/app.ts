@@ -1,6 +1,5 @@
-// src/app.ts
-import express, { Request, Response } from "express";
 import cors from "cors";
+import express, { Request, Response } from "express";
 import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
 
 const app = express();
@@ -29,9 +28,3 @@ app.use((req: Request, res: Response) => {
 });
 
 export default app;
-
-/**
- * unhandled rejection error
- * uncaught rejection error
- * signal terminal sigterm
- */

@@ -1,7 +1,8 @@
-import app from "./app";
-import { connect_db } from "./database/connect_db";
-import { d_config } from "./config";
+/* eslint-disable no-console */
 import type { Server } from "http";
+import app from "./app";
+import { d_config } from "./config";
+import { connect_db } from "./database/connect_db";
 
 let server: Server;
 
