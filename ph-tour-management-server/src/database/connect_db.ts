@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import mongoose from "mongoose";
-import { d_config } from "../config";
+import { env_config } from "../config";
 
 export const connect_db = async (): Promise<void> => {
   let connected = false;
@@ -8,7 +9,7 @@ export const connect_db = async (): Promise<void> => {
 
   while (!connected && retries > 0) {
     try {
-      await mongoose.connect(d_config.mongo_url as string);
+      await mongoose.connect(env_config.mongo_url as string);
       console.log("✅ MongoDB Connected");
       connected = true;
     } catch (error) {

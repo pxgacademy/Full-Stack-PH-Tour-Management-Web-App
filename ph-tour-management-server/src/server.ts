@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import type { Server } from "http";
 import app from "./app";
-import { d_config } from "./config";
+import { env_config } from "./config";
 import { connect_db } from "./database/connect_db";
 
 let server: Server;
@@ -9,8 +9,8 @@ let server: Server;
 (async () => {
   try {
     await connect_db();
-    server = app.listen(d_config.port, () => {
-      console.log(`Server running on port ${d_config.port}`);
+    server = app.listen(env_config.port, () => {
+      console.log(`Server running on port ${env_config.port}`);
     });
   } catch (error) {
     console.log("server running error: ", error);
