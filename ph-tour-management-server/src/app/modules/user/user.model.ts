@@ -15,7 +15,12 @@ const authProviderSchema = new Schema<iAuthProvider>(
 const userSchema = new Schema<iUser>(
   {
     name: { type: String, required: [true, "Name is required"], trim: true },
-    email: { type: String, required: [true, "Email is required"], trim: true },
+    email: {
+      type: String,
+      unique: [true, "Email already exist"],
+      required: [true, "Email is required"],
+      trim: true,
+    },
     password: { type: String },
     phone: { type: String },
     picture: { type: String },
@@ -23,19 +28,15 @@ const userSchema = new Schema<iUser>(
     isDeleted: { type: Boolean, default: false },
     isActive: {
       type: String,
-      enum: {
-        values: Object.values(eIsActive),
-        default: eIsActive.ACTIVE,
-      },
+      enum: Object.values(eIsActive),
+      default: eIsActive.ACTIVE,
     },
     isVerified: { type: Boolean, default: false },
     auth: [authProviderSchema],
     role: {
       type: String,
-      enum: {
-        values: Object.values(eUserRoles),
-        default: eUserRoles.USER,
-      },
+      enum: Object.values(eUserRoles),
+      default: eUserRoles.USER,
     },
     // bookings: ,
     // guides: ,

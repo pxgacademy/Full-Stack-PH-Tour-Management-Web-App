@@ -1,6 +1,7 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
 import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
+import { router } from "./routes";
 
 const app = express();
 
@@ -9,9 +10,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-// app.use("/api", router);
+// ROUTES
+app.use("/api/v1", router);
 
+// ROOT ROUTES
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "Welcome to PH Tour Management Server" });
 });
