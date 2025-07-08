@@ -2,16 +2,15 @@
 import { NextFunction, Request, Response } from "express";
 import sCode from "http-status-codes";
 import { sendResponse } from "../../utils/sendResponse";
-import { User } from "./user.model";
+import { createUserService } from "./user.service";
 
-export const createUser = async (
+export const createUserController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { name, email } = req.body;
-    const user = await User.create({ name, email });
+    const user = await createUserService(req.body);
 
     sendResponse(res, {
       statusCode: sCode.CREATED,
