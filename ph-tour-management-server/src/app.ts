@@ -1,6 +1,7 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import { notFound } from "./app/middlewares/notFound";
 import { router } from "./routes";
 
 const app = express();
@@ -21,12 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 // Global Error Handler
 app.use(globalErrorHandler);
 
-// Not Found handler (optional)
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    success: false,
-    message: "API Not Found",
-  });
-});
+// Not Found handler
+app.use(notFound);
 
 export default app;

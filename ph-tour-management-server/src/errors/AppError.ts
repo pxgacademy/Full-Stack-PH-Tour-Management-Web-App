@@ -1,13 +1,18 @@
 //
 
 export class AppError extends Error {
-  public statusCode: number;
-
-  constructor(message: string, statusCode = 500) {
+  constructor(
+    public statusCode: number,
+    message: string,
+    stack?: string
+  ) {
     super(message);
-    this.statusCode = statusCode;
+
+    // Ensure correct prototype chain (important in TS when extending built-ins)
+    Object.setPrototypeOf(this, new.target.prototype);
 
     // Maintain proper stack trace
-    Error.captureStackTrace(this, this.constructor);
+    if (stack) this.stack = stack;
+    else Error.captureStackTrace(this, this.constructor);
   }
 }
