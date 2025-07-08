@@ -13,7 +13,7 @@ export enum eIsActive {
   BLOCKED = "BLOCKED",
 }
 
-interface iAuthProvider {
+export interface iAuthProvider {
   provider: string; // credentials / google / facebook
   providerId: string;
 }
@@ -28,7 +28,6 @@ export interface iUser {
   isDeleted?: boolean;
   isActive?: eIsActive;
   isVerified?: boolean;
-
   auth: iAuthProvider[];
   role: eUserRoles;
   bookings: Types.ObjectId[];
