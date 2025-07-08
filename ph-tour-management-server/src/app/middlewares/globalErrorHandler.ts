@@ -1,9 +1,51 @@
-import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
-import { ZodError } from "zod";
-import { AppError } from "../../errors/AppError";
-import { handleValidationError } from "../../errors/handleValidationError";
-import { handleCastError } from "../../errors/handleCastError";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NextFunction, Request, Response } from "express";
+import { env_config } from "../../config";
 
+export default function globalErrorHandler(
+  error: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  let statusCode = 500;
+  const errRes = {
+    success: false,
+    message: "Error",
+    error: {
+      name: "Internal Server Error",
+      errors: "Error not detected",
+    },
+    stack: null,
+  };
+
+  if (error) {
+    const ne = env_config.node_env === "development";
+    if (error.name === "ValidationError") {
+      statusCode = 400;
+      errRes.message = "Validation failed";
+      errRes.error.name = error.name;
+      errRes.error.errors = error.errors;
+      errRes.stack = ne ? error?.stack : null;
+    } else if (error.name === "MongooseError") {
+      statusCode = 400;
+      errRes.message = "Mongoose Error";
+      errRes.error.name = error.name;
+      errRes.error.errors = error.message;
+      errRes.stack = ne ? error?.stack : null;
+    } else {
+      errRes.message = "Internal Server Error";
+      errRes.error.name = error.name;
+      errRes.error.errors = error.message;
+      errRes.stack = ne ? error?.stack : null;
+    }
+  }
+
+  res.status(statusCode).json(errRes);
+}
+
+/*
 export const globalErrorHandler: ErrorRequestHandler = (
   err,
   req: Request,
@@ -59,3 +101,4 @@ export const globalErrorHandler: ErrorRequestHandler = (
     stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
   });
 };
+*/
