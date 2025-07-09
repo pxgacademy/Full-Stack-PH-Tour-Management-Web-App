@@ -1,7 +1,6 @@
-// utils/sendResponse.ts
-import { Response } from "express";
+import type { Response } from "express";
 
-interface IApiResponse<T> {
+interface iApiResponse<T> {
   success?: boolean;
   message: string;
   data?: T;
@@ -9,17 +8,25 @@ interface IApiResponse<T> {
     total?: number;
     page?: number;
     limit?: number;
+    extra?: object;
   };
   statusCode: number;
 }
 
 export const sendResponse = <T>(
   res: Response,
-  payload: IApiResponse<T>
+  payload: iApiResponse<T>
 ): void => {
-  const { statusCode, success = true, message, data, meta = null } = payload;
+  const {
+    statusCode,
+    success = true,
+    message,
+    data = null,
+    meta = null,
+  } = payload;
 
   res.status(statusCode).json({
+    statusCode,
     success,
     message,
     meta,
