@@ -1,24 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextFunction, Request, Response } from "express";
 import sCode from "http-status-codes";
+import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
-import { createUserService } from "./user.service";
+import { createUserService, getAllUsersService } from "./user.service";
 
-export const createUserController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const user = await createUserService(req.body);
+// user/user.controller.ts
+export const createUserController = catchAsync(async (req, res) => {
+  const user = await createUserService(req.body);
+  sendResponse(res, {
+    statusCode: sCode.CREATED,
+    message: "User successfully created",
+    data: user,
+  });
+});
 
-    sendResponse(res, {
-      statusCode: sCode.CREATED,
-      message: "User successfully created",
-      data: user,
-    });
-  } catch (error: any) {
-    console.log("❌ Error from createUser function: ", error.message);
-    next(error);
-  }
-};
+export const getAllUsersController = catchAsync(async (req, res) => {
+  const users = await getAllUsersService();
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Users retrieved created",
+    data: users,
+  });
+});
