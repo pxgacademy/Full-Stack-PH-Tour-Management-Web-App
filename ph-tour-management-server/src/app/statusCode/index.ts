@@ -11,9 +11,9 @@ export default sCode;
 
  2xx — Success
 
- 200          OK                    Request successful, response contains the data
- 201          Created               Resource created successfully (e.g. after POST)
- 204          No Content            Success but no response body (e.g. after DELETE)
+ 200    OK                          Request successful, response contains the data
+ 201    Created                     Resource created successfully (e.g. after POST)
+ 204    No Content                  Success but no response body (e.g. after DELETE)
 
  3xx — Redirection
 
