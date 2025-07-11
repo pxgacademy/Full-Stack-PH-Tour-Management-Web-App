@@ -8,8 +8,5 @@ type AsyncHandler = (
 
 export const catchAsync =
   (fn: AsyncHandler): RequestHandler =>
-  (req, res, next) => {
+  (req, res, next) =>
     fn(req, res, next).catch(next);
-  };
-
-//
