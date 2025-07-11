@@ -1,4 +1,4 @@
-import sCode from "http-status-codes";
+import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
 import { createUserService, getAllUsersService } from "./user.service";

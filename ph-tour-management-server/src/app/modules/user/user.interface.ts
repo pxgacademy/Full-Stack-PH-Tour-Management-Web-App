@@ -13,8 +13,14 @@ export enum eIsActive {
   BLOCKED = "BLOCKED",
 }
 
+export enum eAuthProvider {
+  google = "google",
+  facebook = "facebook",
+  credentials = "credentials",
+}
+
 export interface iAuthProvider {
-  provider: string; // credentials / google / facebook
+  provider: eAuthProvider; // credentials / google / facebook
   providerId: string;
 }
 

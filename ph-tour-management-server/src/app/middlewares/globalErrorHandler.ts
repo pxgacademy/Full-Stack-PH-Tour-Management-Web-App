@@ -15,6 +15,7 @@ export default function globalErrorHandler(
   const message = err?.message || "Internal Server Error";
 
   const errorResponse = {
+    statusCode,
     success: false,
     message,
     error: {
@@ -34,6 +35,11 @@ export default function globalErrorHandler(
     case "MongooseError":
       statusCode = 400;
       errorResponse.message = "Database Error";
+      break;
+
+    case "ZodError":
+      statusCode = 400;
+      errorResponse.message = "Zod Error";
       break;
 
     // Add more specific cases if needed (e.g., CastError, ZodError)
