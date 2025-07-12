@@ -6,9 +6,12 @@ export const requireRole =
   (...roles: string[]) =>
   (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!roles.includes(req.decoded?.role)) {
+      if (!req.decoded?.role)
+        return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
+
+      if (!roles.includes(req.decoded.role))
         return next(new AppError(sCode.FORBIDDEN, "Forbidden User Role"));
-      }
+
       next();
     } catch (error) {
       next(error);

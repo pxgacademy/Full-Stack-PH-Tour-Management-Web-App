@@ -12,11 +12,12 @@ export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const token = authHeader.split(" ")[1];
+    if (!token)
+      return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
     const decoded = verifyToken(token);
     if (!decoded) {
       return next(new AppError(sCode.FORBIDDEN, "Invalid token"));
     }
-    console.log("💝🤣🤣", decoded);
     req.decoded = decoded as JwtPayload;
     next();
   } catch {

@@ -18,15 +18,14 @@ export const createUserController = catchAsync(async (req, res) => {
 });
 
 export const updateUserController = catchAsync(async (req, res) => {
-  const { userId } = req.params;
   const { data } = await updateUserService(
-    userId,
+    req.params?.userId,
     req.body,
     req.decoded as JwtPayload
   );
   sendResponse(res, {
-    statusCode: sCode.CREATED,
-    message: "User successfully created",
+    statusCode: sCode.OK,
+    message: "User updated successfully",
     data,
   });
 });

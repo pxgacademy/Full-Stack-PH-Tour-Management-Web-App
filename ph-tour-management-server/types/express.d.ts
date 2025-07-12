@@ -5,3 +5,13 @@ declare module "express-serve-static-core" {
     decoded?: JwtPayload;
   }
 }
+
+/* // it also works
+declare global {
+  namespace Express {
+    interface Request {
+      decoded?: JwtPayload;
+    }
+  }
+}
+*/
