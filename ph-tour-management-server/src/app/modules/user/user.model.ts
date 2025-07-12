@@ -21,7 +21,7 @@ const userSchema = new Schema<iUser>(
       required: [true, "Email is required"],
       trim: true,
     },
-    password: { type: String },
+    password: { type: String, default: "", select: false },
     phone: { type: String },
     picture: { type: String },
     address: { type: String },
