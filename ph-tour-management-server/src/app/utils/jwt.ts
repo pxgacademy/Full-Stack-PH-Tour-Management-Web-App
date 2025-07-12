@@ -15,10 +15,10 @@ export const generateRefreshToken = (
   return jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn } as SignOptions);
 };
 
-export const verifyToken = (token: string): string | JwtPayload => {
-  return jwt.verify(token, JWT_SECRET);
+export const verifyToken = (token: string): JwtPayload => {
+  return jwt.verify(token, JWT_SECRET) as JwtPayload;
 };
 
-export const verifyRefreshToken = (token: string): string | JwtPayload => {
-  return jwt.verify(token, JWT_REFRESH_SECRET);
+export const verifyRefreshToken = (token: string): JwtPayload => {
+  return jwt.verify(token, JWT_REFRESH_SECRET) as JwtPayload;
 };
