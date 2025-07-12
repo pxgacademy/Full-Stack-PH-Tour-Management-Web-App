@@ -1,24 +1,18 @@
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
-import { StringValue } from "ms";
 import { env_config } from "../../config";
 
-const JWT_SECRET: string = env_config.jwt_secret;
-const JWT_REFRESH_SECRET: string = env_config.jwt_refresh_secret;
+const JWT_SECRET: string = env_config.JWT_SECRET;
+const JWT_REFRESH_SECRET: string = env_config.JWT_REFRESH_SECRET;
 
-export const generateToken = (
-  payload: object,
-  expiresIn: StringValue
-): string => {
-  const options: SignOptions = { expiresIn };
-  return jwt.sign(payload, JWT_SECRET, options);
+export const generateToken = (payload: object, expiresIn: string): string => {
+  return jwt.sign(payload, JWT_SECRET, { expiresIn } as SignOptions);
 };
 
 export const generateRefreshToken = (
   payload: object,
-  expiresIn: StringValue
+  expiresIn: string
 ): string => {
-  const options: SignOptions = { expiresIn };
-  return jwt.sign(payload, JWT_REFRESH_SECRET, options);
+  return jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn } as SignOptions);
 };
 
 export const verifyToken = (token: string): string | JwtPayload => {

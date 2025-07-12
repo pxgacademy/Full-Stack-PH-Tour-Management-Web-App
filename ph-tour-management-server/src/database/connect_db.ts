@@ -9,7 +9,7 @@ export const connect_db = async (): Promise<void> => {
 
   while (!connected && retries > 0) {
     try {
-      await mongoose.connect(env_config.mongo_url as string);
+      await mongoose.connect(env_config.MONGODB_URL as string);
       console.log("✅ MongoDB Connected");
       connected = true;
     } catch (error) {

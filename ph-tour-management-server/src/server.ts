@@ -9,8 +9,8 @@ let server: Server;
 (async () => {
   try {
     await connect_db();
-    server = app.listen(env_config.port, () => {
-      console.log(`Server running on port ${env_config.port}`);
+    server = app.listen(env_config.PORT, () => {
+      console.log(`Server running on port ${env_config.PORT}`);
     });
   } catch (error) {
     console.log("server running error: ", error);

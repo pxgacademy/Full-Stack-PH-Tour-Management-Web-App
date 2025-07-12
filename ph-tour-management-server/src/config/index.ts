@@ -3,14 +3,21 @@ import { AppError } from "../errors/AppError";
 dotenv.config();
 
 interface EnvConfig {
-  port: string;
-  mongo_url: string;
-  node_env: string;
-  jwt_secret: string;
-  jwt_refresh_secret: string;
+  PORT: string;
+  MONGODB_URL: string;
+  NODE_ENV: string;
+  JWT_SECRET: string;
+  JWT_REFRESH_SECRET: string;
+  BCRYPT_SALT_ROUND: number;
 }
 
-const allEnv = ["PORT", "MONGODB_URL", "JWT_SECRET", "JWT_REFRESH_SECRET"];
+const allEnv = [
+  "PORT",
+  "MONGODB_URL",
+  "JWT_SECRET",
+  "JWT_REFRESH_SECRET",
+  "BCRYPT_SALT_ROUND",
+];
 
 allEnv.forEach((e) => {
   if (!process.env[e])
@@ -18,9 +25,10 @@ allEnv.forEach((e) => {
 });
 
 export const env_config: EnvConfig = {
-  port: process.env.PORT,
-  mongo_url: process.env.MONGODB_URL,
-  node_env: process.env.NODE_ENV || "development",
-  jwt_secret: process.env.JWT_SECRET,
-  jwt_refresh_secret: process.env.JWT_REFRESH_SECRET,
+  PORT: process.env.PORT,
+  MONGODB_URL: process.env.MONGODB_URL,
+  NODE_ENV: process.env.NODE_ENV || "development",
+  JWT_SECRET: process.env.JWT_SECRET,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  BCRYPT_SALT_ROUND: Number(process.env.BCRYPT_SALT_ROUND),
 } as EnvConfig;

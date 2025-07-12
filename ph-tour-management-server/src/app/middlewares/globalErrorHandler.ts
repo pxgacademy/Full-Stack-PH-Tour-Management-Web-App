@@ -9,7 +9,7 @@ export default function globalErrorHandler(
   res: Response,
   next: NextFunction
 ) {
-  const isDev = env_config.node_env === "development";
+  const isDev = env_config.NODE_ENV === "development";
 
   let statusCode = err?.statusCode || 500;
   const message = err?.message || "Internal Server Error";

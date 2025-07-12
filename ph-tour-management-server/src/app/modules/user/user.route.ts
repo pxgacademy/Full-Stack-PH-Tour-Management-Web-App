@@ -1,9 +1,8 @@
-import { NextFunction, Request, Response, Router } from "express";
-import jwt from "jsonwebtoken";
-import { AppError } from "../../../errors/AppError";
+import { Router } from "express";
+import { requireRole } from "../../middlewares/requireRole";
 import { validateRequest } from "../../middlewares/validateRequest";
-import sCode from "../../statusCode";
 import { createUserController, getAllUsersController } from "./user.controller";
+import { eUserRoles } from "./user.interface";
 import { createUserZodSchema } from "./user.validation";
 
 const userRoutes = Router();
@@ -14,18 +13,10 @@ userRoutes.post(
   createUserController
 );
 
-userRoutes.get("/all-users", getAllUsersController);
+userRoutes.get(
+  "/all-users",
+  requireRole(eUserRoles.ADMIN),
+  getAllUsersController
+);
 
 export default userRoutes;
-
-export const ad = (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const accessToken = req.headers.authorization;
-    if (!accessToken)
-      throw new AppError(sCode.UNAUTHORIZED, "No Token Provided");
-    const isVerified = jwt.verify(accessToken, "secret");
-    console.log(isVerified);
-  } catch (error) {
-    next(error);
-  }
-};

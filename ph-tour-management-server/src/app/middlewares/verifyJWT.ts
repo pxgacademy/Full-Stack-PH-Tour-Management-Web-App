@@ -3,11 +3,7 @@ import { AppError } from "../../errors/AppError";
 import sCode from "../statusCode";
 import { verifyToken } from "../utils/jwt";
 
-export interface Req extends Request {
-  user: object;
-}
-
-export const verifyJWT = (req: Req, res: Response, next: NextFunction) => {
+export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith("Bearer "))
     return next(new AppError(sCode.UNAUTHORIZED, "Unauthorized"));
