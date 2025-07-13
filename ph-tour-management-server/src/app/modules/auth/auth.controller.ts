@@ -2,17 +2,20 @@ import { Request, Response } from "express";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
-import { generateAccessTokenByRefreshToken } from "../../utils/jwt";
+import { setCookie } from "../../utils/cookie";
+import {
+  generateAccessTokenByRefreshToken,
+  generateAllTokens,
+} from "../../utils/jwt";
 import { sendResponse } from "../../utils/sendResponse";
 import { credentialLoginService } from "./auth.service";
 
 export const credentialLoginController = catchAsync(
   async (req: Request, res: Response) => {
-    const data = await credentialLoginService(req.body);
+    const { data } = await credentialLoginService(req.body);
 
-    const cookieOptions = { httpOnly: true, secure: false };
-    res.cookie("accessToken", data.accessToken, cookieOptions);
-    res.cookie("refreshToken", data.refreshToken, cookieOptions);
+    const { accessToken, refreshToken } = generateAllTokens(data);
+    setCookie.allTokens(res, accessToken, refreshToken);
 
     sendResponse(res, {
       statusCode: sCode.OK,
@@ -27,12 +30,13 @@ export const getNewAccessTokenController = catchAsync(
     const refreshToken = req.cookies?.refreshToken;
     if (!refreshToken)
       throw new AppError(sCode.BAD_REQUEST, "Refresh token not found");
-    const tokenInfo = await generateAccessTokenByRefreshToken(refreshToken);
+    const token = await generateAccessTokenByRefreshToken(refreshToken);
+    setCookie.accessToken(res, token);
 
     sendResponse(res, {
       statusCode: sCode.OK,
       message: "Access token created successfully",
-      data: tokenInfo,
+      data: token,
     });
   }
 );

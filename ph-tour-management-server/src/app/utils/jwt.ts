@@ -5,20 +5,17 @@ import { eIsActive, iUserResponse } from "../modules/user/user.interface";
 import { User } from "../modules/user/user.model";
 import sCode from "../statusCode";
 
+type Payload = Partial<iUserResponse> | JwtPayload;
+
 const JWT_SECRET: string = env_config.JWT_SECRET;
 const JWT_REFRESH_SECRET: string = env_config.JWT_REFRESH_SECRET;
 
-export const makeJwtPayload = (
-  payload: Partial<iUserResponse> | JwtPayload
-) => {
-  return {
-    _id: payload._id,
-    email: payload.email,
-    role: payload.role,
-  };
+const makeJwtPayload = ({ _id, email, role }: Payload) => {
+  return { _id, email, role };
 };
 
-export const generateAccessToken = (payload: object): string => {
+export const generateAccessToken = (data: Payload): string => {
+  const payload = makeJwtPayload(data);
   const token = jwt.sign(payload, JWT_SECRET, {
     expiresIn: env_config.JWT_TOKEN_PERIOD,
   } as SignOptions);
@@ -30,7 +27,8 @@ export const generateAccessToken = (payload: object): string => {
   return token;
 };
 
-export const generateRefreshToken = (payload: object): string => {
+export const generateRefreshToken = (data: Payload): string => {
+  const payload = makeJwtPayload(data);
   const token = jwt.sign(payload, JWT_REFRESH_SECRET, {
     expiresIn: env_config.JWT_REFRESH_TOKEN_PERIOD,
   } as SignOptions);
@@ -42,7 +40,8 @@ export const generateRefreshToken = (payload: object): string => {
   return token;
 };
 
-export const generateAllTokens = (payload: object) => {
+export const generateAllTokens = (data: Payload) => {
+  const payload = makeJwtPayload(data);
   const accessToken = generateAccessToken(payload);
   const refreshToken = generateRefreshToken(payload);
   if (!accessToken || !refreshToken)
@@ -82,7 +81,6 @@ export const generateAccessTokenByRefreshToken = async (
       `User is ${user.isDeleted ? "deleted" : "blocked"}`
     );
 
-  const accessToken = generateAccessToken(makeJwtPayload(user));
-
+  const accessToken = generateAccessToken(user);
   return accessToken;
 };
