@@ -1,17 +1,30 @@
 import { NextFunction, Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
 import { AppError } from "../../errors/AppError";
 import sCode from "../statusCode";
+import { verifyToken } from "../utils/jwt";
 
 export const requireRole =
   (...roles: string[]) =>
   (req: Request, res: Response, next: NextFunction) => {
-    try {
-      if (!req.decoded?.role)
-        return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith("Bearer ")) {
+      return next(new AppError(sCode.UNAUTHORIZED, "Unauthorized"));
+    }
 
-      if (!roles.includes(req.decoded.role))
+    try {
+      const token = authHeader.split(" ")[1];
+      if (!token)
+        return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
+      const decoded = verifyToken(token);
+      if (!decoded) {
+        return next(new AppError(sCode.FORBIDDEN, "Invalid token"));
+      }
+
+      if (!roles.includes(decoded.role))
         return next(new AppError(sCode.FORBIDDEN, "Forbidden User Role"));
 
+      req.decoded = decoded as JwtPayload;
       next();
     } catch (error) {
       next(error);

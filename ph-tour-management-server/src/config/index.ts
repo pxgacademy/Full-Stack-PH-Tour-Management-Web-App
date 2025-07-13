@@ -4,10 +4,12 @@ dotenv.config();
 
 interface EnvConfig {
   PORT: string;
-  MONGODB_URL: string;
   NODE_ENV: string;
+  MONGODB_URL: string;
   JWT_SECRET: string;
   JWT_REFRESH_SECRET: string;
+  JWT_TOKEN_PERIOD: string;
+  JWT_REFRESH_TOKEN_PERIOD: string;
   BCRYPT_SALT_ROUND: number;
 }
 
@@ -16,6 +18,8 @@ const allEnv = [
   "MONGODB_URL",
   "JWT_SECRET",
   "JWT_REFRESH_SECRET",
+  "JWT_TOKEN_PERIOD",
+  "JWT_REFRESH_TOKEN_PERIOD",
   "BCRYPT_SALT_ROUND",
 ];
 
@@ -26,9 +30,11 @@ allEnv.forEach((e) => {
 
 export const env_config: EnvConfig = {
   PORT: process.env.PORT,
-  MONGODB_URL: process.env.MONGODB_URL,
   NODE_ENV: process.env.NODE_ENV || "development",
+  MONGODB_URL: process.env.MONGODB_URL,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  JWT_TOKEN_PERIOD: process.env.JWT_TOKEN_PERIOD,
+  JWT_REFRESH_TOKEN_PERIOD: process.env.JWT_REFRESH_TOKEN_PERIOD,
   BCRYPT_SALT_ROUND: Number(process.env.BCRYPT_SALT_ROUND),
 } as EnvConfig;

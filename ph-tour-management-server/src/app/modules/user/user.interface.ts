@@ -40,6 +40,12 @@ export interface iUser {
   guides: Types.ObjectId[];
 }
 
+export interface iUserResponse extends iUser {
+  _id: Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 // auth providers
 /**
  * email, password

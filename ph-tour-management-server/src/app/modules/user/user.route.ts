@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { requireRole } from "../../middlewares/requireRole";
-import { validateRequest } from "../../middlewares/validateRequest";
+import { zodValidator } from "../../middlewares/validateRequest";
 import { verifyJWT } from "../../middlewares/verifyJWT";
 import {
   createUserController,
@@ -8,23 +8,27 @@ import {
   updateUserController,
 } from "./user.controller";
 import { eUserRoles } from "./user.interface";
-import { createUserZodSchema } from "./user.validation";
+import { createUserZodSchema, updateUserZodSchema } from "./user.validation";
 
 const userRoutes = Router();
 
 userRoutes.post(
   "/register",
-  validateRequest(createUserZodSchema),
+  zodValidator(createUserZodSchema),
   createUserController
 );
 
 userRoutes.get(
   "/all-users",
-  verifyJWT,
   requireRole(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),
   getAllUsersController
 );
 
-userRoutes.patch("/:userId", verifyJWT, updateUserController);
+userRoutes.patch(
+  "/:userId",
+  zodValidator(updateUserZodSchema),
+  verifyJWT,
+  updateUserController
+);
 
 export default userRoutes;
