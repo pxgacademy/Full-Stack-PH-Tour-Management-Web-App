@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
-import { createUserToken } from "../../utils/userToken";
+import { generateAllTokens, makeJwtPayload } from "../../utils/jwt";
 import { iUser } from "../user/user.interface";
 import { User } from "../user/user.model";
 
@@ -21,9 +21,10 @@ export const credentialLoginService = async (payload: Partial<iUser>) => {
   if (!isPasswordRight)
     throw new AppError(sCode.UNAUTHORIZED, "Incorrect credentials");
 
-  const userToken = createUserToken(isUserExist);
+  const userTokens = generateAllTokens(makeJwtPayload(isUserExist));
 
   const userData = isUserExist.toObject();
   delete userData.password;
-  return { data: { ...userData, ...userToken } };
+  return { user: userData, ...userTokens };
 };
+//

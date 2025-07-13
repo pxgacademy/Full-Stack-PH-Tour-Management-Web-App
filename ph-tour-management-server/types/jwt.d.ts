@@ -1,7 +1,8 @@
 import { JwtPayload } from "jsonwebtoken";
+import { Types } from "mongoose";
 
 export interface CustomJwtPayload extends JwtPayload {
-  userId: string;
+  _id: string | Types.ObjectId;
   email: string;
-  role?: string;
+  role: string;
 }

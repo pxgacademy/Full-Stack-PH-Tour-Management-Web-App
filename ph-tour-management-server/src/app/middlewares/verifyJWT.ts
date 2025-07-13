@@ -15,9 +15,7 @@ export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
     if (!token)
       return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
     const decoded = verifyToken(token);
-    if (!decoded) {
-      return next(new AppError(sCode.FORBIDDEN, "Invalid token"));
-    }
+
     req.decoded = decoded as JwtPayload;
     next();
   } catch {

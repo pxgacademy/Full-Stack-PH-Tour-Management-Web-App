@@ -17,9 +17,6 @@ export const requireRole =
       if (!token)
         return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
       const decoded = verifyToken(token);
-      if (!decoded) {
-        return next(new AppError(sCode.FORBIDDEN, "Invalid token"));
-      }
 
       if (!roles.includes(decoded.role))
         return next(new AppError(sCode.FORBIDDEN, "Forbidden User Role"));
