@@ -1,6 +1,8 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { Request, Response } from "express";
+import expressSession from "express-session";
+import passport from "passport";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import { notFound } from "./app/middlewares/notFound";
 import { router } from "./routes";
@@ -9,6 +11,15 @@ const app = express();
 
 // Middleware
 app.use(cors());
+app.use(
+  expressSession({
+    secret: "your secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
