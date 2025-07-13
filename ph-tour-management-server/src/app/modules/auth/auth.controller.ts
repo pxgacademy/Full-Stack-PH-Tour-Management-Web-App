@@ -8,7 +8,7 @@ import {
   generateAllTokens,
 } from "../../utils/jwt";
 import { sendResponse } from "../../utils/sendResponse";
-import { credentialLoginService } from "./auth.service";
+import { credentialLoginService, resetPasswordService } from "./auth.service";
 
 //
 export const credentialLoginController = catchAsync(
@@ -52,6 +52,19 @@ export const userLogoutController = catchAsync(
       statusCode: sCode.OK,
       message: "User logged out successfully",
       data: null,
+    });
+  }
+);
+
+//
+export const resetPasswordController = catchAsync(
+  async (req: Request, res: Response) => {
+    const password = await resetPasswordService(req);
+
+    sendResponse(res, {
+      statusCode: sCode.OK,
+      message: "User logged out successfully",
+      data: password,
     });
   }
 );

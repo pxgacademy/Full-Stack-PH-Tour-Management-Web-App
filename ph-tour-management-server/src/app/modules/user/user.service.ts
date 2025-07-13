@@ -48,40 +48,35 @@ export const updateUserService = async (
   payload: Partial<iUser>,
   decoded: JwtPayload
 ) => {
-  const isUserExist = await User.findById(userId);
-  if (!isUserExist) {
+  const presentData = await User.findById(userId);
+  if (!presentData) {
     throw new AppError(sCode.NOT_FOUND, "User Not Found");
   }
 
-  if (
-    decoded.role === eUserRoles.USER ||
-    decoded.role === eUserRoles.MODERATOR
-  ) {
-    if (isUserExist.isActive === eIsActive.BLOCKED || isUserExist.isDeleted) {
+  //* payload      : What user wants to change
+  //* presentData  : user's present data
+  //* decoded      : The data of the user who wants to change
+
+  const { role } = decoded;
+  const { MODERATOR, SUPER_ADMIN, USER } = eUserRoles;
+
+  if (payload.role && role !== SUPER_ADMIN) {
+    throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
+  }
+
+  if (role === USER || role === MODERATOR) {
+    if (presentData.isActive === eIsActive.BLOCKED || presentData.isDeleted) {
       throw new AppError(
         sCode.FORBIDDEN,
-        "This user cannot be updated without admin super admin"
+        "This user cannot be updated without admin or super admin"
       );
+    }
+    if (payload.isActive || payload.isDeleted || payload.isVerified) {
+      throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
     }
   }
 
-  if (payload.role && decoded.role !== eUserRoles.SUPER_ADMIN) {
-    throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
-  }
-
-  if (
-    (payload.isActive || payload.isDeleted || payload.isVerified) &&
-    (decoded.role === eUserRoles.USER || decoded.role === eUserRoles.MODERATOR)
-  ) {
-    throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
-  }
-
-  if (payload.password) {
-    payload.password = await hash(
-      payload.password,
-      env_config.BCRYPT_SALT_ROUND
-    );
-  }
+  if (payload.password) delete payload.password;
 
   const updatedUser = await User.findByIdAndUpdate(userId, payload, {
     new: true,

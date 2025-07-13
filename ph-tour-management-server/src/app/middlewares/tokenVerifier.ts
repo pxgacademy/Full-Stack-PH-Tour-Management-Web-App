@@ -4,7 +4,11 @@ import { AppError } from "../../errors/AppError";
 import sCode from "../statusCode";
 import { verifyToken } from "../utils/jwt";
 
-export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
+export const tokenVerifier = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith("Bearer ")) {
     return next(new AppError(sCode.UNAUTHORIZED, "Unauthorized"));

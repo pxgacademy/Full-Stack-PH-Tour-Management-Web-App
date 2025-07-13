@@ -1,4 +1,5 @@
 import { compare } from "bcryptjs";
+import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
 import { iUser } from "../user/user.interface";
@@ -24,4 +25,9 @@ export const credentialLoginService = async (payload: Partial<iUser>) => {
   delete userData.password;
   return { data: userData };
 };
+
 //
+export const resetPasswordService = async (req: Request) => {
+  const { decoded } = req;
+  const { password } = req.body;
+};

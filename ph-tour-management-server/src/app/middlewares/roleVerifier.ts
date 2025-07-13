@@ -4,7 +4,7 @@ import { AppError } from "../../errors/AppError";
 import sCode from "../statusCode";
 import { verifyToken } from "../utils/jwt";
 
-export const requireRole =
+export const roleVerifier =
   (...roles: string[]) =>
   (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;

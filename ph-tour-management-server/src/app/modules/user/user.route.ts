@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { requireRole } from "../../middlewares/requireRole";
+import { roleVerifier } from "../../middlewares/roleVerifier";
+import { tokenVerifier } from "../../middlewares/tokenVerifier";
 import { zodValidator } from "../../middlewares/validateRequest";
-import { verifyJWT } from "../../middlewares/verifyJWT";
 import {
   createUserController,
   getAllUsersController,
@@ -20,14 +20,14 @@ userRoutes.post(
 
 userRoutes.get(
   "/all-users",
-  requireRole(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),
+  roleVerifier(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),
   getAllUsersController
 );
 
 userRoutes.patch(
   "/:userId",
   zodValidator(updateUserZodSchema),
-  verifyJWT,
+  tokenVerifier,
   updateUserController
 );
 
