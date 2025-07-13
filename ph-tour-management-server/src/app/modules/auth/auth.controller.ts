@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import passport from "passport";
+import { env_config } from "../../../config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
@@ -23,6 +25,28 @@ export const credentialLoginController = catchAsync(
       message: "User logged in successfully",
       data,
     });
+  }
+);
+
+//
+export const googleLoginUserController = catchAsync(
+  async (req: Request, res: Response) => {
+    passport.authenticate("google", {
+      scope: ["profile", "email"],
+    })(req, res);
+  }
+);
+
+//
+export const googleCallbackController = catchAsync(
+  async (req: Request, res: Response) => {
+    const user = req.user;
+    if (!user) throw new AppError(sCode.NOT_FOUND, "User not found!");
+
+    const { accessToken, refreshToken } = generateAllTokens(user);
+    setCookie.allTokens(res, accessToken, refreshToken);
+
+    res.redirect(`${env_config.FRONTEND_URL}`);
   }
 );
 

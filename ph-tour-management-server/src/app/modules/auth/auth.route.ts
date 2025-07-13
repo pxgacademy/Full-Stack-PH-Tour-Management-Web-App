@@ -1,9 +1,12 @@
 import { Router } from "express";
+import passport from "passport";
 import { tokenVerifier } from "../../middlewares/tokenVerifier";
 import { userAccessVerifier } from "../../middlewares/userAccessVerifier";
 import {
   credentialLoginController,
   getNewAccessTokenController,
+  googleCallbackController,
+  googleLoginUserController,
   resetPasswordController,
   userLogoutController,
 } from "./auth.controller";
@@ -18,6 +21,13 @@ authRoutes.post(
   tokenVerifier,
   userAccessVerifier,
   resetPasswordController
+);
+
+authRoutes.get("/google", googleLoginUserController);
+authRoutes.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  googleCallbackController
 );
 
 export default authRoutes;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import passport from "passport";
 import {
   Strategy as GoogleStrategy,
@@ -58,3 +59,18 @@ passport.use(
     }
   )
 );
+
+type Done = (err: any, id?: unknown) => void;
+
+passport.serializeUser((user: any, done: Done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser(async (id: string, done: any) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error);
+  }
+});
