@@ -63,7 +63,7 @@ export const resetPasswordController = catchAsync(
 
     sendResponse(res, {
       statusCode: sCode.OK,
-      message: "User logged out successfully",
+      message: "Password updated successfully",
       data: password,
     });
   }

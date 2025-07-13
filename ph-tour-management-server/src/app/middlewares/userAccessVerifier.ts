@@ -9,7 +9,7 @@ export const userAccessVerifier = async (
   next: NextFunction
 ) => {
   try {
-    const user = await User.findOne(req?.decoded?._id);
+    const user = await User.findById(req?.decoded?._id).select("+password");
 
     if (!user) {
       return next(new AppError(404, "User not found"));

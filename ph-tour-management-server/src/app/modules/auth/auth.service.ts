@@ -1,5 +1,7 @@
-import { compare } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 import { Request } from "express";
+import { JwtPayload } from "jsonwebtoken";
+import { env_config } from "../../../config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
 import { iUser } from "../user/user.interface";
@@ -28,6 +30,19 @@ export const credentialLoginService = async (payload: Partial<iUser>) => {
 
 //
 export const resetPasswordService = async (req: Request) => {
-  const { decoded } = req;
-  const { password } = req.body;
+  const { _id, email } = req.decoded as JwtPayload;
+  const { oldPassword, newPassword } = req.body;
+
+  const user = await User.findById(_id).select("+password");
+
+  const isOldPassMatch = await compare(oldPassword, user?.password as string);
+  if (!isOldPassMatch)
+    throw new AppError(sCode.BAD_REQUEST, "Old password does not match");
+
+  const password = await hash(newPassword, env_config.BCRYPT_SALT_ROUND);
+  await User.findByIdAndUpdate(_id, { password });
+
+  return {
+    data: { _id, email, message: "Password updated successfully" },
+  };
 };
