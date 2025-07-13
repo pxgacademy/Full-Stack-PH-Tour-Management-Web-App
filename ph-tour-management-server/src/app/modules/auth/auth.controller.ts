@@ -10,6 +10,7 @@ import {
 import { sendResponse } from "../../utils/sendResponse";
 import { credentialLoginService } from "./auth.service";
 
+//
 export const credentialLoginController = catchAsync(
   async (req: Request, res: Response) => {
     const { data } = await credentialLoginService(req.body);
@@ -25,6 +26,7 @@ export const credentialLoginController = catchAsync(
   }
 );
 
+//
 export const getNewAccessTokenController = catchAsync(
   async (req: Request, res: Response) => {
     const refreshToken = req.cookies?.refreshToken;
@@ -35,8 +37,21 @@ export const getNewAccessTokenController = catchAsync(
 
     sendResponse(res, {
       statusCode: sCode.OK,
-      message: "Access token created successfully",
+      message: "New access token retrieved successfully",
       data: token,
+    });
+  }
+);
+
+//
+export const userLogoutController = catchAsync(
+  async (req: Request, res: Response) => {
+    setCookie.clearCookies(res);
+
+    sendResponse(res, {
+      statusCode: sCode.OK,
+      message: "User logged out successfully",
+      data: null,
     });
   }
 );

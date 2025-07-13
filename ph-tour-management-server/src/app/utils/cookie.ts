@@ -12,4 +12,8 @@ export const setCookie = {
     this.accessToken(res, accessToken);
     this.refreshToken(res, refreshToken);
   },
+  clearCookies(res: Response) {
+    res.clearCookie("accessToken", { ...this.cookieOptions, sameSite: "lax" });
+    res.clearCookie("refreshToken", { ...this.cookieOptions, sameSite: "lax" });
+  },
 };
