@@ -41,7 +41,7 @@ export interface iUser {
 }
 
 export interface iUserResponse extends iUser {
-  _id: Types.ObjectId;
+  _id: Types.ObjectId | string;
   createdAt: Date;
   updatedAt: Date;
 }

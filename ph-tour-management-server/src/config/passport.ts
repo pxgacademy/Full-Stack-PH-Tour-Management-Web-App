@@ -33,9 +33,9 @@ passport.use(
           ({ provider }) => provider === "google"
         );
 
-        if (!isGoogleAuth) {
+        if (isGoogleAuth) {
           message =
-            "Incorrect credentials, before you logged in by google. Try to log in by google or make password following instruction";
+            "Incorrect credentials, you logged in by google before. Try to log in by google or make password following instruction";
           return done(null, false, { message });
         }
 
@@ -48,7 +48,7 @@ passport.use(
         }
 
         if (!isPasswordMatch) {
-          message = "Incorrect credentials";
+          message = "Invalid credentials";
           return done(null, false, { message });
         }
 
@@ -109,7 +109,6 @@ passport.use(
 
         done(null, user, { message });
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.log("❌ Google Strategy Error: ", error);
         return done(error);
       }
