@@ -1,14 +1,71 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import bcrypt from "bcryptjs";
 import passport from "passport";
 import {
   Strategy as GoogleStrategy,
   Profile,
   VerifyCallback,
 } from "passport-google-oauth20";
+import { Strategy as LocalStrategy } from "passport-local";
 import { env_config } from ".";
 import { eAuthProvider, eUserRoles } from "../app/modules/user/user.interface";
 import { User } from "../app/modules/user/user.model";
 
+// credentials authentication
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    async (email: string, password: string, done) => {
+      let message = "User logged in successfully";
+      try {
+        const isUserExist = await User.findOne({ email }).select("+password");
+
+        if (!isUserExist) {
+          message = "User does not exist";
+          return done(null, false, { message });
+        }
+
+        const isGoogleAuth = isUserExist.auth.some(
+          ({ provider }) => provider === "google"
+        );
+
+        if (!isGoogleAuth) {
+          message =
+            "Incorrect credentials, before you logged in by google. Try to log in by google or make password following instruction";
+          return done(null, false, { message });
+        }
+
+        let isPasswordMatch = false;
+        if (isUserExist?.password) {
+          isPasswordMatch = await bcrypt.compare(
+            password as string,
+            isUserExist?.password as string
+          );
+        }
+
+        if (!isPasswordMatch) {
+          message = "Incorrect credentials";
+          return done(null, false, { message });
+        }
+
+        const userData = isUserExist.toObject();
+        delete userData.password;
+
+        done(null, userData, { message });
+        //
+      } catch (error) {
+        console.log(error);
+        done(error);
+      }
+    }
+  )
+);
+
+// google authentication
 passport.use(
   new GoogleStrategy(
     {
@@ -60,9 +117,7 @@ passport.use(
   )
 );
 
-type Done = (err: any, id?: unknown) => void;
-
-passport.serializeUser((user: any, done: Done) => {
+passport.serializeUser((user: any, done: any) => {
   done(null, user._id);
 });
 

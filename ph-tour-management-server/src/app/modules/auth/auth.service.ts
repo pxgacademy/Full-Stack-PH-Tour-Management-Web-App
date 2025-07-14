@@ -12,16 +12,19 @@ export const credentialLoginService = async (payload: Partial<iUser>) => {
   const { email, password } = payload;
 
   const isUserExist = await User.findOne({ email }).select("+password");
-
   if (!isUserExist) throw new AppError(sCode.NOT_FOUND, "User not found!");
 
-  const isPasswordRight = await compare(
-    password as string,
-    isUserExist.password as string
-  );
+  let isPasswordMatch = false;
+  if (isUserExist?.password) {
+    isPasswordMatch = await compare(
+      password as string,
+      isUserExist?.password as string
+    );
+  }
 
-  if (!isPasswordRight)
+  if (!isPasswordMatch) {
     throw new AppError(sCode.UNAUTHORIZED, "Incorrect credentials");
+  }
 
   const userData = isUserExist.toObject();
   delete userData.password;

@@ -5,6 +5,7 @@ import expressSession from "express-session";
 import passport from "passport";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import { notFound } from "./app/middlewares/notFound";
+import { env_config } from "./config";
 import "./config/passport";
 import { router } from "./routes";
 
@@ -14,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(
   expressSession({
-    secret: "your secret",
+    secret: env_config.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })

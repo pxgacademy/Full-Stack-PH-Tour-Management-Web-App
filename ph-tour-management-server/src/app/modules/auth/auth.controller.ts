@@ -31,8 +31,11 @@ export const credentialLoginController = catchAsync(
 //
 export const googleLoginUserController = catchAsync(
   async (req: Request, res: Response) => {
+    const { redirect } = req.query || "/";
+
     passport.authenticate("google", {
       scope: ["profile", "email"],
+      state: redirect as string,
     })(req, res);
   }
 );
@@ -40,13 +43,15 @@ export const googleLoginUserController = catchAsync(
 //
 export const googleCallbackController = catchAsync(
   async (req: Request, res: Response) => {
+    const redirectTo = req.query?.state || "";
+
     const user = req.user;
     if (!user) throw new AppError(sCode.NOT_FOUND, "User not found!");
 
     const { accessToken, refreshToken } = generateAllTokens(user);
     setCookie.allTokens(res, accessToken, refreshToken);
 
-    res.redirect(`${env_config.FRONTEND_URL}`);
+    res.redirect(`${env_config.FRONTEND_URL}${redirectTo}`);
   }
 );
 
