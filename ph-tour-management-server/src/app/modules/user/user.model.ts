@@ -14,7 +14,11 @@ const authProviderSchema = new Schema<iAuthProvider>(
 
 const userSchema = new Schema<iUser>(
   {
-    name: { type: String, required: [true, "Name is required"], trim: true },
+    name: {
+      type: String,
+      required: [true, "Name is required"],
+      trim: true,
+    },
     email: {
       type: String,
       unique: [true, "Email already exist"],
