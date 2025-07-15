@@ -21,7 +21,7 @@ export default function globalErrorHandler(
     message,
     error: {
       name: err?.name || "Error",
-      errors: err?.errors || message,
+      errors: err?.errors || { message },
     },
     stack: isDev ? err?.stack : undefined,
   };

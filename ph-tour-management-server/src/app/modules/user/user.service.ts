@@ -40,7 +40,6 @@ export const createUserService = async (payload: Partial<iUser>) => {
     auth: [authProvider],
     ...rest,
   });
-
   return { data: user };
 };
 
