@@ -25,6 +25,60 @@ export default function globalErrorHandler(
     stack: isDev ? err?.stack : undefined,
   };
 
+  const knownClientErrors = [
+    { name: "ValidationError", message: "Validation Failed" },
+    { name: "MongooseError", message: "Database Error" },
+    { name: "CastError", message: "Invalid ID Format" },
+    { name: "ZodError", message: "Zod Validation Error" },
+  ];
+
+  knownClientErrors.forEach(({ name, message }) => {
+    if (err?.name === name) {
+      statusCode = 400;
+      errorResponse.message = message;
+    }
+  });
+
+  res.status(statusCode).json(errorResponse);
+}
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/*
+export default function globalErrorHandler(
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const isDev = env_config.NODE_ENV === "development";
+
+  let statusCode = err?.statusCode || 500;
+  const message = err?.message || "Internal Server Error";
+
+  const errorResponse = {
+    statusCode,
+    success: false,
+    message,
+    error: {
+      name: err?.name || "Error",
+      errors: err?.errors || message,
+    },
+    stack: isDev ? err?.stack : undefined,
+  };
+
   // Handle specific error types
   switch (err?.name) {
     case "ValidationError":
@@ -37,54 +91,18 @@ export default function globalErrorHandler(
       errorResponse.message = "Database Error";
       break;
 
-    case "ZodError":
+    case "CastError":
       statusCode = 400;
-      errorResponse.message = "Zod Error";
+      errorResponse.message = "Invalid ID Format";
       break;
 
-    // Add more specific cases if needed (e.g., CastError, ZodError)
+    case "ZodError":
+      statusCode = 400;
+      errorResponse.message = "Zod Validation Error";
+      break;
   }
 
   res.status(statusCode).json(errorResponse);
-}
-
-/*
-export default function globalErrorHandler(
-  error: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const ne = env_config.node_env === "development";
-  let statusCode = 500;
-  const errRes = {
-    success: false,
-    message: "Internal Server Error",
-    error: {
-      name: "Internal Server Error",
-      errors: "Error not detected",
-    },
-    stack: null,
-  };
-
-  if (error) {
-    statusCode = error?.statusCode ?? 500;
-    errRes.message = error?.message ?? "Internal Server Error";
-    errRes.error.name = error?.name ?? "";
-    errRes.error.errors = error?.message ?? "Internal Server Error";
-    errRes.stack = ne ? error?.stack : null;
-
-    if (error.name === "ValidationError") {
-      statusCode = 400;
-      errRes.message = "Validation failed";
-      errRes.error.errors = error.errors;
-    } else if (error.name === "MongooseError") {
-      statusCode = 400;
-      errRes.message = "Mongoose Error";
-    }
-  }
-
-  res.status(statusCode).json(errRes);
 }
 
 */
