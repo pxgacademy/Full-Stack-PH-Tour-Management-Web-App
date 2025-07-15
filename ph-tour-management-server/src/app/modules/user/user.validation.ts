@@ -2,49 +2,47 @@ import { z } from "zod";
 import { eAuthProvider, eIsActive, eUserRoles } from "./user.interface";
 
 export const createUserZodSchema = z.object({
-  body: z.object({
-    name: z
-      .string({ required_error: "Name is required" })
-      .min(2, "Name must be at least 2 characters")
-      .max(100, "Name must be at most 100 characters")
-      .trim(),
+  name: z
+    .string({ required_error: "Name is required" })
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be at most 100 characters")
+    .trim(),
 
-    email: z
-      .string({ required_error: "Email is required" })
-      .email("Invalid email format")
-      .trim()
-      .toLowerCase(),
+  email: z
+    .string({ required_error: "Email is required" })
+    .email("Invalid email format")
+    .trim()
+    .toLowerCase(),
 
-    password: z
-      .string({ required_error: "Password is required" })
-      .min(6, "Password must be at least 6 characters")
-      .max(64, "Password must be at most 64 characters")
-      .refine((val) => /[a-zA-Z]/.test(val), {
-        message: "Password must contain at least one letter",
-      })
-      .refine((val) => /\d/.test(val), {
-        message: "Password must contain at least one number",
-      })
-      .refine((val) => /[!@#$%^&*]/.test(val), {
-        message:
-          "Password must contain at least one special character (!@#$%^&*)",
-      }),
+  password: z
+    .string({ required_error: "Password is required" })
+    .min(6, "Password must be at least 6 characters")
+    .max(64, "Password must be at most 64 characters")
+    .refine((val) => /[a-zA-Z]/.test(val), {
+      message: "Password must contain at least one letter",
+    })
+    .refine((val) => /\d/.test(val), {
+      message: "Password must contain at least one number",
+    })
+    .refine((val) => /[!@#$%^&*]/.test(val), {
+      message:
+        "Password must contain at least one special character (!@#$%^&*)",
+    }),
 
-    phone: z
-      .string({ invalid_type_error: "Phone must be a string" })
-      .regex(/^(?:\+8801|01)[0-9]{9}$/, {
-        message: "Phone number must be valid Bangladeshi format",
-      })
-      .optional(),
+  phone: z
+    .string({ invalid_type_error: "Phone must be a string" })
+    .regex(/^(?:\+8801|01)[0-9]{9}$/, {
+      message: "Phone number must be valid Bangladeshi format",
+    })
+    .optional(),
 
-    picture: z.string().url("Picture must be a valid URL").optional(),
+  picture: z.string().url("Picture must be a valid URL").optional(),
 
-    address: z
-      .string()
-      .max(250, "Address cannot exceed 250 characters")
-      .trim()
-      .optional(),
-  }),
+  address: z
+    .string()
+    .max(250, "Address cannot exceed 250 characters")
+    .trim()
+    .optional(),
 });
 
 export const updateUserZodSchema = z.object({

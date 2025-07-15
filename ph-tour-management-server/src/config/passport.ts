@@ -29,7 +29,7 @@ passport.use(
           return done(null, false, { message });
         }
 
-        const isGoogleAuth = isUserExist.auth.some(
+        /* const isGoogleAuth = isUserExist.auth.some(
           ({ provider }) => provider === "google"
         );
 
@@ -37,7 +37,7 @@ passport.use(
           message =
             "Incorrect credentials, you logged in by google before. Try to log in by google or make password following instruction";
           return done(null, false, { message });
-        }
+        }        */
 
         let isPasswordMatch = false;
         if (isUserExist?.password) {
