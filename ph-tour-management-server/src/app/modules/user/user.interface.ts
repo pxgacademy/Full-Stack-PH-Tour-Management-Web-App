@@ -24,8 +24,13 @@ export interface iAuthProvider {
   providerId: string;
 }
 
+export interface iUserName {
+  firstName: string;
+  lastName: string;
+}
+
 export interface iUser {
-  name: string;
+  name: iUserName;
   email: string;
   password?: string;
   phone?: string;

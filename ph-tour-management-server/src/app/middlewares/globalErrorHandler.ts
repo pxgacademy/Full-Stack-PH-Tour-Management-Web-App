@@ -11,6 +11,7 @@ import {
 } from "../../errors";
 import { AppError } from "../../errors/AppError";
 
+//
 export default function globalErrorHandler(
   err: any,
   req: Request,

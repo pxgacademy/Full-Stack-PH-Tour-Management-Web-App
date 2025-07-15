@@ -91,10 +91,18 @@ passport.use(
 
         if (!user) {
           message = "User created successfully";
+          const fullName = profile.displayName || "";
+          const nameParts = fullName.trim().split(/\s+/);
+
+          const firstName = nameParts[0] || "";
+          const lastName = nameParts.slice(1).join(" ") || "";
 
           user = await User.create({
             email,
-            name: profile.displayName,
+            name: {
+              firstName,
+              lastName,
+            },
             picture: profile.photos?.[0].value,
             role: eUserRoles.USER,
             isVerified: true,

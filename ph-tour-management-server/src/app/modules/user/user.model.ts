@@ -1,24 +1,38 @@
 import { model, Schema } from "mongoose";
-import { eIsActive, eUserRoles, iAuthProvider, iUser } from "./user.interface";
+import {
+  eIsActive,
+  eUserRoles,
+  iAuthProvider,
+  iUser,
+  iUserName,
+} from "./user.interface";
+
+const options = { versionKey: false, _id: false };
+
+const userNameSchema = new Schema<iUserName>(
+  {
+    firstName: {
+      type: String,
+      required: [true, "First name is required"],
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: [true, "Last name is required"],
+      trim: true,
+    },
+  },
+  options
+);
 
 const authProviderSchema = new Schema<iAuthProvider>(
-  {
-    provider: { type: String },
-    providerId: { type: String },
-  },
-  {
-    versionKey: false,
-    _id: false,
-  }
+  { provider: { type: String }, providerId: { type: String } },
+  options
 );
 
 const userSchema = new Schema<iUser>(
   {
-    name: {
-      type: String,
-      required: [true, "Name is required"],
-      trim: true,
-    },
+    name: userNameSchema,
     email: {
       type: String,
       unique: [true, "Email already exist"],

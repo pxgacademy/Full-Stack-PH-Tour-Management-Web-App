@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const zodValidationError = (err: any) => {
-  const zError = err.errors?.map((error: any) => ({
-    path: error?.path?.[0],
+  const zError = err.issues?.map((error: any) => ({
+    path: error?.path?.join("/"),
     message: error?.message,
   }));
 

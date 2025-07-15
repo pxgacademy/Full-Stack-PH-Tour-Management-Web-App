@@ -2,11 +2,19 @@ import { z } from "zod";
 import { eAuthProvider, eIsActive, eUserRoles } from "./user.interface";
 
 export const createUserZodSchema = z.object({
-  name: z
-    .string({ required_error: "Name is required" })
-    .min(2, "Name must be at least 2 characters")
-    .max(100, "Name must be at most 100 characters")
-    .trim(),
+  name: z.object({
+    firstName: z
+      .string({ required_error: "First name is required" })
+      .min(2, "Name must be at least 2 characters")
+      .max(15, "Name must be at most 15 characters")
+      .trim(),
+
+    lastName: z
+      .string({ required_error: "Last name is required" })
+      .min(2, "Name must be at least 2 characters")
+      .max(15, "Name must be at most 15 characters")
+      .trim(),
+  }),
 
   email: z
     .string({ required_error: "Email is required" })
