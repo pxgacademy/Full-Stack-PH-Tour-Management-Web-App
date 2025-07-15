@@ -10,12 +10,13 @@ export default function globalErrorHandler(
   next: NextFunction
 ) {
   const isDev = env_config.NODE_ENV === "development";
+  const errCode = err?.code || err?.cause?.code || null;
+  const email = err?.keyValue?.email || err?.cause?.keyValue?.email || null; // conflict email
 
-  let statusCode = err?.statusCode || 500;
   const message = err?.message || "Internal Server Error";
 
-  const errorResponse = {
-    statusCode,
+  const response = {
+    statusCode: err?.statusCode || 500,
     success: false,
     message,
     error: {
@@ -34,12 +35,17 @@ export default function globalErrorHandler(
 
   knownClientErrors.forEach(({ name, message }) => {
     if (err?.name === name) {
-      statusCode = 400;
-      errorResponse.message = message;
+      if (errCode === 11000) {
+        response.statusCode = 409;
+        response.message = email ? `${email} already exist` : message;
+      } else {
+        response.statusCode = 400;
+        response.message = message;
+      }
     }
   });
 
-  res.status(statusCode).json(errorResponse);
+  res.status(response.statusCode).json(response);
 }
 
 /*
@@ -55,6 +61,7 @@ export default function globalErrorHandler(
 
 
 */
+// console.log("Full error:", JSON.stringify(err, Object.getOwnPropertyNames(err), 2));
 
 /*
 export default function globalErrorHandler(

@@ -16,8 +16,8 @@ import { User } from "./user.model";
 export const createUserService = async (payload: Partial<iUser>) => {
   const { email, password, ...rest } = payload;
 
-  const existingUser = await User.findOne({ email });
-  if (existingUser) throw new AppError(sCode.CONFLICT, "User Already Exist");
+  // const existingUser = await User.findOne({ email });
+  // if (existingUser) throw new AppError(sCode.CONFLICT, "User Already Exist");
 
   const hashedPassword = await hash(
     password as string,
@@ -40,6 +40,7 @@ export const createUserService = async (payload: Partial<iUser>) => {
     auth: [authProvider],
     ...rest,
   });
+
   return { data: user };
 };
 
