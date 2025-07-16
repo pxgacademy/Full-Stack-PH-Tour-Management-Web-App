@@ -4,7 +4,7 @@ import { Division } from "./division.model";
 
 export const createDivisionService = async (payload: iDivision) => {
   const division = await Division.create(payload);
-  return division;
+  return { data: division };
 };
 
 //
@@ -14,5 +14,5 @@ export const updateDivisionService = async (req: Request) => {
     new: true,
   });
 
-  return division;
+  return { data: division };
 };

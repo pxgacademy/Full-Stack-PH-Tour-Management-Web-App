@@ -7,7 +7,7 @@ import {
 } from "./division.service";
 
 export const createDivisionController = catchAsync(async (req, res) => {
-  const data = createDivisionService(req.body);
+  const { data } = await createDivisionService(req.body);
 
   sendResponse(res, {
     statusCode: sCode.CREATED,
@@ -18,7 +18,7 @@ export const createDivisionController = catchAsync(async (req, res) => {
 
 //
 export const updateDivisionController = catchAsync(async (req, res) => {
-  const data = await updateDivisionService(req);
+  const { data } = await updateDivisionService(req);
 
   sendResponse(res, {
     statusCode: sCode.OK,
@@ -26,3 +26,5 @@ export const updateDivisionController = catchAsync(async (req, res) => {
     data,
   });
 });
+
+//

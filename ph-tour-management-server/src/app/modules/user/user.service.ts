@@ -16,9 +16,6 @@ import { User } from "./user.model";
 export const createUserService = async (payload: Partial<iUser>) => {
   const { email, password, ...rest } = payload;
 
-  // const existingUser = await User.findOne({ email });
-  // if (existingUser) throw new AppError(sCode.CONFLICT, "User Already Exist");
-
   const hashedPassword = await hash(
     password as string,
     env_config.BCRYPT_SALT_ROUND
@@ -83,9 +80,7 @@ export const updateUserService = async (
     runValidators: true,
   });
 
-  return {
-    data: updatedUser,
-  };
+  return { data: updatedUser };
 };
 
 export const getAllUsersService = async () => {
@@ -93,8 +88,6 @@ export const getAllUsersService = async () => {
   const totalUser = await User.countDocuments();
   return {
     data: users,
-    meta: {
-      total: totalUser,
-    },
+    meta: { total: totalUser },
   };
 };
