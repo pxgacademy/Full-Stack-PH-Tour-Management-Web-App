@@ -1,4 +1,6 @@
 import { Request } from "express";
+import { AppError } from "../../../errors/AppError";
+import sCode from "../../statusCode";
 import { iDivision } from "./division.interface";
 import { Division } from "./division.model";
 
@@ -23,7 +25,16 @@ export const deleteDivisionService = async (id: string) => {
 };
 
 //
-export const getAllDivisionService = async () => {
+export const getAllDivisionsService = async () => {
   const divisions = await Division.find();
-  return { data: divisions };
+  const total = await Division.countDocuments();
+  return { data: divisions, total };
+};
+
+//
+export const getSingleDivisionService = async (_id: string) => {
+  const division = await Division.findOne({ _id });
+  if (!division)
+    throw new AppError(sCode.NOT_FOUND, "division not found with this ID");
+  return { data: division };
 };

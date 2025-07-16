@@ -4,7 +4,8 @@ import { sendResponse } from "../../utils/sendResponse";
 import {
   createDivisionService,
   deleteDivisionService,
-  getAllDivisionService,
+  getAllDivisionsService,
+  getSingleDivisionService,
   updateDivisionService,
 } from "./division.service";
 
@@ -40,11 +41,22 @@ export const deleteDivisionController = catchAsync(async (req, res) => {
 });
 
 //
-export const getAllDivisionController = catchAsync(async (req, res) => {
-  const { data } = await getAllDivisionService();
+export const getAllDivisionsController = catchAsync(async (req, res) => {
+  const { data, total } = await getAllDivisionsService();
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Divisions retrieved successfully",
+    data,
+    meta: { total },
+  });
+});
+
+//
+export const getSingleDivisionController = catchAsync(async (req, res) => {
+  const { data } = await getSingleDivisionService(req.params.divisionId);
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Division retrieved successfully",
     data,
   });
 });

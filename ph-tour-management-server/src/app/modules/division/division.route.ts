@@ -5,7 +5,8 @@ import { eUserRoles } from "../user/user.interface";
 import {
   createDivisionController,
   deleteDivisionController,
-  getAllDivisionController,
+  getAllDivisionsController,
+  getSingleDivisionController,
   updateDivisionController,
 } from "./division.controller";
 import { DivisionZodSchema } from "./division.validation";
@@ -32,6 +33,7 @@ divisionRoutes.delete(
   deleteDivisionController
 );
 
-divisionRoutes.get("/all-divisions", getAllDivisionController);
+divisionRoutes.get("/all-divisions", getAllDivisionsController);
+divisionRoutes.get("/:divisionId", getSingleDivisionController);
 
 export default divisionRoutes;
