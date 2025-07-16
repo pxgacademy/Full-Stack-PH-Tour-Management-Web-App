@@ -23,10 +23,7 @@ export const createUserZodSchema = z.object({
   }),
 
   email: z
-    .string({
-      required_error: "Email is required",
-      invalid_type_error: "Email must be string type",
-    })
+    .string({ required_error: "Email is required" })
     .email("Invalid email format")
     .trim()
     .toLowerCase(),
@@ -34,7 +31,6 @@ export const createUserZodSchema = z.object({
   password: z
     .string({
       required_error: "Password is required",
-      invalid_type_error: "Password must be string type",
     })
     .min(6, "Password must be at least 6 characters")
     .max(64, "Password must be at most 64 characters")
@@ -45,8 +41,7 @@ export const createUserZodSchema = z.object({
       message: "Password must contain at least one number",
     })
     .refine((val) => /[!@#$%^&*]/.test(val), {
-      message:
-        "Password must contain at least one special character (!@#$%^&*)",
+      message: "Password must contain at least one special character",
     }),
 
   phone: z
@@ -56,7 +51,10 @@ export const createUserZodSchema = z.object({
     })
     .optional(),
 
-  picture: z.string().url("Picture must be a valid URL").optional(),
+  picture: z
+    .string()
+    .url({ message: "Picture must be a valid URL" })
+    .optional(),
 
   address: z
     .string()
@@ -65,42 +63,8 @@ export const createUserZodSchema = z.object({
     .optional(),
 });
 
-export const updateUserZodSchema = z.object({
-  _id: z.union([z.string(), z.instanceof(Object)]).optional(),
-
-  name: z
-    .string({ invalid_type_error: "Name must be a string" })
-    .min(3, { message: "Name must be at least 3 characters" })
-    .max(30, { message: "Name must be at most 30 characters" })
-    .optional(),
-
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .refine((val) => /[A-Z]/.test(val), {
-      message: "Password must contain at least one uppercase letter",
-    })
-    .refine((val) => /\d/.test(val), {
-      message: "Password must contain at least one number",
-    })
-    .refine((val) => /[!@#$%^&*]/.test(val), {
-      message: "Password must contain at least one special character",
-    })
-    .optional(),
-
-  phone: z
-    .string({ invalid_type_error: "Phone must be a string" })
-    .regex(/^(?:\+8801|01)[0-9]{9}$/, {
-      message: "Phone number must be valid Bangladeshi format",
-    })
-    .optional(),
-
-  picture: z.string().url("Picture must be a valid URL").optional(),
-
-  address: z
-    .string({ invalid_type_error: "Address must be a string" })
-    .max(250, { message: "Address cannot exceed 250 characters" })
-    .optional(),
+const updateOnlyUserFields = z.object({
+  // _id: z.union([z.string(), z.instanceof(Object)]).optional(),
 
   role: z
     .enum(Object.values(eUserRoles) as [string], {
@@ -131,6 +95,10 @@ export const updateUserZodSchema = z.object({
     )
     .optional(),
 
-  bookings: z.array(z.any()).optional(),
-  guides: z.array(z.any()).optional(),
+  bookings: z.array(z.string()).optional(),
+  guides: z.array(z.string()).optional(),
 });
+
+export const updateUserZodSchema = createUserZodSchema
+  .partial()
+  .merge(updateOnlyUserFields);

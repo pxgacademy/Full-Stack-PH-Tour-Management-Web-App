@@ -6,11 +6,11 @@ export interface iTourType {
 
 export interface iTour {
   title: string;
-  slug?: string;
+  slug: string;
   description?: string;
   images?: string[];
   location?: string;
-  constFrom?: number;
+  costFrom?: number;
   startDate?: Date;
   endDate?: Date;
   included?: string[];
@@ -21,4 +21,10 @@ export interface iTour {
   minAge?: number;
   division: Types.ObjectId;
   tourType: Types.ObjectId;
+}
+
+export interface iTourResponse extends iTour {
+  _id: Types.ObjectId | string;
+  createdAt: Date;
+  updatedAt: Date;
 }
