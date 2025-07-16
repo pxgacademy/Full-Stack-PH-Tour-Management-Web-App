@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
-import { env_config } from "../../config";
+import { isDev } from "../../config";
 import {
   appError,
   castError,
@@ -18,7 +18,6 @@ export default function globalErrorHandler(
   res: Response,
   next: NextFunction
 ) {
-  const isDev = env_config.NODE_ENV === "development";
   const errCode = err?.code || err?.cause?.code || null;
 
   const message = err?.message || "Internal Server Error";

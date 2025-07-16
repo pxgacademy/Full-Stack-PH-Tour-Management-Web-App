@@ -38,3 +38,5 @@ Object.keys(env_config).forEach((e) => {
   if (!process.env[e] && e !== "NODE_ENV")
     throw new AppError(500, `❌ ${e} is not defined in environment variables`);
 });
+
+export const isDev = env_config?.NODE_ENV === "development";
