@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { roleVerifier } from "../../middlewares/roleVerifier";
 import { tokenVerifier } from "../../middlewares/tokenVerifier";
-import { zodValidator } from "../../middlewares/validateRequest";
+import { zodBodyValidator } from "../../middlewares/zodValidator";
 import {
   createUserController,
   getAllUsersController,
@@ -14,7 +14,7 @@ const userRoutes = Router();
 
 userRoutes.post(
   "/register",
-  zodValidator(createUserZodSchema),
+  zodBodyValidator(createUserZodSchema),
   createUserController
 );
 
@@ -26,7 +26,7 @@ userRoutes.get(
 
 userRoutes.patch(
   "/:userId",
-  zodValidator(updateUserZodSchema),
+  zodBodyValidator(updateUserZodSchema),
   tokenVerifier,
   updateUserController
 );

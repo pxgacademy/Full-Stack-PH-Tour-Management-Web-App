@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { roleVerifier } from "../../middlewares/roleVerifier";
-import { zodValidator } from "../../middlewares/validateRequest";
+import { zodBodyValidator } from "../../middlewares/zodValidator";
 import { eUserRoles } from "../user/user.interface";
 import {
   createDivisionController,
@@ -15,14 +15,14 @@ const divisionRoutes = Router();
 
 divisionRoutes.post(
   "/create-division",
-  zodValidator(DivisionZodSchema),
+  zodBodyValidator(DivisionZodSchema),
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   createDivisionController
 );
 
 divisionRoutes.patch(
   "/:divisionId",
-  zodValidator(DivisionZodSchema),
+  zodBodyValidator(DivisionZodSchema),
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   updateDivisionController
 );

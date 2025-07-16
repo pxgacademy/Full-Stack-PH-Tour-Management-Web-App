@@ -57,32 +57,3 @@ export const createTourZodSchema = z.object({
 
 export const updateTourZodSchema = createTourZodSchema.partial();
 // export const updateTourZodSchema = createTourZodSchema.required();
-
-// .partial() make every field optional
-// .required() make every field required
-
-/*
-import { z } from "zod";
-
-const baseUserSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-});
-
-const extendedUserSchema = baseUserSchema.extend({
-  age: z.number().min(0),
-  isAdmin: z.boolean().optional(),
-});
-
-const extendedUserSchema = baseUserSchema.partial().extend({
-  age: z.number().min(0),
-  isAdmin: z.boolean().optional(),
-});
-
-
-const schemaA = z.object({ a: z.string() });
-const schemaB = z.object({ b: z.number() });
-
-const merged = schemaA.merge(schemaB);
-
-*/
