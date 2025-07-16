@@ -16,3 +16,14 @@ export const updateDivisionService = async (req: Request) => {
 
   return { data: division };
 };
+
+//
+export const deleteDivisionService = async (id: string) => {
+  await Division.findByIdAndDelete(id);
+};
+
+//
+export const getAllDivisionService = async () => {
+  const divisions = await Division.find();
+  return { data: divisions };
+};

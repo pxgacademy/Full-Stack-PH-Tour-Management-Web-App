@@ -1,8 +1,9 @@
 import type { Response } from "express";
 
 interface iApiResponse<T> {
-  success?: boolean;
+  statusCode: number;
   message: string;
+  success?: boolean;
   data?: T;
   meta?: {
     total?: number;
@@ -10,7 +11,6 @@ interface iApiResponse<T> {
     limit?: number;
     extra?: object;
   };
-  statusCode: number;
 }
 
 export const sendResponse = <T>(

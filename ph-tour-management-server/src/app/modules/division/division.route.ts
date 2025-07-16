@@ -4,6 +4,8 @@ import { zodValidator } from "../../middlewares/validateRequest";
 import { eUserRoles } from "../user/user.interface";
 import {
   createDivisionController,
+  deleteDivisionController,
+  getAllDivisionController,
   updateDivisionController,
 } from "./division.controller";
 import { DivisionZodSchema } from "./division.validation";
@@ -23,5 +25,13 @@ divisionRoutes.patch(
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   updateDivisionController
 );
+
+divisionRoutes.delete(
+  "/:divisionId",
+  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  deleteDivisionController
+);
+
+divisionRoutes.get("/all-divisions", getAllDivisionController);
 
 export default divisionRoutes;
