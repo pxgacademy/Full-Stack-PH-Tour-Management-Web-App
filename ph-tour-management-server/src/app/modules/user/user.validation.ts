@@ -4,26 +4,38 @@ import { eAuthProvider, eIsActive, eUserRoles } from "./user.interface";
 export const createUserZodSchema = z.object({
   name: z.object({
     firstName: z
-      .string({ required_error: "First name is required" })
+      .string({
+        required_error: "First name is required",
+        invalid_type_error: "First name must be string type",
+      })
       .min(2, "Name must be at least 2 characters")
       .max(15, "Name must be at most 15 characters")
       .trim(),
 
     lastName: z
-      .string({ required_error: "Last name is required" })
+      .string({
+        required_error: "Last name is required",
+        invalid_type_error: "Last name must be string type",
+      })
       .min(2, "Name must be at least 2 characters")
       .max(15, "Name must be at most 15 characters")
       .trim(),
   }),
 
   email: z
-    .string({ required_error: "Email is required" })
+    .string({
+      required_error: "Email is required",
+      invalid_type_error: "Email must be string type",
+    })
     .email("Invalid email format")
     .trim()
     .toLowerCase(),
 
   password: z
-    .string({ required_error: "Password is required" })
+    .string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be string type",
+    })
     .min(6, "Password must be at least 6 characters")
     .max(64, "Password must be at most 64 characters")
     .refine((val) => /[a-zA-Z]/.test(val), {
@@ -48,7 +60,7 @@ export const createUserZodSchema = z.object({
 
   address: z
     .string()
-    .max(250, "Address cannot exceed 250 characters")
+    .max(250, { message: "Address cannot exceed 250 characters" })
     .trim()
     .optional(),
 });
