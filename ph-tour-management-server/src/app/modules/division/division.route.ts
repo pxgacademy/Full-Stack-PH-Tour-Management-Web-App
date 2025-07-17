@@ -15,15 +15,15 @@ const divisionRoutes = Router();
 
 divisionRoutes.post(
   "/create-division",
-  zodBodyValidator(DivisionZodSchema),
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  zodBodyValidator(DivisionZodSchema),
   createDivisionController
 );
 
 divisionRoutes.patch(
   "/:divisionId",
-  zodBodyValidator(DivisionZodSchema),
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  zodBodyValidator(DivisionZodSchema),
   updateDivisionController
 );
 

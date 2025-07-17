@@ -14,6 +14,7 @@ export const updateDivisionService = async (req: Request) => {
   const id = req.params.divisionId;
   const division = await Division.findByIdAndUpdate(id, req.body, {
     new: true,
+    runValidators: true,
   });
 
   return { data: division };
