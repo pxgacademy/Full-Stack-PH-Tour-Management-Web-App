@@ -9,21 +9,24 @@ import {
   getSingleDivisionController,
   updateDivisionController,
 } from "./division.controller";
-import { DivisionZodSchema } from "./division.validation";
+import {
+  createDivisionZodSchema,
+  updateDivisionZodSchema,
+} from "./division.validation";
 
 const divisionRoutes = Router();
 
 divisionRoutes.post(
-  "/create-division",
-  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
-  zodBodyValidator(DivisionZodSchema),
+  "/create",
+  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  zodBodyValidator(createDivisionZodSchema),
   createDivisionController
 );
 
 divisionRoutes.patch(
   "/:divisionId",
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
-  zodBodyValidator(DivisionZodSchema),
+  zodBodyValidator(updateDivisionZodSchema),
   updateDivisionController
 );
 

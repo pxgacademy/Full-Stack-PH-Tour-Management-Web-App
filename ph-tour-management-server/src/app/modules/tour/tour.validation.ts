@@ -7,12 +7,12 @@ export const createTourZodSchema = z.object({
       required_error: "Title is required",
     })
     .min(5, { message: "Title must be at least 5 characters long" }),
-  slug: z
+  /* slug: z
     .string({
       invalid_type_error: "Slug must be string type",
       required_error: "Slug is required",
     })
-    .min(5, { message: "Slug must be at least 5 characters long" }),
+    .min(5, { message: "Slug must be at least 5 characters long" }),*/
   description: z
     .string({ invalid_type_error: "Description must be string type" })
     .optional(),
