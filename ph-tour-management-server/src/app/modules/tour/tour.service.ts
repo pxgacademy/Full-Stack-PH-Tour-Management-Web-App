@@ -6,7 +6,7 @@ import { iTour, iTourType } from "./tour.interface";
 import { Tour, TourType } from "./tour.model";
 
 export const createTourService = async (payload: iTour) => {
-  payload.slug = await slugMaker(Tour, payload.title);
+  payload.slug = slugMaker(payload.title);
   const tour = await Tour.create(payload);
   return { data: tour };
 };
@@ -14,7 +14,7 @@ export const createTourService = async (payload: iTour) => {
 //
 export const updateTourService = async (req: Request) => {
   const payload = req.body;
-  if (payload.title) payload.slug = await slugMaker(Tour, payload.title);
+  if (payload.title) payload.slug = slugMaker(payload.title);
   const id = req.params.tourId;
   const tour = await Tour.findByIdAndUpdate(id, payload, {
     new: true,

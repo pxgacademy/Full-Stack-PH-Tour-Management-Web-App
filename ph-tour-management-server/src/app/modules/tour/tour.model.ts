@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { slugMaker } from "../../utils/slugMaker";
 import { iTour, iTourType } from "./tour.interface";
 
 const tourTypeSchema = new Schema<iTourType>(
@@ -42,6 +43,23 @@ const tourSchema = new Schema<iTour>(
   },
   { versionKey: false, timestamps: true }
 );
+
+tourSchema.pre("save", async function (next) {
+  if (this.isModified("title")) {
+    this.slug = slugMaker(this.title);
+  }
+  next();
+});
+
+tourSchema.pre("findOneAndUpdate", async function (next) {
+  const update = this.getUpdate() as Partial<iTour>;
+  if (update.title) {
+    update.slug = slugMaker(update.title);
+    this.setUpdate(update);
+  }
+
+  next();
+});
 
 export const TourType = model<iTourType>("TourType", tourTypeSchema);
 export const Tour = model<iTour>("Tour", tourSchema);

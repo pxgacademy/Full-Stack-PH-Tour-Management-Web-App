@@ -18,7 +18,7 @@ const divisionRoutes = Router();
 
 divisionRoutes.post(
   "/create",
-  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   zodBodyValidator(createDivisionZodSchema),
   createDivisionController
 );

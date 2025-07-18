@@ -1,7 +1,8 @@
 //
-// export const slugMaker = (...rest: string[]): string =>
-//   rest.join(" ").trim().toLowerCase().split(/\s+/).join("-");
+export const slugMaker = (...rest: string[]): string =>
+  rest.join(" ").trim().toLowerCase().split(/\s+/).join("-");
 
+/*
 import { Model } from "mongoose";
 
 export const slugMaker = async <T>(
@@ -17,3 +18,4 @@ export const slugMaker = async <T>(
 
   return slug;
 };
+*/

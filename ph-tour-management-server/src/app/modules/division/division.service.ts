@@ -6,7 +6,7 @@ import { iDivision } from "./division.interface";
 import { Division } from "./division.model";
 
 export const createDivisionService = async (payload: iDivision) => {
-  payload.slug = await slugMaker(Division, payload.name, "division");
+  // payload.slug = slugMaker(payload.name, "division");
 
   const division = await Division.create(payload);
   return { data: division };
@@ -16,8 +16,7 @@ export const createDivisionService = async (payload: iDivision) => {
 export const updateDivisionService = async (req: Request) => {
   const payload = req.body;
   const id = req.params.divisionId;
-  if (payload.name)
-    payload.slug = await slugMaker(Division, payload.name, "division");
+  if (payload.name) payload.slug = slugMaker(payload.name, "division");
 
   const division = await Division.findByIdAndUpdate(id, req.body, {
     new: true,
