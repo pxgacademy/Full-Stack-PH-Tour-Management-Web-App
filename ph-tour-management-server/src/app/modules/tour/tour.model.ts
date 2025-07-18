@@ -16,8 +16,13 @@ const tourTypeSchema = new Schema<iTourType>(
 
 const tourSchema = new Schema<iTour>(
   {
-    title: { type: String, trim: true, required: [true, "Title is required"] },
-    slug: { type: String, required: [true, "Title slug already exist"] },
+    title: {
+      type: String,
+      trim: true,
+      required: [true, "Title is required"],
+      unique: [true, "Title already exist"],
+    },
+    slug: { type: String, unique: [true, "Title slug already exist"] },
     description: { type: String, default: "" },
     images: { type: [String], default: [] },
     location: { type: String },

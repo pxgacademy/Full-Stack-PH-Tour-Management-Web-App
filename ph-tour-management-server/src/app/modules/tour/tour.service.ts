@@ -1,22 +1,19 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
-import { slugMaker } from "../../utils/slugMaker";
+import { queryFilters } from "./tour.constant";
 import { iTour, iTourType } from "./tour.interface";
 import { Tour, TourType } from "./tour.model";
 
 export const createTourService = async (payload: iTour) => {
-  payload.slug = slugMaker(payload.title);
   const tour = await Tour.create(payload);
   return { data: tour };
 };
 
 //
 export const updateTourService = async (req: Request) => {
-  const payload = req.body;
-  if (payload.title) payload.slug = slugMaker(payload.title);
   const id = req.params.tourId;
-  const tour = await Tour.findByIdAndUpdate(id, payload, {
+  const tour = await Tour.findByIdAndUpdate(id, req.body, {
     new: true,
     runValidators: true,
   });
@@ -30,8 +27,11 @@ export const deleteTourService = async (id: string) => {
 };
 
 //
-export const getAllToursService = async () => {
-  const tours = await Tour.find();
+export const getAllToursService = async (query: Record<string, string>) => {
+  const { search, ...rest } = query;
+  const options = queryFilters(search || "");
+
+  const tours = await Tour.find(options).find(rest);
   const total = await Tour.countDocuments();
   return { data: tours, total };
 };
