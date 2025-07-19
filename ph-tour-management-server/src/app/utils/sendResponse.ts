@@ -6,8 +6,11 @@ interface iApiResponse<T> {
   success?: boolean;
   data?: T;
   meta?: {
-    total?: number;
-    page?: number;
+    total_data?: number;
+    filtered_data?: number;
+    total_page?: number;
+    present_page?: number;
+    skip?: number;
     limit?: number;
     extra?: object;
   };

@@ -1,0 +1,122 @@
+[
+  {
+    "_id": {
+      "$oid": "54110335735c4a66b478650c"
+    },
+    "name": "Adventure Expedition",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "16fe7a12ef1d49fd98c9a265"
+    },
+    "name": "Tropical Beach Escape",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "cd699345f5a340ce8b6c9fec"
+    },
+    "name": "Historic Wonders",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "1d764238c9bf4c80bc3bf38a"
+    },
+    "name": "Cultural Discovery",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "bd32e57db7b14f84920322f9"
+    },
+    "name": "Wildlife Safari",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3af1fa3202614ab2a1e7f7cc"
+    },
+    "name": "Mountain Hiking Trail",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4aa5d89751cb43318f65a1f1"
+    },
+    "name": "Luxury Cruise Voyage",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2bd30261465b45f285ddcbda"
+    },
+    "name": "Family Fun Tour",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "16549042b9124d6aa27eeafe"
+    },
+    "name": "Romantic Getaway",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "94dbe5c4dc5c471a824531a3"
+    },
+    "name": "Budget Backpacking",
+    "createdAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T15:56:45.551000"
+    }
+  }
+]

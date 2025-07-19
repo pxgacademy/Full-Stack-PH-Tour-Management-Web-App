@@ -47,14 +47,14 @@ export const deleteTourController = catchAsync(async (req, res) => {
 
 //
 export const getAllToursController = catchAsync(async (req, res) => {
-  const { data, total } = await getAllToursService(
+  const { data, meta } = await getAllToursService(
     req.query as Record<string, string>
   );
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Tours retrieved successfully",
     data,
-    meta: { total },
+    meta,
   });
 });
 
@@ -108,7 +108,7 @@ export const getAllTourTypesController = catchAsync(async (req, res) => {
     statusCode: sCode.OK,
     message: "TourTypes retrieved successfully",
     data,
-    meta: { total },
+    meta: { total_data: total },
   });
 });
 
