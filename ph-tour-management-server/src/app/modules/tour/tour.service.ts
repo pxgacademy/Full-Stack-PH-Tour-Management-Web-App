@@ -1,7 +1,8 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
-import { buildSearchQuery } from "./tour.constant";
+import { QueryBuilder } from "../../utils/queryBuilder";
+import { tourSearchFields } from "./tour.constant";
 import { iTour, iTourType } from "./tour.interface";
 import { Tour, TourType } from "./tour.model";
 
@@ -41,6 +42,7 @@ interface TourQueryParams {
   [key: string]: string | undefined;
 }
 
+/*
 export const getAllToursService = async (query: TourQueryParams) => {
   const {
     search = "",
@@ -87,6 +89,32 @@ export const getAllToursService = async (query: TourQueryParams) => {
       skip,
       limit: limitNum,
     },
+  };
+};*/
+
+export const getAllToursService = async (query: TourQueryParams) => {
+  const queryBuilder = new QueryBuilder(Tour.find(), query);
+
+  const tours = await queryBuilder
+    .search(tourSearchFields)
+    .filter()
+    .sort()
+    .select()
+    .paginate()
+    .build();
+
+  return {
+    data: tours,
+    /*
+    meta: {
+      total_data: totalDataCount,
+      filtered_data: tours?.length || 0,
+      total_page: Math.ceil(filteredCount / limitNum),
+      present_page: pageNum,
+      skip,
+      limit: limitNum,
+    }, 
+    */
   };
 };
 
