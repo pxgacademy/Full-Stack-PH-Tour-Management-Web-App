@@ -15,7 +15,7 @@ export class QueryBuilder<T extends Document> {
   private sortBy = "-createdAt";
   private selectedFields = "";
   private page = 1;
-  private limit = 10;
+  private limit = 12;
   private skip = 0;
 
   constructor(model: Model<T>, query: RecordType) {

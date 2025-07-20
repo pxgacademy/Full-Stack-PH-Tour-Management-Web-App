@@ -93,7 +93,7 @@ export const getAllToursService = async (query: TourQueryParams) => {
 };*/
 
 export const getAllToursService = async (query: TourQueryParams) => {
-  const queryBuilder = new QueryBuilder(Tour.find(), query);
+  const queryBuilder = new QueryBuilder(Tour, query);
 
   const tours = await queryBuilder
     .search(tourSearchFields)
@@ -103,18 +103,11 @@ export const getAllToursService = async (query: TourQueryParams) => {
     .paginate()
     .build();
 
+  const meta = await queryBuilder.meta(tourSearchFields, tours?.length || 0);
+
   return {
     data: tours,
-    /*
-    meta: {
-      total_data: totalDataCount,
-      filtered_data: tours?.length || 0,
-      total_page: Math.ceil(filteredCount / limitNum),
-      present_page: pageNum,
-      skip,
-      limit: limitNum,
-    }, 
-    */
+    meta,
   };
 };
 
