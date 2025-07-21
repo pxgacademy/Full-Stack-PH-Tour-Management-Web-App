@@ -1,3 +1,4 @@
+import { ReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
@@ -47,9 +48,7 @@ export const deleteTourController = catchAsync(async (req, res) => {
 
 //
 export const getAllToursController = catchAsync(async (req, res) => {
-  const { data, meta } = await getAllToursService(
-    req.query as Record<string, string>
-  );
+  const { data, meta } = await getAllToursService(req.query as ReqQueryParams);
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Tours retrieved successfully",
