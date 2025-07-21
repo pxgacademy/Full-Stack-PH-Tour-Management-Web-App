@@ -25,6 +25,10 @@ export const userAccessVerifier = async (
       );
     }
 
+    const { _id, name, email, phone, picture, address, auth, role } = user;
+
+    req.decoded = { _id, name, email, phone, picture, address, auth, role };
+
     next();
   } catch (error) {
     next(error);

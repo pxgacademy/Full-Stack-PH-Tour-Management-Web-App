@@ -9,10 +9,10 @@ export enum eBookingStatus {
 }
 
 export interface iBooking extends Document {
-  user: Types.ObjectId;
+  user?: Types.ObjectId;
   tour: Types.ObjectId;
-  payment?: Types.ObjectId;
   guest: number;
+  payment?: Types.ObjectId;
   status: eBookingStatus;
 }
 

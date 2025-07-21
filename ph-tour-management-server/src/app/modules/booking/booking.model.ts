@@ -6,7 +6,6 @@ const bookingSchema = new Schema<iBooking>(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "User ID is required"],
     },
     tour: {
       type: Schema.Types.ObjectId,
@@ -16,7 +15,6 @@ const bookingSchema = new Schema<iBooking>(
     payment: {
       type: Schema.Types.ObjectId,
       ref: "Payment",
-      required: [true, "Payment ID is required"],
     },
     guest: { type: Number, required: [true, "Guest is required"] },
     status: {
