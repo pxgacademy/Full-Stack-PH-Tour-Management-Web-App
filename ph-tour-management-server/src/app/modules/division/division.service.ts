@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
-import { ReqQueryParams } from "../../global-interfaces";
+import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { QueryBuilder } from "../../utils/queryBuilder";
 import { slugMaker } from "../../utils/slugMaker";
@@ -35,7 +35,7 @@ export const deleteDivisionService = async (id: string) => {
 };
 
 //
-export const getAllDivisionsService = async (query: ReqQueryParams) => {
+export const getAllDivisionsService = async (query: iReqQueryParams) => {
   const queryBuilder = new QueryBuilder(Division, query);
 
   const [tours, meta] = await Promise.all([

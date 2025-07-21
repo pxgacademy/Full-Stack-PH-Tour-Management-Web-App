@@ -1,4 +1,5 @@
-import { Document, Types } from "mongoose";
+import { Document } from "mongoose";
+import { iGlobalResponse } from "../../global-interfaces";
 
 export interface iDivision extends Document {
   name: string;
@@ -7,8 +8,4 @@ export interface iDivision extends Document {
   description?: string;
 }
 
-export interface iDivisionResponse extends iDivision {
-  _id: Types.ObjectId | string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export interface iDivisionResponse extends iDivision, iGlobalResponse {}

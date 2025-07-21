@@ -1,4 +1,4 @@
-import { ReqQueryParams } from "../../global-interfaces";
+import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
@@ -48,7 +48,7 @@ export const deleteTourController = catchAsync(async (req, res) => {
 
 //
 export const getAllToursController = catchAsync(async (req, res) => {
-  const { data, meta } = await getAllToursService(req.query as ReqQueryParams);
+  const { data, meta } = await getAllToursService(req.query as iReqQueryParams);
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Tours retrieved successfully",

@@ -1,4 +1,4 @@
-import { ReqQueryParams } from "../../global-interfaces";
+import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
@@ -44,7 +44,7 @@ export const deleteDivisionController = catchAsync(async (req, res) => {
 //
 export const getAllDivisionsController = catchAsync(async (req, res) => {
   const { data, meta } = await getAllDivisionsService(
-    req.query as ReqQueryParams
+    req.query as iReqQueryParams
   );
   sendResponse(res, {
     statusCode: sCode.OK,

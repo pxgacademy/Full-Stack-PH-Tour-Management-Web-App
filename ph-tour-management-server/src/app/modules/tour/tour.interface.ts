@@ -1,14 +1,11 @@
 import { Document, Types } from "mongoose";
+import { iGlobalResponse } from "../../global-interfaces";
 
 export interface iTourType extends Document {
   name: string;
 }
 
-export interface iTourTypeResponse extends iTourType {
-  _id: Types.ObjectId | string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export interface iTourTypeResponse extends iTourType, iGlobalResponse {}
 
 export interface iTour extends Document {
   title: string;
@@ -31,8 +28,4 @@ export interface iTour extends Document {
   tourType: Types.ObjectId;
 }
 
-export interface iTourResponse extends iTour {
-  _id: Types.ObjectId | string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export interface iTourResponse extends iTour, iGlobalResponse {}

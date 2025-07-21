@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
-import { ReqQueryParams } from "../../global-interfaces";
+import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { QueryBuilder } from "../../utils/queryBuilder";
 import { tourSearchFields } from "./tour.constant";
@@ -84,7 +84,7 @@ export const getAllToursService = async (query: TourQueryParams) => {
   };
 };*/
 
-export const getAllToursService = async (query: ReqQueryParams) => {
+export const getAllToursService = async (query: iReqQueryParams) => {
   const queryBuilder = new QueryBuilder(Tour, query);
 
   const [tours, meta] = await Promise.all([
