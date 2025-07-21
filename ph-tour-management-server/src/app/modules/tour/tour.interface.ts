@@ -1,7 +1,13 @@
 import { Document, Types } from "mongoose";
 
-export interface iTourType {
+export interface iTourType extends Document {
   name: string;
+}
+
+export interface iTourTypeResponse extends iTourType {
+  _id: Types.ObjectId | string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface iTour extends Document {
@@ -10,6 +16,8 @@ export interface iTour extends Document {
   description?: string;
   images?: string[];
   location?: string;
+  departureLocation?: string;
+  arrivalLocation?: string;
   costFrom?: number;
   startDate?: Date;
   endDate?: Date;

@@ -8,6 +8,7 @@ interface iApiResponse<T> {
   meta?: {
     total_data?: number;
     filtered_data?: number;
+    present_data?: number;
     total_page?: number;
     present_page?: number;
     skip?: number;

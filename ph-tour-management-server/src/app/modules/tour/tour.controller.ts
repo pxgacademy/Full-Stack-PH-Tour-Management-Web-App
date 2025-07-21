@@ -60,7 +60,7 @@ export const getAllToursController = catchAsync(async (req, res) => {
 
 //
 export const getSingleTourController = catchAsync(async (req, res) => {
-  const { data } = await getSingleTourService(req.params.tourId);
+  const { data } = await getSingleTourService(req.params.slug);
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Tour retrieved successfully",

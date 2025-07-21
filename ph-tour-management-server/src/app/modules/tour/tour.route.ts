@@ -25,6 +25,8 @@ tourRoutes.post(
   createTourController
 );
 
+tourRoutes.get("/all-tours", getAllToursController);
+
 tourRoutes.patch(
   "/tour/:tourId",
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
@@ -38,8 +40,7 @@ tourRoutes.delete(
   deleteTourController
 );
 
-tourRoutes.get("/all-tours", getAllToursController);
-tourRoutes.get("/tour/:tourId", getSingleTourController);
+tourRoutes.get("/tour/:slug", getSingleTourController);
 
 // ------------------ Tour Type -------------------
 

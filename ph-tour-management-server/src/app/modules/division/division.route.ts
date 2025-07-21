@@ -23,6 +23,8 @@ divisionRoutes.post(
   createDivisionController
 );
 
+divisionRoutes.get("/all-divisions", getAllDivisionsController);
+
 divisionRoutes.patch(
   "/:divisionId",
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
@@ -36,7 +38,6 @@ divisionRoutes.delete(
   deleteDivisionController
 );
 
-divisionRoutes.get("/all-divisions", getAllDivisionsController);
-divisionRoutes.get("/:divisionId", getSingleDivisionController);
+divisionRoutes.get("/:slug", getSingleDivisionController);
 
 export default divisionRoutes;

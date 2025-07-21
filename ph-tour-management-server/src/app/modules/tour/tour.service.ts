@@ -1,5 +1,6 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
+import { ReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { QueryBuilder } from "../../utils/queryBuilder";
 import { tourSearchFields } from "./tour.constant";
@@ -32,15 +33,6 @@ export const deleteTourService = async (id: string) => {
 };
 
 // --- GET ALL TOURS ---
-
-interface TourQueryParams {
-  search?: string;
-  sort?: string;
-  fields?: string;
-  page?: string;
-  limit?: string;
-  [key: string]: string | undefined;
-}
 
 /*
 export const getAllToursService = async (query: TourQueryParams) => {
@@ -92,18 +84,19 @@ export const getAllToursService = async (query: TourQueryParams) => {
   };
 };*/
 
-export const getAllToursService = async (query: TourQueryParams) => {
+export const getAllToursService = async (query: ReqQueryParams) => {
   const queryBuilder = new QueryBuilder(Tour, query);
 
-  const tours = await queryBuilder
-    .search(tourSearchFields)
-    .filter()
-    .sort()
-    .select()
-    .paginate()
-    .build();
-
-  const meta = await queryBuilder.meta(tourSearchFields, tours?.length || 0);
+  const [tours, meta] = await Promise.all([
+    queryBuilder
+      .search(tourSearchFields)
+      .filter()
+      .sort()
+      .select()
+      .paginate()
+      .build(),
+    queryBuilder.meta(tourSearchFields),
+  ]);
 
   return {
     data: tours,
@@ -113,8 +106,8 @@ export const getAllToursService = async (query: TourQueryParams) => {
 
 // --- GET SINGLE TOUR ---
 
-export const getSingleTourService = async (_id: string) => {
-  const tour = await Tour.findOne({ _id });
+export const getSingleTourService = async (slug: string) => {
+  const tour = await Tour.findOne({ slug });
   if (!tour) throw new AppError(sCode.NOT_FOUND, "Tour not found with this ID");
   return { data: tour };
 };

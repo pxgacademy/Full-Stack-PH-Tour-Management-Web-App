@@ -1,6 +1,6 @@
-import { Types } from "mongoose";
+import { Document, Types } from "mongoose";
 
-export interface iDivision {
+export interface iDivision extends Document {
   name: string;
   slug: string;
   thumbnail?: string;

@@ -1,7 +1,10 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
+import { ReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
+import { QueryBuilder } from "../../utils/queryBuilder";
 import { slugMaker } from "../../utils/slugMaker";
+import { divisionSearchFields } from "./division.constant";
 import { iDivision } from "./division.interface";
 import { Division } from "./division.model";
 
@@ -32,16 +35,30 @@ export const deleteDivisionService = async (id: string) => {
 };
 
 //
-export const getAllDivisionsService = async () => {
-  const divisions = await Division.find();
-  const total = await Division.countDocuments();
-  return { data: divisions, total };
+export const getAllDivisionsService = async (query: ReqQueryParams) => {
+  const queryBuilder = new QueryBuilder(Division, query);
+
+  const [tours, meta] = await Promise.all([
+    queryBuilder
+      .search(divisionSearchFields)
+      .filter()
+      .sort()
+      .select()
+      .paginate()
+      .build(),
+    queryBuilder.meta(divisionSearchFields),
+  ]);
+
+  return {
+    data: tours,
+    meta,
+  };
 };
 
 //
-export const getSingleDivisionService = async (_id: string) => {
-  const division = await Division.findOne({ _id });
+export const getSingleDivisionService = async (slug: string) => {
+  const division = await Division.findOne({ slug });
   if (!division)
-    throw new AppError(sCode.NOT_FOUND, "division not found with this ID");
+    throw new AppError(sCode.NOT_FOUND, "Division not found with this ID");
   return { data: division };
 };

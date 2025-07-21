@@ -19,7 +19,15 @@ export const createTourZodSchema = z.object({
   images: z
     .array(z.string().url({ message: "Images must be valid URL" }))
     .optional(),
-  location: z.string().optional(),
+  location: z
+    .string({ invalid_type_error: "Location must be string type" })
+    .optional(),
+  departureLocation: z
+    .string({ invalid_type_error: "DepartureLocation must be string type" })
+    .optional(),
+  arrivalLocation: z
+    .string({ invalid_type_error: "ArrivalLocation must be string type" })
+    .optional(),
   costFrom: z
     .number({ invalid_type_error: "Cost must be number type" })
     .optional(),
@@ -47,12 +55,8 @@ export const createTourZodSchema = z.object({
   minAge: z
     .number({ invalid_type_error: "Min age must be number type" })
     .optional(),
-  division: z
-    .string({ invalid_type_error: "Division bust be string type" })
-    .optional(),
-  tourType: z
-    .string({ invalid_type_error: "Tour type bust be string type" })
-    .optional(),
+  division: z.string({ invalid_type_error: "Division bust be string type" }),
+  tourType: z.string({ invalid_type_error: "Tour type bust be string type" }),
 });
 
 export const updateTourZodSchema = createTourZodSchema.partial();

@@ -71,7 +71,7 @@ export class QueryBuilder<T extends Document> {
     return this;
   }
 
-  async meta(searchableFields: string[], filtered_data: number) {
+  async meta(searchableFields: string[]) {
     this.getSearchQuery(searchableFields);
     this.getFilters();
 
@@ -80,22 +80,26 @@ export class QueryBuilder<T extends Document> {
       ...this.filters,
     } as FilterQuery<T>;
 
-    const pageNum = Math.max(Number(this.query?.page) || 1, 1);
-    const limitNum = Math.max(Number(this.query?.limit) || 12, 1);
-    const skip = (pageNum - 1) * limitNum;
+    const page = Math.max(Number(this.query?.page) || 1, 1);
+    const limit = Math.max(Number(this.query?.limit) || 12, 1);
+    const skip = (page - 1) * limit;
 
     const [filteredCount, totalDataCount] = await Promise.all([
       this.rawModel.countDocuments(filterQuery),
       this.rawModel.estimatedDocumentCount(),
     ]);
 
+    const ls = limit + skip;
+    // const isFiltered = filteredCount !== totalDataCount;
+
     return {
       total_data: totalDataCount,
-      filtered_data,
-      total_page: Math.ceil(filteredCount / limitNum),
-      present_page: pageNum,
+      filtered_data: filteredCount,
+      present_data: filteredCount > ls ? limit : filteredCount - skip,
+      total_page: Math.ceil(filteredCount / limit),
+      present_page: page,
       skip,
-      limit: limitNum,
+      limit: limit,
     };
   }
 

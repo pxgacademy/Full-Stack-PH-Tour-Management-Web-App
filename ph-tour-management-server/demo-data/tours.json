@@ -12,6 +12,8 @@
       "https://example.com/images/0_2.jpg"
     ],
     "location": "Cox's Bazar",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Cox's Bazar",
     "costFrom": 9541,
     "startDate": {
       "$date": "2025-07-19T15:56:45.551000"
@@ -51,6 +53,8 @@
       "https://example.com/images/1_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 14623,
     "startDate": {
       "$date": "2025-08-28T15:56:45.551000"
@@ -90,6 +94,8 @@
       "https://example.com/images/2_2.jpg"
     ],
     "location": "Chattogram",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Chattogram",
     "costFrom": 11780,
     "startDate": {
       "$date": "2025-07-19T15:56:45.551000"
@@ -129,6 +135,8 @@
       "https://example.com/images/3_2.jpg"
     ],
     "location": "Barishal",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Barishal",
     "costFrom": 13498,
     "startDate": {
       "$date": "2025-08-25T15:56:45.551000"
@@ -168,6 +176,8 @@
       "https://example.com/images/4_2.jpg"
     ],
     "location": "Jessore",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Jessore",
     "costFrom": 6724,
     "startDate": {
       "$date": "2025-08-28T15:56:45.551000"
@@ -207,6 +217,8 @@
       "https://example.com/images/5_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 16043,
     "startDate": {
       "$date": "2025-08-19T15:56:45.551000"
@@ -246,6 +258,8 @@
       "https://example.com/images/6_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 16486,
     "startDate": {
       "$date": "2025-09-06T15:56:45.551000"
@@ -285,6 +299,8 @@
       "https://example.com/images/7_2.jpg"
     ],
     "location": "Cox's Bazar",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Cox's Bazar",
     "costFrom": 16815,
     "startDate": {
       "$date": "2025-08-31T15:56:45.551000"
@@ -324,6 +340,8 @@
       "https://example.com/images/8_2.jpg"
     ],
     "location": "Dhaka",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Dhaka",
     "costFrom": 14365,
     "startDate": {
       "$date": "2025-08-20T15:56:45.551000"
@@ -363,6 +381,8 @@
       "https://example.com/images/9_2.jpg"
     ],
     "location": "Cox's Bazar",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Cox's Bazar",
     "costFrom": 9171,
     "startDate": {
       "$date": "2025-08-11T15:56:45.551000"
@@ -402,6 +422,8 @@
       "https://example.com/images/10_2.jpg"
     ],
     "location": "Dhaka",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Dhaka",
     "costFrom": 17882,
     "startDate": {
       "$date": "2025-08-29T15:56:45.551000"
@@ -441,6 +463,8 @@
       "https://example.com/images/11_2.jpg"
     ],
     "location": "Cox's Bazar",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Cox's Bazar",
     "costFrom": 14891,
     "startDate": {
       "$date": "2025-07-29T15:56:45.551000"
@@ -480,6 +504,8 @@
       "https://example.com/images/12_2.jpg"
     ],
     "location": "Bandarban",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Bandarban",
     "costFrom": 11118,
     "startDate": {
       "$date": "2025-07-11T15:56:45.551000"
@@ -519,6 +545,8 @@
       "https://example.com/images/13_2.jpg"
     ],
     "location": "Bogura",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Bogura",
     "costFrom": 7463,
     "startDate": {
       "$date": "2025-08-15T15:56:45.551000"
@@ -558,6 +586,8 @@
       "https://example.com/images/14_2.jpg"
     ],
     "location": "Khulna",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Khulna",
     "costFrom": 14334,
     "startDate": {
       "$date": "2025-07-10T15:56:45.551000"
@@ -597,6 +627,8 @@
       "https://example.com/images/15_2.jpg"
     ],
     "location": "Khulna",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Khulna",
     "costFrom": 13685,
     "startDate": {
       "$date": "2025-08-25T15:56:45.551000"
@@ -636,6 +668,8 @@
       "https://example.com/images/16_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 8376,
     "startDate": {
       "$date": "2025-08-27T15:56:45.551000"
@@ -675,6 +709,8 @@
       "https://example.com/images/17_2.jpg"
     ],
     "location": "Bandarban",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Bandarban",
     "costFrom": 7888,
     "startDate": {
       "$date": "2025-08-17T15:56:45.551000"
@@ -714,6 +750,8 @@
       "https://example.com/images/18_2.jpg"
     ],
     "location": "Comilla",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Comilla",
     "costFrom": 17439,
     "startDate": {
       "$date": "2025-07-13T15:56:45.551000"
@@ -753,6 +791,8 @@
       "https://example.com/images/19_2.jpg"
     ],
     "location": "Sylhet",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Sylhet",
     "costFrom": 13474,
     "startDate": {
       "$date": "2025-09-05T15:56:45.551000"
@@ -792,6 +832,8 @@
       "https://example.com/images/20_2.jpg"
     ],
     "location": "Khulna",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Khulna",
     "costFrom": 5444,
     "startDate": {
       "$date": "2025-08-02T15:56:45.551000"
@@ -831,6 +873,8 @@
       "https://example.com/images/21_2.jpg"
     ],
     "location": "Sylhet",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Sylhet",
     "costFrom": 15132,
     "startDate": {
       "$date": "2025-07-10T15:56:45.551000"
@@ -870,6 +914,8 @@
       "https://example.com/images/22_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 17085,
     "startDate": {
       "$date": "2025-08-29T15:56:45.551000"
@@ -909,6 +955,8 @@
       "https://example.com/images/23_2.jpg"
     ],
     "location": "Khulna",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Khulna",
     "costFrom": 7997,
     "startDate": {
       "$date": "2025-07-24T15:56:45.551000"
@@ -948,6 +996,8 @@
       "https://example.com/images/24_2.jpg"
     ],
     "location": "Cox's Bazar",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Cox's Bazar",
     "costFrom": 7935,
     "startDate": {
       "$date": "2025-08-12T15:56:45.551000"
@@ -987,6 +1037,8 @@
       "https://example.com/images/25_2.jpg"
     ],
     "location": "Sylhet",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Sylhet",
     "costFrom": 11803,
     "startDate": {
       "$date": "2025-07-18T15:56:45.551000"
@@ -1026,6 +1078,8 @@
       "https://example.com/images/26_2.jpg"
     ],
     "location": "Mymensingh",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Mymensingh",
     "costFrom": 15242,
     "startDate": {
       "$date": "2025-07-09T15:56:45.551000"
@@ -1065,6 +1119,8 @@
       "https://example.com/images/27_2.jpg"
     ],
     "location": "Bandarban",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Bandarban",
     "costFrom": 11865,
     "startDate": {
       "$date": "2025-08-12T15:56:45.551000"
@@ -1104,6 +1160,8 @@
       "https://example.com/images/28_2.jpg"
     ],
     "location": "Khulna",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Khulna",
     "costFrom": 19255,
     "startDate": {
       "$date": "2025-07-27T15:56:45.551000"
@@ -1143,6 +1201,8 @@
       "https://example.com/images/29_2.jpg"
     ],
     "location": "Chattogram",
+    "departureLocation": "Dhaka",
+    "arrivalLocation": "Chattogram",
     "costFrom": 18905,
     "startDate": {
       "$date": "2025-08-04T15:56:45.551000"
