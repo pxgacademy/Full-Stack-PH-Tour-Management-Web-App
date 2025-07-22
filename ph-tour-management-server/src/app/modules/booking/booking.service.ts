@@ -3,7 +3,7 @@ import { JwtPayload } from "jsonwebtoken";
 import { Types } from "mongoose";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
-import { generateTrxID } from "../../utils/TrxIDgenerator";
+import { generateTrxID } from "../../utils/trxIDgenerator";
 import { Payment } from "../payment/payment.model";
 import { Tour } from "../tour/tour.model";
 import { iBooking } from "./booking.interface";
@@ -62,6 +62,8 @@ export const createBookingService = async (req: Request) => {
     session.endSession();
   }
 };
+
+//
 
 export const getAllBookingsService = async () => {
   //
