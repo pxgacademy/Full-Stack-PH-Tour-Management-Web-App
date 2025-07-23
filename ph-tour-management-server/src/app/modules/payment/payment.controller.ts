@@ -1,8 +1,11 @@
 import { env_config } from "../../../config";
+import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
+import { sendResponse } from "../../utils/sendResponse";
 import {
   cancelPaymentService,
   failPaymentService,
+  repaymentService,
   successPaymentService,
 } from "./payment.service";
 
@@ -35,4 +38,16 @@ export const cancelPaymentController = catchAsync(async (req, res) => {
   const url = `${SSL.SSL_CANCEL_CLIENT_URL}?TrxID=${TrxID}&amount=${amount}&status=${status}&message=${message}`;
 
   res.redirect(url);
+});
+
+//
+export const repaymentController = catchAsync(async (req, res) => {
+  const { options, message } = await repaymentService(req);
+
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: message,
+    data: null,
+    meta: { options },
+  });
 });
