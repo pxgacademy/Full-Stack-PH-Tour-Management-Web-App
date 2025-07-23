@@ -13,7 +13,7 @@ interface iApiResponse<T> {
     present_page?: number;
     skip?: number;
     limit?: number;
-    extra?: object;
+    options?: object;
   };
 }
 

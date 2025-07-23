@@ -5,6 +5,8 @@ import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
 import { generateTrxID } from "../../utils/trxIDgenerator";
 import { Payment } from "../payment/payment.model";
+import { iSSLCommerz } from "../sslCommerz/sslCommerz.interface";
+import { sslPaymentInit } from "../sslCommerz/sslCommerz.service";
 import { Tour } from "../tour/tour.model";
 import { iBooking } from "./booking.interface";
 import { Booking } from "./booking.model";
@@ -53,8 +55,22 @@ export const createBookingService = async (req: Request) => {
       .populate("payment", "TrxID amount status")
       .session(session);
 
+    const sslPayload = {
+      amount: payment.amount,
+      TrxID: payment.TrxID,
+      name: decoded.name,
+      email: decoded.email,
+      phone: decoded.phone,
+      address: decoded.address,
+    } as iSSLCommerz;
+
+    const sslPayment = await sslPaymentInit(sslPayload);
+
     await session.commitTransaction();
-    return { data: updatedBooking };
+    return {
+      data: updatedBooking,
+      options: { paymentURL: sslPayment?.GatewayPageURL },
+    };
   } catch (error) {
     await session.abortTransaction();
     throw error;

@@ -11,12 +11,13 @@ import {
 
 //
 export const createBookingController = catchAsync(async (req, res) => {
-  const { data } = await createBookingService(req);
+  const { data, options } = await createBookingService(req);
 
   sendResponse(res, {
     statusCode: sCode.CREATED,
     message: "Booking created successfully",
     data,
+    meta: { options },
   });
 });
 
