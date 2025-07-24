@@ -10,6 +10,8 @@ export const zodBodyValidator =
   (zodSchema: AnyZodObject, params?: AnyZodObject) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const data = req.body?.data;
+      req.body = data ? JSON.parse(data) : req.body;
       req.body = await zodSchema.parseAsync(req.body);
       if (params) req.params = params.parse(req.params);
 

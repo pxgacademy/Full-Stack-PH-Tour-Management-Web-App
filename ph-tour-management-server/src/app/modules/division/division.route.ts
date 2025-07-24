@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { uploadImage } from "../../../config/multer.config";
 import { roleVerifier } from "../../middlewares/roleVerifier";
 import { zodBodyValidator } from "../../middlewares/zodValidator";
 import { eUserRoles } from "../user/user.interface";
@@ -18,7 +19,8 @@ const divisionRoutes = Router();
 
 divisionRoutes.post(
   "/create",
-  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  uploadImage.single("file"),
   zodBodyValidator(createDivisionZodSchema),
   createDivisionController
 );

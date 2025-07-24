@@ -11,6 +11,7 @@ import {
 } from "./division.service";
 
 export const createDivisionController = catchAsync(async (req, res) => {
+  req.body.thumbnail = req.file?.path;
   const { data } = await createDivisionService(req.body);
 
   sendResponse(res, {
