@@ -1,6 +1,10 @@
 import dotenv from "dotenv";
-import { AppError } from "../errors/AppError";
 dotenv.config();
+
+type EnvValue = string | EnvRecord;
+interface EnvRecord {
+  [key: string]: EnvValue;
+}
 
 interface EnvConfig {
   PORT: string;
@@ -17,22 +21,27 @@ interface EnvConfig {
   EXPRESS_SESSION_SECRET: string;
   FRONTEND_URL: string;
   SSL: {
-    SSL_STORE_ID: string;
-    SSL_STORE_PASS: string;
-    SSL_PAYMENT_API: string;
-    SSL_VALIDATION_API: string;
-    SSL_SUCCESS_SERVER_URL: string;
-    SSL_FAIL_SERVER_URL: string;
-    SSL_CANCEL_SERVER_URL: string;
-    SSL_SUCCESS_CLIENT_URL: string;
-    SSL_FAIL_CLIENT_URL: string;
-    SSL_CANCEL_CLIENT_URL: string;
+    STORE_ID: string;
+    STORE_PASS: string;
+    PAYMENT_API: string;
+    VALIDATION_API: string;
+    SUCCESS_SERVER_URL: string;
+    FAIL_SERVER_URL: string;
+    CANCEL_SERVER_URL: string;
+    SUCCESS_CLIENT_URL: string;
+    FAIL_CLIENT_URL: string;
+    CANCEL_CLIENT_URL: string;
+  };
+  CLOUDINARY: {
+    CLOUD_NAME: string;
+    API_KEY: string;
+    API_SECRET: string;
   };
 }
 
 export const env_config: EnvConfig = {
   PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV || "development",
+  NODE_ENV: process.env.NODE_ENV,
   MONGODB_URL: process.env.MONGODB_URL,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
@@ -45,27 +54,110 @@ export const env_config: EnvConfig = {
   EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET,
   FRONTEND_URL: process.env.FRONTEND_URL,
   SSL: {
-    SSL_STORE_ID: process.env.SSL_STORE_ID,
-    SSL_STORE_PASS: process.env.SSL_STORE_PASS,
-    SSL_PAYMENT_API: process.env.SSL_PAYMENT_API,
-    SSL_VALIDATION_API: process.env.SSL_VALIDATION_API,
-    SSL_SUCCESS_SERVER_URL: process.env.SSL_SUCCESS_SERVER_URL,
-    SSL_FAIL_SERVER_URL: process.env.SSL_FAIL_SERVER_URL,
-    SSL_CANCEL_SERVER_URL: process.env.SSL_CANCEL_SERVER_URL,
-    SSL_SUCCESS_CLIENT_URL: process.env.SSL_SUCCESS_CLIENT_URL,
-    SSL_FAIL_CLIENT_URL: process.env.SSL_FAIL_CLIENT_URL,
-    SSL_CANCEL_CLIENT_URL: process.env.SSL_CANCEL_CLIENT_URL,
+    STORE_ID: process.env.STORE_ID,
+    STORE_PASS: process.env.STORE_PASS,
+    PAYMENT_API: process.env.PAYMENT_API,
+    VALIDATION_API: process.env.VALIDATION_API,
+    SUCCESS_SERVER_URL: process.env.SUCCESS_SERVER_URL,
+    FAIL_SERVER_URL: process.env.FAIL_SERVER_URL,
+    CANCEL_SERVER_URL: process.env.CANCEL_SERVER_URL,
+    SUCCESS_CLIENT_URL: process.env.SUCCESS_CLIENT_URL,
+    FAIL_CLIENT_URL: process.env.FAIL_CLIENT_URL,
+    CANCEL_CLIENT_URL: process.env.CANCEL_CLIENT_URL,
+  },
+  CLOUDINARY: {
+    CLOUD_NAME: process.env.CLOUD_NAME,
+    API_KEY: process.env.API_KEY,
+    API_SECRET: process.env.API_SECRET,
   },
 } as EnvConfig;
 
-Object.keys(env_config).forEach((e) => {
-  if (!process.env[e] && e !== "NODE_ENV" && e !== "SSL")
-    throw new AppError(500, `❌ ${e} is not defined in environment variables`);
+//
+
+const validateEnv = <T extends Record<string, string | EnvRecord>>(
+  obj: T,
+  options?: { parentKey?: string }
+): void => {
+  const keys = Object.keys(obj) as (keyof T)[];
+  keys.forEach((key) => {
+    const value = obj[key];
+
+    const isObject = typeof value === "object" && value !== null;
+
+    if (isObject) {
+      validateEnv(value, {
+        parentKey: `${options?.parentKey || ""}${String(key)}.`,
+      });
+    } else if (!process.env[String(key)]) {
+      throw new Error(
+        `❌ ${
+          options?.parentKey ? options.parentKey + String(key) : String(key)
+        } is not defined in environment variables`
+      );
+    }
+  });
+};
+
+validateEnv(env_config as unknown as Record<string, string | EnvRecord>);
+
+export const isDev = env_config.NODE_ENV === "development";
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const envConfigKeys = Object.keys(env_config) as (keyof EnvConfig)[];
+const sslKeys = Object.keys(env_config.SSL) as (keyof EnvConfig["SSL"])[];
+const cloudinaryKeys = Object.keys(
+  env_config.SSL
+) as (keyof EnvConfig["SSL"])[];
+
+envConfigKeys.forEach((key) => {
+  if (
+    !process.env[key] &&
+    key !== "NODE_ENV" &&
+    typeof env_config[key] !== "object"
+  ) {
+    throw new AppError(
+      500,
+      `❌ ${key} is not defined in environment variables`
+    );
+  }
 });
 
-Object.keys(env_config.SSL).forEach((e) => {
-  if (!process.env[e])
-    throw new AppError(500, `❌ ${e} is not defined in environment variables`);
+sslKeys.forEach((key) => {
+  if (!process.env[key]) {
+    throw new AppError(
+      500,
+      `❌ ${key} is not defined in environment variables`
+    );
+  }
 });
 
-export const isDev = env_config?.NODE_ENV === "development";
+cloudinaryKeys.forEach((key) => {
+  if (!process.env[key]) {
+    throw new AppError(
+      500,
+      `❌ ${key} is not defined in environment variables`
+    );
+  }
+});
+
+
+*/

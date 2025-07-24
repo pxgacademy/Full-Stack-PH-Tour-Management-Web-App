@@ -13,14 +13,14 @@ export const sslPaymentInit = async (payload: iSSLCommerz) => {
     `${link}?TrxID=${payload.TrxID}&amount=${payload.amount}&status=${status}`;
 
   const data = {
-    store_id: SSL.SSL_STORE_ID,
-    store_passwd: SSL.SSL_STORE_PASS,
+    store_id: SSL.STORE_ID,
+    store_passwd: SSL.STORE_PASS,
     total_amount: payload.amount,
     currency: "BDT",
     tran_id: payload.TrxID,
-    success_url: urlWithTrxID(SSL.SSL_SUCCESS_SERVER_URL),
-    fail_url: urlWithTrxID(SSL.SSL_FAIL_SERVER_URL, "fail"),
-    cancel_url: urlWithTrxID(SSL.SSL_CANCEL_SERVER_URL, "cancel"),
+    success_url: urlWithTrxID(SSL.SUCCESS_SERVER_URL),
+    fail_url: urlWithTrxID(SSL.FAIL_SERVER_URL, "fail"),
+    cancel_url: urlWithTrxID(SSL.CANCEL_SERVER_URL, "cancel"),
     shipping_method: "N/A",
     product_name: "Tour",
     product_category: "Service",
@@ -48,7 +48,7 @@ export const sslPaymentInit = async (payload: iSSLCommerz) => {
   try {
     const response = await axios({
       method: "POST",
-      url: SSL.SSL_PAYMENT_API,
+      url: SSL.PAYMENT_API,
       data,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
