@@ -21,7 +21,7 @@ const tourRoutes = Router();
 
 tourRoutes.post(
   "/create",
-  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   uploadImage.array("files"),
   zodBodyValidator(createTourZodSchema),
   createTourController
@@ -32,6 +32,7 @@ tourRoutes.get("/all-tours", getAllToursController);
 tourRoutes.patch(
   "/tour/:tourId",
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  uploadImage.array("files"),
   zodBodyValidator(updateTourZodSchema),
   updateTourController
 );

@@ -12,6 +12,7 @@ export interface iTour extends Document {
   slug: string;
   description?: string;
   images?: string[];
+  deletedImages?: string[];
   location?: string;
   departureLocation?: string;
   arrivalLocation?: string;

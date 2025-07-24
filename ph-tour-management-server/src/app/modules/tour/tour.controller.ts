@@ -1,6 +1,7 @@
 import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
+import { getPathsFromMulterFiles } from "../../utils/getPathsFromMulterFiles";
 import { sendResponse } from "../../utils/sendResponse";
 import {
   createTourService,
@@ -16,12 +17,9 @@ import {
 } from "./tour.service";
 
 export const createTourController = catchAsync(async (req, res) => {
-  req.body.images = (req.files as Express.Multer.File[])?.map(
-    (file) => file.path
-  );
+  req.body.images = getPathsFromMulterFiles(req.body.files);
 
   const { data } = await createTourService(req.body);
-
   sendResponse(res, {
     statusCode: sCode.CREATED,
     message: "Tour created successfully",
@@ -31,6 +29,9 @@ export const createTourController = catchAsync(async (req, res) => {
 
 //
 export const updateTourController = catchAsync(async (req, res) => {
+  const files = getPathsFromMulterFiles(req.body.files);
+  if (files.length > 0) req.body.images = files;
+
   const { data } = await updateTourService(req);
 
   sendResponse(res, {

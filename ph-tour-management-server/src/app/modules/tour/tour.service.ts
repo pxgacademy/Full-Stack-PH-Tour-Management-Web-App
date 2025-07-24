@@ -1,8 +1,12 @@
 import { Request } from "express";
+import { deleteImageFromCloud } from "../../../config/cloudinary.config";
 import { AppError } from "../../../errors/AppError";
 import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
+import { checkMongoId } from "../../utils/checkMongoId";
 import { QueryBuilder } from "../../utils/queryBuilder";
+import { slugMaker } from "../../utils/slugMaker";
+import { transactionRollback } from "../../utils/transactionRollback";
 import { tourSearchFields } from "./tour.constant";
 import { iTour, iTourType } from "./tour.interface";
 import { Tour, TourType } from "./tour.model";
@@ -17,13 +21,36 @@ export const createTourService = async (payload: iTour) => {
 // --- UPDATE TOUR ---
 
 export const updateTourService = async (req: Request) => {
-  const id = req.params.tourId;
-  const tour = await Tour.findByIdAndUpdate(id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const id = checkMongoId(req.params.tourId);
+  const payload = req.body as iTour;
 
-  return { data: tour };
+  if (payload.title) payload.slug = slugMaker(payload.title);
+
+  return await transactionRollback(async (session) => {
+    const oldTour = await Tour.findById(id).select("images").session(session);
+    if (!oldTour) throw new AppError(404, "Tour not found");
+
+    const oldImages = oldTour.images || [];
+    const delImg = payload.deletedImages || [];
+    const images = payload.images || [];
+
+    const remainingImages = oldImages.filter((img) => !delImg.includes(img));
+    payload.images = [...images, ...remainingImages];
+
+    const updatedTour = await Tour.findByIdAndUpdate(id, payload, {
+      new: true,
+      runValidators: true,
+      session,
+    });
+
+    if (!updatedTour) throw new AppError(404, "Tour not found");
+
+    if (delImg.length > 0) {
+      await Promise.all(delImg.map((url) => deleteImageFromCloud(url)));
+    }
+
+    return { data: updatedTour };
+  });
 };
 
 // --- DELETE TOUR ---

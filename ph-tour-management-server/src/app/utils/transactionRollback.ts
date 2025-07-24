@@ -1,7 +1,9 @@
 import mongoose, { ClientSession } from "mongoose";
 
+type TransactionalFunction<T> = (session: ClientSession) => Promise<T>;
+
 export const transactionRollback = async <T>(
-  fn: (session: ClientSession) => Promise<T>
+  fn: TransactionalFunction<T>
 ): Promise<T> => {
   const session = await mongoose.startSession();
 
@@ -20,8 +22,15 @@ export const transactionRollback = async <T>(
 
 /*
 //* For use in Express Controller
+type tFN<T> = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+  session: ClientSession
+) => Promise<T>;
+
 export const withTransactionHandler =
-  (fn: (req: Request, res: Response, next: NextFunction, session: ClientSession) => Promise<any>) =>
+  <T>(fn: tFN<T>) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const session = await mongoose.startSession();
     try {

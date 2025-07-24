@@ -13,6 +13,9 @@ export const createTourZodSchema = z.object({
   images: z
     .array(z.string().url({ message: "Images must be valid URL" }))
     .optional(),
+  deletedImages: z
+    .array(z.string().url({ message: "Images must be valid URL" }))
+    .optional(),
   location: z
     .string({ invalid_type_error: "Location must be string type" })
     .optional(),

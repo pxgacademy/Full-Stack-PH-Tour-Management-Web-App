@@ -6,6 +6,7 @@ import sCode from "../../statusCode";
 import { checkMongoId } from "../../utils/checkMongoId";
 import { QueryBuilder } from "../../utils/queryBuilder";
 import { slugMaker } from "../../utils/slugMaker";
+import { transactionRollback } from "../../utils/transactionRollback";
 import { divisionSearchFields } from "./division.constant";
 import { iDivision } from "./division.interface";
 import { Division } from "./division.model";
@@ -18,27 +19,30 @@ export const createDivisionService = async (payload: iDivision) => {
 
 //
 export const updateDivisionService = async (req: Request) => {
-  /*
-   * A transaction rollback can be used in this case. If Cloudinary fails to delete images, MongoDB shouldn't update the data.
-   */
-
   const payload = req.body;
   const id = checkMongoId(req.params.divisionId);
   if (payload.name) payload.slug = slugMaker(payload.name, "division");
 
-  const [oldDivision, division] = await Promise.all([
-    Division.findById(id).select("thumbnail"),
-    Division.findByIdAndUpdate(id, payload, {
-      new: true,
-      runValidators: true,
-    }),
-  ]);
+  return await transactionRollback(async (session) => {
+    const [oldDivision, division] = await Promise.all([
+      Division.findById(id).select("thumbnail").session(session),
+      Division.findByIdAndUpdate(id, payload, {
+        new: true,
+        runValidators: true,
+        session,
+      }),
+    ]);
 
-  if (payload?.thumbnail && oldDivision?.thumbnail) {
-    await deleteImageFromCloud(oldDivision.thumbnail);
-  }
+    if (!division) {
+      throw new AppError(sCode.NOT_FOUND, "Division not found");
+    }
 
-  return { data: division };
+    if (payload?.thumbnail && oldDivision?.thumbnail) {
+      await deleteImageFromCloud(oldDivision.thumbnail);
+    }
+
+    return { data: division };
+  });
 };
 
 //
