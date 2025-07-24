@@ -16,6 +16,10 @@ import {
 } from "./tour.service";
 
 export const createTourController = catchAsync(async (req, res) => {
+  req.body.images = (req.files as Express.Multer.File[])?.map(
+    (file) => file.path
+  );
+
   const { data } = await createTourService(req.body);
 
   sendResponse(res, {

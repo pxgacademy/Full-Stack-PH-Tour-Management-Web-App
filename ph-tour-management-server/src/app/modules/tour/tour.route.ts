@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { uploadImage } from "../../../config/multer.config";
 import { roleVerifier } from "../../middlewares/roleVerifier";
 import { zodBodyValidator } from "../../middlewares/zodValidator";
 import { eUserRoles } from "../user/user.interface";
@@ -19,8 +20,9 @@ import { createTourZodSchema, updateTourZodSchema } from "./tour.validation";
 const tourRoutes = Router();
 
 tourRoutes.post(
-  "/create-tour",
-  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  "/create",
+  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  uploadImage.array("files"),
   zodBodyValidator(createTourZodSchema),
   createTourController
 );

@@ -7,12 +7,6 @@ export const createTourZodSchema = z.object({
       required_error: "Title is required",
     })
     .min(5, { message: "Title must be at least 5 characters long" }),
-  /* slug: z
-    .string({
-      invalid_type_error: "Slug must be string type",
-      required_error: "Slug is required",
-    })
-    .min(5, { message: "Slug must be at least 5 characters long" }),*/
   description: z
     .string({ invalid_type_error: "Description must be string type" })
     .optional(),
@@ -31,12 +25,29 @@ export const createTourZodSchema = z.object({
   costFrom: z
     .number({ invalid_type_error: "Cost must be number type" })
     .optional(),
+
   startDate: z
     .date({ invalid_type_error: "Start date must be date type" })
     .optional(),
   endDate: z
     .date({ invalid_type_error: "End date must be date type" })
     .optional(),
+
+  /*
+    startDate: z
+    .string()
+    .transform((val) => new Date(val))
+    .refine((date) => !isNaN(date.getTime()), {
+      message: "Invalid startDate",
+    }),
+  endDate: z
+    .string()
+    .transform((val) => new Date(val))
+    .refine((date) => !isNaN(date.getTime()), {
+      message: "Invalid endDate",
+    }),
+  */
+
   included: z
     .array(z.string({ invalid_type_error: "Included must be string type" }))
     .optional(),
@@ -55,8 +66,8 @@ export const createTourZodSchema = z.object({
   minAge: z
     .number({ invalid_type_error: "Min age must be number type" })
     .optional(),
-  division: z.string({ invalid_type_error: "Division bust be string type" }),
-  tourType: z.string({ invalid_type_error: "Tour type bust be string type" }),
+  division: z.string({ invalid_type_error: "Division must be string type" }),
+  tourType: z.string({ invalid_type_error: "Tour type must be string type" }),
 });
 
 export const updateTourZodSchema = createTourZodSchema.partial();
