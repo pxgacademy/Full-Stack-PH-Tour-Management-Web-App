@@ -11,7 +11,7 @@ import {
 } from "./division.service";
 
 export const createDivisionController = catchAsync(async (req, res) => {
-  req.body.thumbnail = req.file?.path;
+  req.body.thumbnail = req.file?.path || "";
   const { data } = await createDivisionService(req.body);
 
   sendResponse(res, {
@@ -23,6 +23,7 @@ export const createDivisionController = catchAsync(async (req, res) => {
 
 //
 export const updateDivisionController = catchAsync(async (req, res) => {
+  if (req.file && req.file?.path) req.body.thumbnail = req.file?.path;
   const { data } = await updateDivisionService(req);
 
   sendResponse(res, {
