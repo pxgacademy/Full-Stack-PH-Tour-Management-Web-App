@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
 import { isDev } from "../../config";
+import { deleteImageFromCloud } from "../../config/cloudinary.config";
 import {
   appError,
   castError,
@@ -12,14 +13,13 @@ import {
 import { AppError } from "../../errors/AppError";
 
 //
-export default function globalErrorHandler(
+export default async function globalErrorHandler(
   err: any,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   const errCode = err?.code || err?.cause?.code || null;
-
   const message = err?.message || "Internal Server Error";
 
   const response = {
@@ -61,6 +61,15 @@ export default function globalErrorHandler(
       break;
   }
 
+  if (req.file && req.file.path) await deleteImageFromCloud(req.file.path);
+
+  if (req.files && Array.isArray(req.files) && req.files.length > 0) {
+    const imageUrls = req.files?.map((file) => file.path);
+
+    await Promise.all(imageUrls.map((url) => deleteImageFromCloud(url)));
+  }
+
+  //
   res.status(response.statusCode).json(response);
 }
 
@@ -161,7 +170,6 @@ export default function globalErrorHandler(
 
   res.status(statusCode).json(errorResponse);
 }
-
 */
 
 /*
