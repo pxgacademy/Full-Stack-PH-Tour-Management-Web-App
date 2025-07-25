@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/*
+
 import bcrypt from "bcryptjs";
 import passport from "passport";
 import {
@@ -33,15 +33,7 @@ passport.use(
           return done(null, false, { message });
         }
 
-        /* const isGoogleAuth = isUserExist.auth.some(
-          ({ provider }) => provider === "google"
-        );
-
-        if (isGoogleAuth) {
-          message =
-            "Incorrect credentials, you logged in by google before. Try to log in by google or make password following instruction";
-          return done(null, false, { message });
-        }        */
+        
 
         let isPasswordMatch = false;
 
@@ -148,3 +140,4 @@ passport.deserializeUser(async (id: string, done: any) => {
     done(error);
   }
 });
+*/
