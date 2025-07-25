@@ -20,8 +20,15 @@ export const userAccessVerifier = async (
       !user?.isVerified ||
       user?.isActive === eIsActive.BLOCKED
     ) {
+      const deleted = user?.isDeleted ? "deleted" : "";
+      const verified = user?.isVerified ? "" : "not verified";
+      const blocked = user?.isActive === eIsActive.BLOCKED ? "blocked" : "";
+
       return next(
-        new AppError(400, "User has no permission to take this action")
+        new AppError(
+          400,
+          `User is ${deleted}${verified && ", "}${verified}${blocked && ", "}${blocked}`
+        )
       );
     }
 

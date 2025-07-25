@@ -9,7 +9,11 @@ import {
 } from "passport-google-oauth20";
 import { Strategy as LocalStrategy } from "passport-local";
 import { env_config } from ".";
-import { eAuthProvider, eUserRoles } from "../app/modules/user/user.interface";
+import {
+  eAuthProvider,
+  eIsActive,
+  eUserRoles,
+} from "../app/modules/user/user.interface";
 import { User } from "../app/modules/user/user.model";
 
 // credentials authentication
@@ -22,9 +26,9 @@ passport.use(
     async (email: string, password: string, done) => {
       let message = "User logged in successfully";
       try {
-        const isUserExist = await User.findOne({ email }).select("+password");
+        const user = await User.findOne({ email }).select("+password");
 
-        if (!isUserExist) {
+        if (!user) {
           message = "User does not exist";
           return done(null, false, { message });
         }
@@ -40,10 +44,11 @@ passport.use(
         }        */
 
         let isPasswordMatch = false;
-        if (isUserExist?.password) {
+
+        if (user.password) {
           isPasswordMatch = await bcrypt.compare(
             password as string,
-            isUserExist?.password as string
+            user.password as string
           );
         }
 
@@ -52,7 +57,14 @@ passport.use(
           return done(null, false, { message });
         }
 
-        const userData = isUserExist.toObject();
+        if (user?.isDeleted)
+          return done(null, false, { message: "User is deleted" });
+        if (!user?.isVerified)
+          return done(null, false, { message: "User is not verified" });
+        if (user?.isActive === eIsActive.BLOCKED)
+          return done(null, false, { message: "User is blocked" });
+
+        const userData = user.toObject();
         delete userData.password;
 
         done(null, userData, { message });
@@ -103,7 +115,7 @@ passport.use(
               firstName,
               lastName,
             },
-            picture: profile.photos?.[0].value,
+            picture: profile.photos?.[0].value || "",
             role: eUserRoles.USER,
             isVerified: true,
             auth: [
