@@ -20,8 +20,6 @@ import {
 //
 export const credentialLoginController = catchAsync(
   async (req: Request, res: Response, next) => {
-    // const { data } = await credentialLoginService(req.body);
-
     passport.authenticate(
       "local",
       async (

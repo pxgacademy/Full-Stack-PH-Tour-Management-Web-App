@@ -4,8 +4,10 @@ import {
   VerifyCallback,
 } from "passport-google-oauth20";
 import { env_config } from "../..";
+import { eAuthMessages } from "../../../app/constants/messages/auth.messages";
 import {
   eAuthProvider,
+  eIsActive,
   eUserRoles,
 } from "../../../app/modules/user/user.interface";
 import { User } from "../../../app/modules/user/user.model";
@@ -23,17 +25,23 @@ export const googleStrategy = new GoogleStrategy(
     done: VerifyCallback
   ) => {
     try {
-      let message = "User already exist";
       const email = profile.emails?.[0].value;
 
       if (!email) return done(null, false, { message: "Email not found" });
 
       let user = await User.findOne({ email });
+
+      if (user) {
+        if (user?.isDeleted)
+          return done(null, false, { message: "User is deleted" });
+        if (!user?.isVerified)
+          return done(null, false, { message: "User is not verified" });
+        if (user?.isActive === eIsActive.BLOCKED)
+          return done(null, false, { message: "User is blocked" });
+      }
+
       if (!user) {
-        message = "User created successfully";
-
         const fullName = profile.displayName || "";
-
         const [firstName, ...rest] = fullName.trim().split(" ");
         const lastName = rest.join(" ");
 
@@ -50,9 +58,11 @@ export const googleStrategy = new GoogleStrategy(
             },
           ],
         });
+
+        return done(null, user, { message: eAuthMessages.CREATE_SUCCESS });
       }
 
-      done(null, user, { message });
+      done(null, user, { message: eAuthMessages.LOGIN_SUCCESS });
     } catch (error) {
       return done(error);
     }
