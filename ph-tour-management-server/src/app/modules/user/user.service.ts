@@ -88,6 +88,16 @@ export const getAllUsersService = async () => {
   const totalUser = await User.countDocuments();
   return {
     data: users,
-    meta: { total: totalUser },
+    meta: { total_data: totalUser },
+  };
+};
+
+//
+export const getMeService = async (id: Types.ObjectId) => {
+  const user = await User.findById(id);
+  if (!user) throw new AppError(sCode.NOT_FOUND, "User not found");
+
+  return {
+    data: user,
   };
 };

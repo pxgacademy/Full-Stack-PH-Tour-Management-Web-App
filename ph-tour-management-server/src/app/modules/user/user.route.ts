@@ -5,6 +5,7 @@ import { zodBodyValidator } from "../../middlewares/zodValidator";
 import {
   createUserController,
   getAllUsersController,
+  getMeController,
   updateUserController,
 } from "./user.controller";
 import { eUserRoles } from "./user.interface";
@@ -23,6 +24,8 @@ userRoutes.get(
   roleVerifier(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),
   getAllUsersController
 );
+
+userRoutes.get("/me", tokenVerifier, getMeController);
 
 userRoutes.patch(
   "/:userId",

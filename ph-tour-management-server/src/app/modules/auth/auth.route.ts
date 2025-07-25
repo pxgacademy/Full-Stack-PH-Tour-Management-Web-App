@@ -3,11 +3,13 @@ import passport from "passport";
 import { tokenVerifier } from "../../middlewares/tokenVerifier";
 import { userAccessVerifier } from "../../middlewares/userAccessVerifier";
 import {
+  changePasswordController,
   credentialLoginController,
   getNewAccessTokenController,
   googleCallbackController,
   googleLoginUserController,
   resetPasswordController,
+  setPasswordController,
   userLogoutController,
 } from "./auth.controller";
 
@@ -21,6 +23,18 @@ authRoutes.post(
   tokenVerifier,
   userAccessVerifier,
   resetPasswordController
+);
+authRoutes.post(
+  "/change-password",
+  tokenVerifier,
+  userAccessVerifier,
+  changePasswordController
+);
+authRoutes.post(
+  "/set-password",
+  tokenVerifier,
+  userAccessVerifier,
+  setPasswordController
 );
 
 authRoutes.get("/google", googleLoginUserController);

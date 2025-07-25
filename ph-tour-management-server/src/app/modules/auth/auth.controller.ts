@@ -11,7 +11,11 @@ import {
 } from "../../utils/jwt";
 import { sendResponse } from "../../utils/sendResponse";
 import { iUserResponse } from "../user/user.interface";
-import { resetPasswordService } from "./auth.service";
+import {
+  changePasswordService,
+  resetPasswordService,
+  setPasswordService,
+} from "./auth.service";
 
 //
 export const credentialLoginController = catchAsync(
@@ -102,6 +106,32 @@ export const userLogoutController = catchAsync(
 export const resetPasswordController = catchAsync(
   async (req: Request, res: Response) => {
     const password = await resetPasswordService(req);
+
+    sendResponse(res, {
+      statusCode: sCode.OK,
+      message: "Password updated successfully",
+      data: password,
+    });
+  }
+);
+
+//
+export const changePasswordController = catchAsync(
+  async (req: Request, res: Response) => {
+    const password = await changePasswordService(req);
+
+    sendResponse(res, {
+      statusCode: sCode.OK,
+      message: "Password updated successfully",
+      data: password,
+    });
+  }
+);
+
+//
+export const setPasswordController = catchAsync(
+  async (req: Request, res: Response) => {
+    const password = await setPasswordService(req);
 
     sendResponse(res, {
       statusCode: sCode.OK,
