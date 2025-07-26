@@ -44,6 +44,12 @@ interface EnvConfig {
     SMTP_FROM: string;
     SMTP_PASS: string;
   };
+  REDIS: {
+    REDIS_USERNAME: string;
+    REDIS_PASS: string;
+    REDIS_HOST: string;
+    REDIS_PORT: number;
+  };
 }
 
 export const env_config: EnvConfig = {
@@ -83,6 +89,12 @@ export const env_config: EnvConfig = {
     SMTP_USER: process.env.SMTP_USER,
     SMTP_FROM: process.env.SMTP_FROM,
     SMTP_PASS: process.env.SMTP_PASS,
+  },
+  REDIS: {
+    REDIS_USERNAME: process.env.REDIS_USERNAME,
+    REDIS_PASS: process.env.REDIS_PASS,
+    REDIS_HOST: process.env.REDIS_HOST,
+    REDIS_PORT: Number(process.env.REDIS_PORT),
   },
 } as EnvConfig;
 

@@ -8,8 +8,11 @@ npm i nodemailer --legacy-peer-deps
 
 
 
+
 touch auth.model.ts auth.controller.ts auth.route.ts auth.interface.ts auth.validation.ts auth.service.ts
 
 
 
     
+database-MDK5RPMY
+
