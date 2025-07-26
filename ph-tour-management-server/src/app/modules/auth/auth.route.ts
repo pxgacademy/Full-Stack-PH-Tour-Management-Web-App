@@ -4,8 +4,8 @@ import { env_config } from "../../../config";
 import { tokenVerifier } from "../../middlewares/tokenVerifier";
 import { userAccessVerifier } from "../../middlewares/userAccessVerifier";
 import {
-  changePasswordController,
   credentialLoginController,
+  forgotPasswordController,
   getNewAccessTokenController,
   googleCallbackController,
   googleLoginUserController,
@@ -21,24 +21,26 @@ const authRoutes = Router();
 authRoutes.post("/login", credentialLoginController);
 authRoutes.post("/refresh-token", getNewAccessTokenController);
 authRoutes.post("/logout", userLogoutController);
+
+// -------------
+
 authRoutes.post(
   "/reset-password",
   tokenVerifier,
   userAccessVerifier,
   resetPasswordController
 );
-authRoutes.post(
-  "/change-password",
-  tokenVerifier,
-  userAccessVerifier,
-  changePasswordController
-);
+
+authRoutes.post("/forgot-password", forgotPasswordController);
+
 authRoutes.post(
   "/set-password",
   tokenVerifier,
   userAccessVerifier,
   setPasswordController
 );
+
+// -------------
 
 authRoutes.get("/google", googleLoginUserController);
 authRoutes.get(

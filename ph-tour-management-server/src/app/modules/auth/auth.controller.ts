@@ -114,7 +114,7 @@ export const resetPasswordController = catchAsync(
 );
 
 //
-export const changePasswordController = catchAsync(
+export const forgotPasswordController = catchAsync(
   async (req: Request, res: Response) => {
     const password = await changePasswordService(req);
 

@@ -37,6 +37,13 @@ interface EnvConfig {
     API_KEY: string;
     API_SECRET: string;
   };
+  NODEMAILER: {
+    SMTP_HOST: string;
+    SMTP_PORT: number;
+    SMTP_USER: string;
+    SMTP_FROM: string;
+    SMTP_PASS: string;
+  };
 }
 
 export const env_config: EnvConfig = {
@@ -70,11 +77,18 @@ export const env_config: EnvConfig = {
     API_KEY: process.env.API_KEY,
     API_SECRET: process.env.API_SECRET,
   },
+  NODEMAILER: {
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: Number(process.env.SMTP_PORT),
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_FROM: process.env.SMTP_FROM,
+    SMTP_PASS: process.env.SMTP_PASS,
+  },
 } as EnvConfig;
 
 //
 
-const validateEnv = <T extends Record<string, string | EnvRecord>>(
+const envValidator = <T extends Record<string, string | EnvRecord>>(
   obj: T,
   options?: { parentKey?: string }
 ): void => {
@@ -85,7 +99,7 @@ const validateEnv = <T extends Record<string, string | EnvRecord>>(
     const isObject = typeof value === "object" && value !== null;
 
     if (isObject) {
-      validateEnv(value, {
+      envValidator(value, {
         parentKey: `${options?.parentKey || ""}${String(key)}.`,
       });
     } else if (!process.env[String(key)]) {
@@ -98,7 +112,7 @@ const validateEnv = <T extends Record<string, string | EnvRecord>>(
   });
 };
 
-validateEnv(env_config as unknown as Record<string, string | EnvRecord>);
+envValidator(env_config as unknown as Record<string, string | EnvRecord>);
 
 export const isDev = env_config.NODE_ENV === "development";
 
