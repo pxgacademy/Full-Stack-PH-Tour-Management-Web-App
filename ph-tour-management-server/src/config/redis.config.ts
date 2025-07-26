@@ -4,7 +4,7 @@ import logger from "../app/utils/logger";
 
 const REDIS = env_config.REDIS;
 
-const redisClient = createClient({
+export const redisClient = createClient({
   username: REDIS.REDIS_USERNAME,
   password: REDIS.REDIS_PASS,
   socket: {

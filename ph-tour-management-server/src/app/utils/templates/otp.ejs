@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OTP Verification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f8fa;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      h2 {
+        color: #333333;
+      }
+      p {
+        font-size: 16px;
+        color: #555555;
+        line-height: 1.6;
+      }
+      .otp-box {
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #f1f3f5;
+        padding: 15px;
+        text-align: center;
+        border-radius: 6px;
+        letter-spacing: 5px;
+        margin: 20px 0;
+        color: #111111;
+      }
+      .footer {
+        font-size: 13px;
+        color: #999999;
+        margin-top: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hello <%= name %>,</h2>
+      <p>
+        We received a request to verify your identity using a one-time password
+        (OTP).
+      </p>
+
+      <div class="otp-box"><%= otp %></div>
+
+      <p>
+        This OTP is valid for the next <strong>2 minutes</strong>. Please do not
+        share it with anyone.
+      </p>
+
+      <p>
+        If you did not request this, please ignore this email or contact our
+        support team.
+      </p>
+
+      <div class="footer">
+        &copy; <%= new Date().getFullYear() %> PH Tour. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
