@@ -13,6 +13,7 @@ import { sendResponse } from "../../utils/sendResponse";
 import { iUserResponse } from "../user/user.interface";
 import {
   changePasswordService,
+  forgotPasswordService,
   resetPasswordService,
   setPasswordService,
 } from "./auth.service";
@@ -95,26 +96,12 @@ export const userLogoutController = catchAsync(
     sendResponse(res, {
       statusCode: sCode.OK,
       message: "User logged out successfully",
-      data: null,
     });
   }
 );
 
 //
-export const resetPasswordController = catchAsync(
-  async (req: Request, res: Response) => {
-    const password = await resetPasswordService(req);
-
-    sendResponse(res, {
-      statusCode: sCode.OK,
-      message: "Password updated successfully",
-      data: password,
-    });
-  }
-);
-
-//
-export const forgotPasswordController = catchAsync(
+export const changePasswordController = catchAsync(
   async (req: Request, res: Response) => {
     const password = await changePasswordService(req);
 
@@ -125,6 +112,28 @@ export const forgotPasswordController = catchAsync(
     });
   }
 );
+
+//
+export const forgotPasswordController = catchAsync(async (req, res) => {
+  const { email } = req.body;
+  await forgotPasswordService(email);
+
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Email sent successfully",
+  });
+});
+
+//
+export const resetPasswordController = catchAsync(async (req, res) => {
+  const data = await resetPasswordService(req);
+
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Password updated successfully",
+    data,
+  });
+});
 
 //
 export const setPasswordController = catchAsync(

@@ -14,10 +14,10 @@ const makeJwtPayload = ({ _id, email, role }: Payload) => {
   return { _id, email, role };
 };
 
-export const generateAccessToken = (data: Payload): string => {
+export const generateAccessToken = (data: Payload, period?: string): string => {
   const payload = makeJwtPayload(data);
   const token = jwt.sign(payload, JWT_SECRET, {
-    expiresIn: env_config.JWT_TOKEN_PERIOD,
+    expiresIn: period || env_config.JWT_TOKEN_PERIOD,
   } as SignOptions);
   if (!token)
     throw new AppError(
@@ -40,9 +40,9 @@ export const generateRefreshToken = (data: Payload): string => {
   return token;
 };
 
-export const generateAllTokens = (data: Payload) => {
+export const generateAllTokens = (data: Payload, period?: string) => {
   const payload = makeJwtPayload(data);
-  const accessToken = generateAccessToken(payload);
+  const accessToken = generateAccessToken(payload, period);
   const refreshToken = generateRefreshToken(payload);
   if (!accessToken || !refreshToken)
     throw new AppError(

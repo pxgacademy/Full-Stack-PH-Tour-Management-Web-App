@@ -4,6 +4,7 @@ import { env_config } from "../../../config";
 import { tokenVerifier } from "../../middlewares/tokenVerifier";
 import { userAccessVerifier } from "../../middlewares/userAccessVerifier";
 import {
+  changePasswordController,
   credentialLoginController,
   forgotPasswordController,
   getNewAccessTokenController,
@@ -25,13 +26,15 @@ authRoutes.post("/logout", userLogoutController);
 // -------------
 
 authRoutes.post(
-  "/reset-password",
+  "/change-password",
   tokenVerifier,
   userAccessVerifier,
-  resetPasswordController
+  changePasswordController
 );
 
 authRoutes.post("/forgot-password", forgotPasswordController);
+
+authRoutes.post("/reset-password", tokenVerifier, resetPasswordController);
 
 authRoutes.post(
   "/set-password",

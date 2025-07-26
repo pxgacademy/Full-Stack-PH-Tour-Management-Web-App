@@ -37,7 +37,11 @@ export const createUserService = async (payload: Partial<iUser>) => {
     auth: [authProvider],
     ...rest,
   });
-  return { data: user };
+
+  const newUser = user.toObject();
+  delete newUser.password;
+
+  return { data: newUser };
 };
 
 export const updateUserService = async (
