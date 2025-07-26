@@ -7,7 +7,7 @@ import { sendEmail } from "../../utils/sendEmail";
 import { User } from "../user/user.model";
 
 export const sendOtpService = async (name: string, decoded: JwtPayload) => {
-  // TODO: if user request random times in a short time, it can be a hacker, we should stop requesting.
+  // TODO: if user request several times in a short time, it can be a hacker, we should stop requesting.
 
   const { _id, email } = decoded;
 
