@@ -12,7 +12,12 @@ import { router } from "./routes";
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: env_config.FRONTEND_URL,
+    credentials: true,
+  })
+);
 app.use(
   expressSession({
     secret: env_config.EXPRESS_SESSION_SECRET,
