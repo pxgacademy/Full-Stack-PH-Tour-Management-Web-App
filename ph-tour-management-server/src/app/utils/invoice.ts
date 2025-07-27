@@ -47,9 +47,9 @@ export const generatePdf = async (
 
       // PAYMENT INFO
       doc.text(`Payment ID: ${data.paymentId}`);
-      doc.text(`Amount Per Guest: ${data.amountPerGuest.toFixed(2)}`);
+      doc.text(`Amount Per Guest: ${data.amountPerGuest}`);
       doc.text(`Total Guests: ${data.totalGuests}`);
-      doc.text(`Amount Paid: $${data.amount.toFixed(2)}`);
+      doc.text(`Amount Paid: $${data.amount}`);
       doc.text(`TrxID: ${data.TrxId}`);
       doc.text(`Payment Method: ${data.paymentMethod}`).moveDown();
 

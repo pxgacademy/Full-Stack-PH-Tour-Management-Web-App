@@ -25,6 +25,7 @@ interface UpdateStatusParams {
   bookingStatus: eBookingStatus;
   success: boolean;
   message: string;
+  paymentInfo?: object;
 }
 
 const processPaymentStatusUpdate = async ({
@@ -33,11 +34,12 @@ const processPaymentStatusUpdate = async ({
   bookingStatus,
   success,
   message,
+  paymentInfo = {},
 }: UpdateStatusParams) => {
   return await transactionRollback(async (session) => {
     const payment = await Payment.findOneAndUpdate(
       { TrxID },
-      { status: paymentStatus },
+      { status: paymentStatus, paymentInfo },
       { new: true }
     ).session(session);
 
@@ -68,10 +70,10 @@ const processPaymentStatusUpdate = async ({
         bookingDate: formatDate(booking.createdAt),
         paymentId: String(payment._id),
         TrxId: payment.TrxID,
-        amountPerGuest: booking.costFrom,
+        amountPerGuest: tour.costFrom as number,
         totalGuests: booking.guest,
         amount: payment.amount,
-        paymentMethod: "N/A",
+        paymentMethod: payment.paymentInfo?.card_type || "N/A",
       };
 
       await sendBookingInvoice(user.email, data);
@@ -81,9 +83,10 @@ const processPaymentStatusUpdate = async ({
   });
 };
 
-export const successPaymentService = async (TrxID: string) => {
+export const successPaymentService = async (req: Request) => {
   return await processPaymentStatusUpdate({
-    TrxID,
+    TrxID: (req.query?.TrxID as string) || "",
+    paymentInfo: req.body,
     paymentStatus: ePaymentStatus.PAID,
     bookingStatus: eBookingStatus.COMPLETED,
     success: true,

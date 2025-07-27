@@ -36,8 +36,6 @@ export const localStrategy = new LocalStrategy(
 
       if (user?.isDeleted)
         return done(null, false, { message: "User is deleted" });
-      if (!user?.isVerified)
-        return done(null, false, { message: "User is not verified" });
       if (user?.isActive === eIsActive.BLOCKED)
         return done(null, false, { message: "User is blocked" });
 

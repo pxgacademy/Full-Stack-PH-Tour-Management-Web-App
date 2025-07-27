@@ -13,7 +13,7 @@ export interface iPayment extends Document {
   booking: Types.ObjectId;
   TrxID: string;
   amount: number;
-  paymentInfo?: unknown;
+  paymentInfo?: Record<string, string>;
   invoiceUrl?: string;
   status: ePaymentStatus;
 }

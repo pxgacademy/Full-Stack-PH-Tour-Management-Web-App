@@ -25,6 +25,5 @@ export interface BookingWithRelations {
   user: iUserResponse;
   tour: iTourResponse;
   createdAt: Date;
-  costFrom: number;
   guest: number;
 }
