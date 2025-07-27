@@ -1,83 +1,114 @@
 import { Request } from "express";
 import { AppError } from "../../../errors/AppError";
+import { PAYMENT_MESSAGES } from "../../constants/messages/paymentMessages";
 import sCode from "../../statusCode";
 import { checkMongoId } from "../../utils/checkMongoId";
-import { eBookingStatus } from "../booking/booking.interface";
+import { formatDate } from "../../utils/formatDate";
+import { InvoiceData } from "../../utils/invoice";
+import { sendBookingInvoice } from "../../utils/sendBookingInvoice";
+import { transactionRollback } from "../../utils/transactionRollback";
+import {
+  BookingWithRelations,
+  eBookingStatus,
+} from "../booking/booking.interface";
 import { Booking } from "../booking/booking.model";
 import { iSSLCommerz } from "../sslCommerz/sslCommerz.interface";
 import { sslPaymentInit } from "../sslCommerz/sslCommerz.service";
+import { iTourResponse } from "../tour/tour.interface";
+import { iUserResponse } from "../user/user.interface";
 import { ePaymentStatus } from "./payment.interface";
 import { Payment } from "./payment.model";
 
-const updateStatus = async (
-  TrxID: string,
-  paymentStatus: string,
-  bookingStatus: string,
-  success = true,
-  message: string
-) => {
-  const session = await Booking.startSession();
+interface UpdateStatusParams {
+  TrxID: string;
+  paymentStatus: ePaymentStatus;
+  bookingStatus: eBookingStatus;
+  success: boolean;
+  message: string;
+}
 
-  try {
-    session.startTransaction();
-
+const processPaymentStatusUpdate = async ({
+  TrxID,
+  paymentStatus,
+  bookingStatus,
+  success,
+  message,
+}: UpdateStatusParams) => {
+  return await transactionRollback(async (session) => {
     const payment = await Payment.findOneAndUpdate(
       { TrxID },
-      { status: paymentStatus }
+      { status: paymentStatus },
+      { new: true }
     ).session(session);
 
-    if (!payment) {
-      throw new AppError(404, "Payment not found");
-    }
+    if (!payment) throw new AppError(404, "Payment not found");
 
-    await Booking.findByIdAndUpdate(
+    const booking = (await Booking.findByIdAndUpdate(
       payment.booking,
       { status: bookingStatus },
-      { session }
-    );
+      { new: true, session }
+    )
+      .populate<{ user: iUserResponse }>("user", "name email")
+      .populate<{ tour: iTourResponse }>(
+        "tour",
+        "title costFrom"
+      )) as unknown as BookingWithRelations;
 
-    await session.commitTransaction();
+    if (!booking) throw new AppError(404, "Booking not found");
 
-    return {
-      success,
-      message,
-    };
-  } catch (error) {
-    await session.abortTransaction();
-    throw error;
-  } finally {
-    session.endSession();
-  }
+    const { user, tour } = booking;
+    if (!user || !tour) throw new AppError(404, "Booking data incomplete");
+
+    if (success) {
+      const data: InvoiceData = {
+        name: `${user.name.firstName} ${user.name.lastName}`,
+        email: user.email,
+        bookingId: booking._id,
+        tourTitle: tour.title,
+        bookingDate: formatDate(booking.createdAt),
+        paymentId: String(payment._id),
+        TrxId: payment.TrxID,
+        amountPerGuest: booking.costFrom,
+        totalGuests: booking.guest,
+        amount: payment.amount,
+        paymentMethod: "N/A",
+      };
+
+      await sendBookingInvoice(user.email, data);
+    }
+
+    return { success, message };
+  });
 };
 
 export const successPaymentService = async (TrxID: string) => {
-  return await updateStatus(
+  return await processPaymentStatusUpdate({
     TrxID,
-    ePaymentStatus.PAID,
-    eBookingStatus.COMPLETED,
-    true,
-    "Payment completed successfully"
-  );
+    paymentStatus: ePaymentStatus.PAID,
+    bookingStatus: eBookingStatus.COMPLETED,
+    success: true,
+    message: PAYMENT_MESSAGES.SUCCESS,
+  });
 };
 
 export const failPaymentService = async (TrxID: string) => {
-  return await updateStatus(
+  return await processPaymentStatusUpdate({
     TrxID,
-    ePaymentStatus.FAILED,
-    eBookingStatus.FAILED,
-    false,
-    "Payment failed"
-  );
+    paymentStatus: ePaymentStatus.FAILED,
+    bookingStatus: eBookingStatus.FAILED,
+    success: false,
+    message: PAYMENT_MESSAGES.FAILED,
+  });
 };
 
 export const cancelPaymentService = async (TrxID: string) => {
-  return await updateStatus(
+  return await processPaymentStatusUpdate({
     TrxID,
-    ePaymentStatus.CANCELED,
-    eBookingStatus.CANCELED,
-    false,
-    "Payment canceled"
-  );
+    paymentStatus: ePaymentStatus.CANCELED,
+    bookingStatus: eBookingStatus.CANCELED,
+    success: false,
+    message: PAYMENT_MESSAGES.CANCELED,
+  });
 };
 
 export const repaymentService = async (req: Request) => {

@@ -3,7 +3,7 @@ import { AppError } from "../../errors/AppError";
 import sCode from "../statusCode";
 import logger from "./logger";
 
-interface InvoiceData {
+export interface InvoiceData {
   name: string;
   email: string;
   bookingId: string;
@@ -11,13 +11,15 @@ interface InvoiceData {
   bookingDate: string;
   paymentId: string;
   TrxId: string;
-  amountPerGuest: string;
-  totalGuests: string;
+  amountPerGuest: number;
+  totalGuests: number;
   amount: number;
   paymentMethod: string;
 }
 
-export const generatePdf = async (data: InvoiceData) => {
+export const generatePdf = async (
+  data: InvoiceData
+): Promise<Buffer<ArrayBufferLike>> => {
   try {
     return new Promise((resolve, reject) => {
       const doc = new PDFDocument({ size: "A4", margin: 50 });
@@ -45,7 +47,7 @@ export const generatePdf = async (data: InvoiceData) => {
 
       // PAYMENT INFO
       doc.text(`Payment ID: ${data.paymentId}`);
-      doc.text(`Amount Per Guest: ${data.amountPerGuest}`);
+      doc.text(`Amount Per Guest: ${data.amountPerGuest.toFixed(2)}`);
       doc.text(`Total Guests: ${data.totalGuests}`);
       doc.text(`Amount Paid: $${data.amount.toFixed(2)}`);
       doc.text(`TrxID: ${data.TrxId}`);

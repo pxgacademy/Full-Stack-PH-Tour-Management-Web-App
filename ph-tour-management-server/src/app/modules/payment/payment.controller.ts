@@ -15,6 +15,8 @@ export const successPaymentController = catchAsync(async (req, res) => {
   const { TrxID, amount, status } = req.query;
   const { message } = await successPaymentService(TrxID as string);
 
+  console.log(req.body);
+
   const url = `${SSL.SUCCESS_CLIENT_URL}?TrxID=${TrxID}&amount=${amount}&status=${status}&message=${message}`;
 
   res.redirect(url);
