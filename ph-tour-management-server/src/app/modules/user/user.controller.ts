@@ -52,3 +52,14 @@ export const getMeController = catchAsync(async (req, res) => {
     data,
   });
 });
+
+//
+export const getSingleUserController = catchAsync(async (req, res) => {
+  const id = checkMongoId(req?.params?.userId);
+  const { data } = await getMeService(id);
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "User retrieved successfully",
+    data,
+  });
+});

@@ -4,6 +4,7 @@ import { Types } from "mongoose";
 import { env_config } from "../../../config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
+import { checkMongoId } from "../../utils/checkMongoId";
 import {
   eAuthProvider,
   eIsActive,
@@ -45,40 +46,64 @@ export const createUserService = async (payload: Partial<iUser>) => {
 };
 
 export const updateUserService = async (
-  userId: string | Types.ObjectId,
+  userId: string,
   payload: Partial<iUser>,
   decoded: JwtPayload
 ) => {
-  const presentData = await User.findById(userId);
-  if (!presentData) {
-    throw new AppError(sCode.NOT_FOUND, "User Not Found");
+  const { _id: requesterId, role } = decoded;
+  const { SUPER_ADMIN, ADMIN, USER, MODERATOR } = eUserRoles;
+
+  const isSelf = requesterId === String(userId);
+  const isAdmin = role === ADMIN;
+  const isSuperAdmin = role === SUPER_ADMIN;
+
+  const user = await User.findById(checkMongoId(userId));
+  if (!user) {
+    throw new AppError(sCode.NOT_FOUND, "User not found");
   }
 
-  //* payload      : What user wants to change
-  //* presentData  : user's present data
-  //* decoded      : The data of the user who wants to change
-
-  const { role } = decoded;
-  const { MODERATOR, SUPER_ADMIN, USER } = eUserRoles;
-
-  if (payload.role && role !== SUPER_ADMIN) {
-    throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
+  // 1. Only Self, Admin, SuperAdmin can update
+  if (!isSelf && !isAdmin && !isSuperAdmin) {
+    throw new AppError(
+      sCode.UNAUTHORIZED,
+      "You're not authorized to update this user"
+    );
   }
 
+  // 2. Role can't be changed unless Super Admin
+  if ("role" in payload && !isSuperAdmin) {
+    throw new AppError(sCode.FORBIDDEN, "Only Super Admin can change roles");
+  }
+
+  // 3. Blocked/Deleted users can't be updated by USER/MODERATOR
+  if (
+    (role === USER || role === MODERATOR) &&
+    (user.isDeleted || user.isActive === eIsActive.BLOCKED)
+  ) {
+    throw new AppError(
+      sCode.FORBIDDEN,
+      "You cannot update this user. Contact admin."
+    );
+  }
+
+  // 4. Enforce field-level restriction for USER & MODERATOR
+  const forbiddenFields = ["isActive", "isDeleted", "isVerified"];
   if (role === USER || role === MODERATOR) {
-    if (presentData.isActive === eIsActive.BLOCKED || presentData.isDeleted) {
+    const hasForbiddenField = forbiddenFields.some((field) => field in payload);
+    if (hasForbiddenField) {
       throw new AppError(
         sCode.FORBIDDEN,
-        "This user cannot be updated without admin or super admin"
+        "You're not allowed to update these fields: isActive, isDeleted, isVerified"
       );
-    }
-    if (payload.isActive || payload.isDeleted || payload.isVerified) {
-      throw new AppError(sCode.FORBIDDEN, "Forbidden User Role");
     }
   }
 
-  if (payload.password) delete payload.password;
+  // 5. Prevent password update here
+  if ("password" in payload) {
+    delete payload.password;
+  }
 
+  // 6. Proceed to update
   const updatedUser = await User.findByIdAndUpdate(userId, payload, {
     new: true,
     runValidators: true,

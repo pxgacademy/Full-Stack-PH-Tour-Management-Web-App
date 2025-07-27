@@ -6,6 +6,7 @@ import {
   createUserController,
   getAllUsersController,
   getMeController,
+  getSingleUserController,
   updateUserController,
 } from "./user.controller";
 import { eUserRoles } from "./user.interface";
@@ -26,6 +27,11 @@ userRoutes.get(
 );
 
 userRoutes.get("/me", tokenVerifier, getMeController);
+userRoutes.get(
+  "/:userId",
+  roleVerifier(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),
+  getSingleUserController
+);
 
 userRoutes.patch(
   "/:userId",
