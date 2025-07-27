@@ -4,6 +4,7 @@ import { JwtPayload } from "jsonwebtoken";
 import { env_config } from "../../../config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
+import { checkMongoId } from "../../utils/checkMongoId";
 import { generateAccessToken } from "../../utils/jwt";
 import { sendEmail } from "../../utils/sendEmail";
 import { eAuthProvider, eIsActive, iUser } from "../user/user.interface";
@@ -34,21 +35,37 @@ export const credentialLoginService = async (payload: Partial<iUser>) => {
 };
 
 //
+
 export const changePasswordService = async (req: Request) => {
-  const { _id, email } = req.decoded as JwtPayload;
+  const { _id } = req.decoded as JwtPayload;
   const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    throw new AppError(sCode.BAD_REQUEST, "Old and new passwords are required");
+  }
 
   const user = await User.findById(_id).select("+password");
 
-  const isOldPassMatch = await compare(oldPassword, user?.password as string);
-  if (!isOldPassMatch)
-    throw new AppError(sCode.BAD_REQUEST, "Old password does not match");
+  if (!user) {
+    throw new AppError(sCode.NOT_FOUND, "User not found");
+  }
 
-  const password = await hash(newPassword, env_config.BCRYPT_SALT_ROUND);
-  await User.findByIdAndUpdate(_id, { password });
+  const isOldPassMatch = await compare(oldPassword, user.password as string);
+  if (!isOldPassMatch) {
+    throw new AppError(sCode.BAD_REQUEST, "Old password is incorrect");
+  }
+
+  const hashedPassword = await hash(newPassword, env_config.BCRYPT_SALT_ROUND);
+
+  user.password = hashedPassword;
+  await user.save();
 
   return {
-    data: { _id, email, message: "Password updated successfully" },
+    data: {
+      _id: user._id,
+      email: user.email,
+      message: "Password updated successfully",
+    },
   };
 };
 
@@ -57,12 +74,9 @@ export const forgotPasswordService = async (email: string) => {
   const user = await User.findOne({ email });
   if (!user) throw new AppError(sCode.NOT_FOUND, "User not found");
 
-  if (user?.isDeleted || user?.isActive === eIsActive.BLOCKED) {
-    const deleted = user?.isDeleted ? "deleted" : "";
-    const blocked = user?.isActive === eIsActive.BLOCKED ? "blocked" : "";
-
-    throw new AppError(400, `User is ${deleted}${blocked && ", "}${blocked}`);
-  }
+  if (user?.isDeleted) throw new AppError(400, "User is deleted");
+  if (user?.isActive === eIsActive.BLOCKED)
+    throw new AppError(400, "User is blocked");
 
   const token = generateAccessToken(user, "10M");
   const resetUILink = `${env_config.FRONTEND_URL}/reset-password?id=${user._id}&token=${encodeURIComponent(token)}`;
@@ -85,7 +99,7 @@ export const resetPasswordService = async (req: Request) => {
 
   if (_id !== id) throw new AppError(sCode.UNAUTHORIZED, "Unauthorized");
 
-  const user = await User.findById(_id);
+  const user = await User.findById(checkMongoId(_id));
   if (!user) throw new AppError(sCode.NOT_FOUND, "User does not exist");
 
   user.password = await hash(newPassword, env_config.BCRYPT_SALT_ROUND);
@@ -102,7 +116,7 @@ export const setPasswordService = async (req: Request) => {
   const { _id, email } = req.decoded as JwtPayload;
   const { password } = req.body;
 
-  const user = await User.findById(_id).select("+password +auth");
+  const user = await User.findById(checkMongoId(_id)).select("+password +auth");
   if (!user) throw new AppError(sCode.NOT_FOUND, "User not found");
 
   if (user.password) {
