@@ -5,6 +5,7 @@ import { sendResponse } from "../../utils/sendResponse";
 import {
   cancelPaymentService,
   failPaymentService,
+  getInvoiceUrlService,
   repaymentService,
   successPaymentService,
 } from "./payment.service";
@@ -49,5 +50,16 @@ export const repaymentController = catchAsync(async (req, res) => {
     message: message,
     data: null,
     meta: { options },
+  });
+});
+
+//
+export const getInvoiceUrlController = catchAsync(async (req, res) => {
+  const { data } = await getInvoiceUrlService(req.params?.paymentId || "");
+
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "",
+    data,
   });
 });

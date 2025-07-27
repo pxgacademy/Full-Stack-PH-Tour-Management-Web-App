@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { uploadBufferToCloud } from "../../../config/cloudinary/uploadBufferToCloud";
 import { AppError } from "../../../errors/AppError";
 import { PAYMENT_MESSAGES } from "../../constants/messages/paymentMessages";
 import sCode from "../../statusCode";
@@ -76,7 +77,11 @@ const processPaymentStatusUpdate = async ({
         paymentMethod: payment.paymentInfo?.card_type || "N/A",
       };
 
-      await sendBookingInvoice(user.email, data);
+      const pdfBuffer = await sendBookingInvoice(user.email, data);
+      const cloudResult = await uploadBufferToCloud(pdfBuffer, "invoice");
+
+      payment.invoiceUrl = cloudResult?.secure_url || "";
+      await payment.save();
     }
 
     return { success, message };
@@ -144,4 +149,16 @@ export const repaymentService = async (req: Request) => {
     options: { paymentURL: sslPayment?.GatewayPageURL },
     message: "SSL payment url arrived successfully",
   };
+};
+
+export const getInvoiceUrlService = async (paymentId: string) => {
+  const id = checkMongoId(paymentId);
+  const payment = await Payment.findById(id).select("+invoiceUrl");
+
+  if (!payment) throw new AppError(sCode.NOT_FOUND, "Payment not found");
+  if (!payment.invoiceUrl)
+    throw new AppError(sCode.NOT_FOUND, "Payment not found");
+
+  return { data: payment };
+  //
 };

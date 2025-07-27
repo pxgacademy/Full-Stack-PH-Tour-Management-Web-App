@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { deleteImageFromCloud } from "../../../config/cloudinary.config";
+import { deleteImageFromCloud } from "../../../config/cloudinary/deleteImageFromCloud";
 import { AppError } from "../../../errors/AppError";
 import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";

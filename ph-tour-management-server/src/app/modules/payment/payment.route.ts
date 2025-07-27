@@ -4,6 +4,7 @@ import { userAccessVerifier } from "../../middlewares/userAccessVerifier";
 import {
   cancelPaymentController,
   failPaymentController,
+  getInvoiceUrlController,
   repaymentController,
   successPaymentController,
 } from "./payment.controller";
@@ -18,6 +19,13 @@ paymentRoutes.post(
   tokenVerifier,
   userAccessVerifier,
   repaymentController
+);
+
+paymentRoutes.get(
+  "/invoice/:paymentId",
+  tokenVerifier,
+  userAccessVerifier,
+  getInvoiceUrlController
 );
 
 export default paymentRoutes;

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
 import { isDev } from "../../config";
-import { deleteImageFromCloud } from "../../config/cloudinary.config";
+import { deleteImageFromCloud } from "../../config/cloudinary/deleteImageFromCloud";
 import {
   appError,
   castError,

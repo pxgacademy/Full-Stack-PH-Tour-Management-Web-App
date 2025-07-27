@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { uploadImage } from "../../../config/multer.config";
+import { uploadImage } from "../../../config/cloudinary/multer.config";
 import { roleVerifier } from "../../middlewares/roleVerifier";
 import { zodBodyValidator } from "../../middlewares/zodValidator";
 import { eUserRoles } from "../user/user.interface";
