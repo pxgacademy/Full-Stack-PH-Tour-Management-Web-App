@@ -4,6 +4,7 @@ import bookingRoutes from "../app/modules/booking/booking.route";
 import divisionRoutes from "../app/modules/division/division.route";
 import otpRoutes from "../app/modules/otp/otp.route";
 import paymentRoutes from "../app/modules/payment/payment.route";
+import statsRoutes from "../app/modules/stats/stats.route";
 import tourRoutes from "../app/modules/tour/tour.route";
 import userRoutes from "../app/modules/user/user.route";
 
@@ -38,6 +39,10 @@ const moduleRoutes = [
     path: "/otp",
     route: otpRoutes,
   },
+  {
+    path: "/stats",
+    route: statsRoutes,
+  },
 ];
 
-moduleRoutes.forEach((route) => router.use(route.path, route.route));
+moduleRoutes.forEach(({ path, route }) => router.use(path, route));
