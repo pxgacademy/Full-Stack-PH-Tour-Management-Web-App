@@ -1,5 +1,7 @@
 //
 
+import { Booking } from "../booking/booking.model";
+import { Tour } from "../tour/tour.model";
 import { eIsActive } from "../user/user.interface";
 import { User } from "../user/user.model";
 
@@ -29,9 +31,9 @@ export const getUserStatsService = async () => {
     blockedUsers,
     newUserInLastSevenDays,
     newUserInLastThirtyDays,
-    userCountByRole,
+    roleBased,
   ] = await Promise.all([
-    User.countDocuments(),
+    User.estimatedDocumentCount(),
     User.countDocuments({ isActive: eIsActive.ACTIVE }),
     User.countDocuments({ isActive: eIsActive.INACTIVE }),
     User.countDocuments({ isActive: eIsActive.BLOCKED }),
@@ -47,16 +49,105 @@ export const getUserStatsService = async () => {
     blockedUsers,
     newUserInLastSevenDays,
     newUserInLastThirtyDays,
-    userCountByRole: userCountByRole.map(({ _id, count }) => ({
-      role: _id,
-      count,
-    })),
+    userCountByRole: roleBased.map(({ _id, count }) => ({ role: _id, count })),
   };
 };
 
 //
 export const getTourStatsService = async () => {
-  return {};
+  const [totalTours, avgTourCost, highestBooked, typeBased, divisionBased] =
+    await Promise.all([
+      Tour.estimatedDocumentCount(),
+      Tour.aggregate([{ $group: { _id: null, cost: { $avg: "$costFrom" } } }]),
+
+      Booking.aggregate([
+        {
+          $group: { _id: "$tour", count: { $sum: 1 } },
+        },
+        {
+          $sort: { count: -1 },
+        },
+        {
+          $limit: 5,
+        },
+        {
+          $lookup: {
+            from: "tours",
+            let: { tourId: "$_id" },
+            pipeline: [
+              {
+                $match: { $expr: { $eq: ["$_id", "$$tourId"] } },
+              },
+            ],
+            as: "tour",
+          },
+        },
+        {
+          $unwind: "$tour",
+        },
+        {
+          $project: {
+            count: 1,
+            "tour.title": 1,
+            "tour.slug": 1,
+          },
+        },
+      ]),
+
+      Tour.aggregate([
+        {
+          $lookup: {
+            from: "tourtypes",
+            localField: "tourType",
+            foreignField: "_id",
+            as: "type",
+          },
+        },
+        {
+          $unwind: "$type",
+        },
+        {
+          $group: { _id: "$type.name", count: { $sum: 1 } },
+        },
+      ]),
+
+      Tour.aggregate([
+        {
+          $lookup: {
+            from: "divisions",
+            localField: "division",
+            foreignField: "_id",
+            as: "division",
+          },
+        },
+        {
+          $unwind: "$division",
+        },
+        {
+          $group: { _id: "$division.name", count: { $sum: 1 } },
+        },
+      ]),
+
+      //
+    ]);
+
+  return {
+    totalTours,
+    avgTourCost: avgTourCost?.[0]?.cost,
+    highestBookedTour: highestBooked.map(({ _id, count, tour }) => ({
+      tourId: _id,
+      count,
+      tour,
+    })),
+    totalTourBasedOnType: typeBased.map(({ _id, count }) => ({
+      name: _id,
+      count,
+    })),
+    totalTourBasedOnDivision: divisionBased.map(({ _id, count }) => ({
+      name: _id,
+      count,
+    })),
+  };
 };
 
 //

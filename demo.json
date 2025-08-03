@@ -1,18 +1,20 @@
 {
-  "title": "Into the Wild: A Journey Through Natures",
-  "description": "Into the Wild: A Journey Through Nature in Cox's Bazar awaits you!",
-  "location": "Cox's Bazar",
-  "departureLocation": "Dhaka",
-  "arrivalLocation": "Cox's Bazar",
-  "costFrom": 954,
-  "startDate": "2025-07-19",
-  "endDate": "2025-07-28",
-  "included": ["Accommodation", "Guide", "Transport"],
-  "excluded": ["Visa", "Flights"],
-  "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-  "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
-  "maxGuest": 23,
-  "minAge": 14,
-  "division": "a9107a9bfba34aa785591788",
-  "tourType": "3af1fa3202614ab2a1e7f7cc"
+  "title": "Mango",
+  "type": "Box",
+  "weight": 6,
+  "pickupAddress": {
+    "street": "Chipatoli",
+    "stateOrProvince": "Hathazari",
+    "city": "Chattogram",
+    "postalCode": "4330",
+    "country": "Bangladesh"
+  },
+  "deliveryAddress": {
+    "street": "Chipatoli",
+    "stateOrProvince": "Hathazari",
+    "city": "Chattogram",
+    "postalCode": "4330",
+    "country": "Bangladesh"
+  },
+  "receiver": "688b7eb731d6a850c32f434e"
 }

@@ -21,30 +21,33 @@ export const getUserStatsController = catchAsync(async (req, res) => {
 
 //
 export const getTourStatsController = catchAsync(async (req, res) => {
-  getTourStatsService();
+  const data = await getTourStatsService();
 
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "",
+    data,
   });
 });
 
 //
 export const getBookingStatsController = catchAsync(async (req, res) => {
-  getBookingStatsService();
+  const data = await getBookingStatsService();
 
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "",
+    data,
   });
 });
 
 //
 export const getPaymentStatsController = catchAsync(async (req, res) => {
-  getPaymentStatsService();
+  const data = await getPaymentStatsService();
 
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "",
+    data,
   });
 });
