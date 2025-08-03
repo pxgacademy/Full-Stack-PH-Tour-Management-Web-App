@@ -1,6 +1,8 @@
 //
 
 import { Booking } from "../booking/booking.model";
+import { ePaymentStatus } from "../payment/payment.interface";
+import { Payment } from "../payment/payment.model";
 import { Tour } from "../tour/tour.model";
 import { eIsActive } from "../user/user.interface";
 import { User } from "../user/user.model";
@@ -152,10 +154,128 @@ export const getTourStatsService = async () => {
 
 //
 export const getBookingStatsService = async () => {
-  return {};
+  const [
+    totalBooking,
+    bookingByStatus,
+    bookingPerTour,
+    avgGuestCount,
+    lastSevenDaysBooking,
+    lastThirtyDaysBooking,
+    uniqueUserBooking,
+  ] = await Promise.all([
+    Booking.estimatedDocumentCount(),
+
+    Booking.aggregate([
+      {
+        $group: { _id: "$status", count: { $sum: 1 } },
+      },
+    ]),
+
+    Booking.aggregate([
+      { $group: { _id: "$tour", count: { $sum: 1 } } },
+      {
+        $sort: { count: -1 },
+      },
+      {
+        $limit: 10,
+      },
+      {
+        $lookup: {
+          from: "tours",
+          localField: "_id",
+          foreignField: "_id",
+          as: "tour",
+        },
+      },
+      {
+        $unwind: "$tour",
+      },
+      {
+        $project: {
+          count: 1,
+          "tour.title": 1,
+          "tour.slug": 1,
+        },
+      },
+    ]),
+
+    Booking.aggregate([
+      {
+        $group: { _id: null, avgCount: { $avg: "$guest" } },
+      },
+    ]),
+
+    Booking.countDocuments({
+      createdAt: { $gte: sevenDaysAgo },
+    }),
+
+    Booking.countDocuments({
+      createdAt: { $gte: thirtyDaysAgo },
+    }),
+
+    Booking.distinct("user").then((user) => user.length),
+  ]);
+
+  return {
+    totalBooking,
+
+    bookingByStatus: bookingByStatus?.map(({ _id, count }) => ({
+      status: _id,
+      count,
+    })),
+
+    bookingPerTour: bookingPerTour?.map(({ _id, count, tour }) => ({
+      tourId: _id,
+      count,
+      tour,
+    })),
+
+    avgGuestCount: avgGuestCount?.[0]?.avgCount,
+    lastSevenDaysBooking,
+    lastThirtyDaysBooking,
+    uniqueUserBooking,
+  };
 };
 
 //
 export const getPaymentStatsService = async () => {
-  return {};
+  const [totalPayment, basedOnStatus, totalRevenue, avgPayment, paymentInfo] =
+    await Promise.all([
+      Payment.estimatedDocumentCount(),
+
+      Payment.aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }]),
+
+      Payment.aggregate([
+        {
+          $match: { status: ePaymentStatus.PAID },
+        },
+        {
+          $group: { _id: null, totalRevenue: { $sum: "$amount" } },
+        },
+      ]),
+
+      Payment.aggregate([
+        { $group: { _id: null, average: { $avg: "$amount" } } },
+      ]),
+
+      Payment.aggregate([
+        {
+          $group: {
+            _id: { $ifNull: ["$paymentInfo.status", "UNKNOWN"] },
+            count: { $sum: 1 },
+          },
+        },
+      ]),
+    ]);
+
+  return {
+    totalPayment,
+    paymentBasedOnStatus: basedOnStatus?.map(({ _id, count }) => ({
+      status: _id,
+      count,
+    })),
+    totalRevenue: totalRevenue?.[0]?.totalRevenue,
+    avgPayment: avgPayment?.[0]?.average,
+    paymentInfo: paymentInfo?.map(({ _id, count }) => ({ status: _id, count })),
+  };
 };
