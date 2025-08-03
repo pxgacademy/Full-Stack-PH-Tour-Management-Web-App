@@ -2,6 +2,7 @@ import { env_config } from "../../../config";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
+import { validationPayment } from "../sslCommerz/sslCommerz.service";
 import {
   cancelPaymentService,
   failPaymentService,
@@ -61,5 +62,15 @@ export const getInvoiceUrlController = catchAsync(async (req, res) => {
     statusCode: sCode.OK,
     message: "",
     data,
+  });
+});
+
+//
+export const validatePaymentController = catchAsync(async (req, res) => {
+  await validationPayment(req.body);
+
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Payment validated successfully",
   });
 });

@@ -25,6 +25,7 @@ interface EnvConfig {
     STORE_PASS: string;
     PAYMENT_API: string;
     VALIDATION_API: string;
+    IPN_URL: string;
     SUCCESS_SERVER_URL: string;
     FAIL_SERVER_URL: string;
     CANCEL_SERVER_URL: string;
@@ -71,6 +72,7 @@ export const env_config: EnvConfig = {
     STORE_PASS: process.env.STORE_PASS,
     PAYMENT_API: process.env.PAYMENT_API,
     VALIDATION_API: process.env.VALIDATION_API,
+    IPN_URL: process.env.IPN_URL,
     SUCCESS_SERVER_URL: process.env.SUCCESS_SERVER_URL,
     FAIL_SERVER_URL: process.env.FAIL_SERVER_URL,
     CANCEL_SERVER_URL: process.env.CANCEL_SERVER_URL,

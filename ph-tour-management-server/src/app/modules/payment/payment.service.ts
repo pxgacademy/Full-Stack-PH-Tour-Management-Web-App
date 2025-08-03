@@ -151,6 +151,7 @@ export const repaymentService = async (req: Request) => {
   };
 };
 
+//
 export const getInvoiceUrlService = async (paymentId: string) => {
   const id = checkMongoId(paymentId);
   const payment = await Payment.findById(id).select("+invoiceUrl");
@@ -160,5 +161,4 @@ export const getInvoiceUrlService = async (paymentId: string) => {
     throw new AppError(sCode.NOT_FOUND, "Payment not found");
 
   return { data: payment };
-  //
 };

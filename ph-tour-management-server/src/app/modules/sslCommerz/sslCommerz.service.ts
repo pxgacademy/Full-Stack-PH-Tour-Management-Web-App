@@ -4,6 +4,7 @@ import axios from "axios";
 import { env_config } from "../../../config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
+import { Payment } from "../payment/payment.model";
 import { iSSLCommerz } from "./sslCommerz.interface";
 
 const SSL = env_config.SSL;
@@ -21,6 +22,7 @@ export const sslPaymentInit = async (payload: iSSLCommerz) => {
     success_url: urlWithTrxID(SSL.SUCCESS_SERVER_URL),
     fail_url: urlWithTrxID(SSL.FAIL_SERVER_URL, "fail"),
     cancel_url: urlWithTrxID(SSL.CANCEL_SERVER_URL, "cancel"),
+    ipn_url: SSL.IPN_URL,
     shipping_method: "N/A",
     product_name: "Tour",
     product_category: "Service",
@@ -62,4 +64,15 @@ export const sslPaymentInit = async (payload: iSSLCommerz) => {
   }
 };
 
-// ipn_url: "http://localhost:3030/ipn",
+export const validationPayment = async (payload: Record<string, string>) => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      url: `${SSL.VALIDATION_API}?val_id=${payload.val_id}&store_id=${SSL.STORE_ID}&store_passwd=${SSL.STORE_PASS}`,
+    });
+
+    await Payment.updateOne({ TrxID: payload.tran_id }, { paymentInfo: data });
+  } catch (error: any) {
+    throw new AppError(401, `Payment validation Error: ${error.message}`);
+  }
+};

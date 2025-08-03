@@ -7,6 +7,7 @@ import {
   getInvoiceUrlController,
   repaymentController,
   successPaymentController,
+  validatePaymentController,
 } from "./payment.controller";
 
 const paymentRoutes = Router();
@@ -27,5 +28,7 @@ paymentRoutes.get(
   userAccessVerifier,
   getInvoiceUrlController
 );
+
+paymentRoutes.post("/validate-payment", validatePaymentController);
 
 export default paymentRoutes;
