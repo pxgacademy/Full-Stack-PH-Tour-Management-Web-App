@@ -1,19 +1,34 @@
 import { Response } from "express";
+import { isDev } from "../../config";
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: !isDev,
+  sameSite: !isDev ? ("none" as const) : ("lax" as const),
+};
 
 export const setCookie = {
-  cookieOptions: { httpOnly: true, secure: false },
   accessToken(res: Response, token: string) {
-    res.cookie("accessToken", token, this.cookieOptions);
+    res.cookie("accessToken", token, {
+      ...cookieOptions,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+    });
   },
+
   refreshToken(res: Response, token: string) {
-    res.cookie("refreshToken", token, this.cookieOptions);
+    res.cookie("refreshToken", token, {
+      ...cookieOptions,
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+    });
   },
+
   allTokens(res: Response, accessToken: string, refreshToken: string) {
     this.accessToken(res, accessToken);
     this.refreshToken(res, refreshToken);
   },
+
   clearCookies(res: Response) {
-    res.clearCookie("accessToken", { ...this.cookieOptions, sameSite: "lax" });
-    res.clearCookie("refreshToken", { ...this.cookieOptions, sameSite: "lax" });
+    res.clearCookie("accessToken", cookieOptions);
+    res.clearCookie("refreshToken", cookieOptions);
   },
 };
