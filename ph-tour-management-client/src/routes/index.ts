@@ -5,10 +5,6 @@ export const router = createBrowserRouter([
   {
     Component: App,
     path: "/",
-    children: [
-      {
-        index: true,
-      },
-    ],
+    children: [],
   },
 ]);
