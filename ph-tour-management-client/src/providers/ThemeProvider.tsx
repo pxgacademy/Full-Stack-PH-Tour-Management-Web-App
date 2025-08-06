@@ -3,7 +3,7 @@ import {
   type Theme,
   type ThemeProviderState,
   ThemeProviderContext,
-} from "./ThemeContext";
+} from "../context/theme.context";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
