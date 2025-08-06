@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -9,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import type { HTMLAttributes } from "react";
+import { useState, type HTMLAttributes } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -18,10 +19,13 @@ export function LoginForm({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const form = useForm();
   // const [login] = useLoginMutation();
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setLoading(true);
     try {
       // const res = await login(data).unwrap();
       // console.log(res);
@@ -33,6 +37,8 @@ export function LoginForm({
         toast.error("Your account is not verified");
         navigate("/verify", { state: data.email });
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,7 +91,11 @@ export function LoginForm({
             />
 
             <Button type="submit" className="w-full">
-              Login
+              <LoadingSpinner
+                loading={loading}
+                defaultText="Login"
+                loadingText="Logging in..."
+              />
             </Button>
           </form>
         </Form>

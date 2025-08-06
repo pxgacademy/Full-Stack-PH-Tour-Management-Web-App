@@ -1,5 +1,6 @@
 import Logo from "@/assets/icons/logo";
 import TravelLogin from "@/assets/images/travel-login.jpg";
+import { LoginForm } from "@/components/modules/authentication/LoginForm";
 import { Link } from "react-router";
 
 export default function Login() {
@@ -12,7 +13,9 @@ export default function Login() {
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs"></div>
+          <div className="w-full max-w-xs">
+            <LoginForm />
+          </div>
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">

@@ -1,21 +1,33 @@
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Password from "@/components/ui/Password";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
+import { z } from "zod";
 
 const registerSchema = z
   .object({
-    name: z
+    firstName: z
+      .string()
+      .min(2, {
+        error: "Name is too short",
+      })
+      .max(50),
+    lastName: z
       .string()
       .min(3, {
         error: "Name is too short",
@@ -27,42 +39,56 @@ const registerSchema = z
       .string()
       .min(8, { error: "Confirm Password is too short" }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Password do not match",
+  .refine(({ password, confirmPassword }) => password === confirmPassword, {
+    message: "Password does not match",
     path: ["confirmPassword"],
   });
+
+//
+
+type FormValues = z.infer<typeof registerSchema>;
+
+//
 
 export function RegisterForm({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [register] = useRegisterMutation();
+  const [loading, setLoading] = useState<boolean>(false);
+  // const [register] = useRegisterMutation();
   const navigate = useNavigate();
 
-  const form = useForm<z.infer<typeof registerSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof registerSchema>) => {
+  const onSubmit = async (data: FormValues) => {
+    setLoading(true);
     const userInfo = {
-      name: data.name,
+      name: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+      },
       email: data.email,
       password: data.password,
     };
 
     try {
-      const result = await register(userInfo).unwrap();
-      console.log(result);
+      // const result = await register(userInfo).unwrap();
+      // console.log(result);
       toast.success("User created successfully");
       navigate("/verify");
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -80,20 +106,38 @@ export function RegisterForm({
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
-              name="name"
+              name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="John" {...field} />
                   </FormControl>
                   <FormDescription className="sr-only">
-                    This is your public display name.
+                    This is your public display first name.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Doe" {...field} />
+                  </FormControl>
+                  <FormDescription className="sr-only">
+                    This is your public display last name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="email"
@@ -147,7 +191,11 @@ export function RegisterForm({
               )}
             />
             <Button type="submit" className="w-full">
-              Submit
+              <LoadingSpinner
+                loading={loading}
+                defaultText="Register"
+                loadingText="Registering..."
+              />
             </Button>
           </form>
         </Form>
