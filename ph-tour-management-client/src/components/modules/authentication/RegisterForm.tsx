@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Password from "@/components/ui/Password";
 import { cn } from "@/lib/utils";
+import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -55,7 +56,7 @@ export function RegisterForm({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [loading, setLoading] = useState<boolean>(false);
-  // const [register] = useRegisterMutation();
+  const [register] = useRegisterMutation();
   const navigate = useNavigate();
 
   const form = useForm<FormValues>({
@@ -81,8 +82,8 @@ export function RegisterForm({
     };
 
     try {
-      // const result = await register(userInfo).unwrap();
-      // console.log(result);
+      const result = await register(userInfo).unwrap();
+      console.log(result);
       toast.success("User created successfully");
       navigate("/verify");
     } catch (error) {
