@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import {
@@ -86,7 +87,8 @@ export function RegisterForm({
       console.log(result);
       toast.success("User created successfully");
       navigate("/verify");
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.data?.message || error?.message);
       console.error(error);
     } finally {
       setLoading(false);

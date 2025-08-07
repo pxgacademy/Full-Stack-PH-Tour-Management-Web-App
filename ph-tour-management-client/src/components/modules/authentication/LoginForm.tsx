@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { useState, type HTMLAttributes } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
@@ -22,21 +24,20 @@ export function LoginForm({
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const form = useForm();
-  // const [login] = useLoginMutation();
+  const [login] = useLoginMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    setLoading(true);
     try {
-      // const res = await login(data).unwrap();
-      // console.log(res);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setLoading(true);
+      const res = await login(data).unwrap();
+      console.log(res);
+      toast.success("User logged in successfully");
     } catch (err: any) {
       console.error(err);
-
-      if (err.status === 401) {
+      if (err?.data?.message === "User is not verified") {
         toast.error("Your account is not verified");
         navigate("/verify", { state: data.email });
-      }
+      } else toast.error(err?.data?.message || err?.message);
     } finally {
       setLoading(false);
     }
