@@ -56,7 +56,7 @@ export function RegisterForm({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [register] = useRegisterMutation();
   const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ export function RegisterForm({
   });
 
   const onSubmit = async (data: FormValues) => {
-    setLoading(true);
+    setIsSubmitting(true);
     const userInfo = {
       name: {
         firstName: data.firstName,
@@ -91,7 +91,7 @@ export function RegisterForm({
       toast.error(error.data?.message || error?.message);
       console.error(error);
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -195,7 +195,7 @@ export function RegisterForm({
             />
             <Button type="submit" className="w-full">
               <LoadingSpinner
-                loading={loading}
+                isLoading={isSubmitting}
                 defaultText="Register"
                 loadingText="Registering..."
               />

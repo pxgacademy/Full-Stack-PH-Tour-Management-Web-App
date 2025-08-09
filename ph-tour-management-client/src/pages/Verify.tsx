@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,11 +26,14 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useSendOtpMutation } from "@/redux/features/auth/auth.api";
+import {
+  useSendOtpMutation,
+  useVerifyOtpMutation,
+} from "@/redux/features/auth/auth.api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -43,21 +48,29 @@ type FormInputs = z.infer<typeof FormSchema>;
 //
 
 export default function Verify() {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
+  const [timer, setTimer] = useState<number>(320);
   const { state: email } = useLocation();
-  const [sendOtp] = useSendOtpMutation();
-
-  /* 
-  TODO: uncomment it
   const navigate = useNavigate();
+  const [sendOtp] = useSendOtpMutation();
+  const [verifyOtp] = useVerifyOtpMutation();
+
   useEffect(() => {
     if (!email) {
       navigate("/", { replace: true });
     }
   }, [email, navigate]);
 
-  if (!email) return null;
-  */
+  useEffect(() => {
+    if (!email || !isConfirmed) return;
+
+    const timerId = setInterval(() => {
+      if (timer > 0) setTimer((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, [email, isConfirmed, timer]);
 
   const form = useForm<FormInputs>({
     resolver: zodResolver(FormSchema),
@@ -66,21 +79,43 @@ export default function Verify() {
     },
   });
 
-  const handleConfirmed = async () => {
+  const handleSendOtp = async () => {
+    setIsSubmitting(true);
+    const toastId = toast.loading("Sending OTP");
     try {
       const result = await sendOtp({ email }).unwrap();
       if (result.success) {
+        setTimer(10);
         setIsConfirmed(true);
-        toast.success("OTP has been sent");
+        toast.success("OTP has been sent", { id: toastId });
       } else toast.error(result.message);
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error?.data?.message || error.message, { id: toastId });
       console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  function onSubmit(data: FormInputs) {
-    console.log({ data });
+  async function onSubmit(data: FormInputs) {
+    setIsSubmitting(true);
+    const toastId = toast.loading("Verifying OTP");
+    try {
+      const result = await verifyOtp({ otp: data.otp, email }).unwrap();
+
+      if (result.success) {
+        toast.success(result.message, { id: toastId });
+        navigate("/login", { replace: true });
+      } else toast.error(result.message);
+    } catch (error) {
+      toast.success("Failed to verify OTP, try again", { id: toastId });
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
+
+  if (!email) return null;
 
   return (
     <div className="grid place-content-center min-h-screen">
@@ -129,10 +164,32 @@ export default function Verify() {
                 />
               </form>
             </Form>
+
+            <div className="mt-2 flex items-center justify-between">
+              <Button
+                type="button"
+                variant="link"
+                onClick={handleSendOtp}
+                disabled={timer > 0 || isSubmitting}
+                className="p-0 disabled:text-muted-foreground"
+              >
+                Resend OTP
+              </Button>
+              <span>{timer}</span>
+            </div>
           </CardContent>
           <CardFooter className="justify-end">
-            <Button form="otp_form_r" type="submit" className="w-full">
-              Submit
+            <Button
+              form="otp_form_r"
+              type="submit"
+              className="w-full"
+              disabled={isSubmitting}
+            >
+              <LoadingSpinner
+                isLoading={isSubmitting}
+                defaultText="Submit"
+                loadingText="Submitting..."
+              />
             </Button>
           </CardFooter>
         </Card>
@@ -149,9 +206,14 @@ export default function Verify() {
               form="otp_form_r"
               type="button"
               className="w-full"
-              onClick={handleConfirmed}
+              onClick={handleSendOtp}
+              disabled={isSubmitting}
             >
-              Send
+              <LoadingSpinner
+                isLoading={isSubmitting}
+                defaultText="Send"
+                loadingText="Sending..."
+              />
             </Button>
           </CardFooter>
         </Card>

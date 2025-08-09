@@ -21,14 +21,14 @@ export function LoginForm({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmittin] = useState<boolean>(false);
   const navigate = useNavigate();
   const form = useForm();
   const [login] = useLoginMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      setLoading(true);
+      setIsSubmittin(true);
       const res = await login(data).unwrap();
       console.log(res);
       toast.success("User logged in successfully");
@@ -39,7 +39,7 @@ export function LoginForm({
         navigate("/verify", { state: data.email });
       } else toast.error(err?.data?.message || err?.message);
     } finally {
-      setLoading(false);
+      setIsSubmittin(false);
     }
   };
 
@@ -91,9 +91,9 @@ export function LoginForm({
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
               <LoadingSpinner
-                loading={loading}
+                isLoading={isSubmitting}
                 defaultText="Login"
                 loadingText="Logging in..."
               />

@@ -8,3 +8,8 @@ export interface iLogin {
 export interface iSendOtp {
   email: string;
 }
+
+export interface iVerifyOtp {
+  otp: string;
+  email: string;
+}
