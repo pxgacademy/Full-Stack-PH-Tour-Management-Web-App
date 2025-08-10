@@ -11,7 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useMyInfoQuery } from "@/redux/features/auth/auth.api";
+import useAuth from "@/hooks/useAuth";
 import { Link } from "react-router";
 import Logout from "../modules/logout/Logout";
 import { ModeToggle } from "./Mode.Toggler";
@@ -23,8 +23,7 @@ const navigationLinks = [
 ];
 
 export default function Navbar() {
-  const { data } = useMyInfoQuery(null);
-  const user = data?.data;
+  const { user } = useAuth();
 
   return (
     <header className="border-b px-4 sm:px-6 lg:px-8 container mx-auto">
