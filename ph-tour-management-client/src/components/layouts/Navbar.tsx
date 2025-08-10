@@ -11,19 +11,32 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { ROLES } from "@/constants/role";
 import useAuth from "@/hooks/useAuth";
 import { Link } from "react-router";
 import Logout from "../modules/logout/Logout";
 import { ModeToggle } from "./Mode.Toggler";
 
 // Navigation links array to be used in both desktop and mobile menus
-const navigationLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+let navLinks = [
+  { href: "/", label: "Home", role: ROLES.PUBLIC },
+  { href: "/about", label: "About", role: ROLES.PUBLIC },
+  { href: "/admin", label: "Dashboard", role: ROLES.ADMIN },
+  { href: "/user", label: "Dashboard", role: ROLES.USER },
 ];
 
 export default function Navbar() {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) return <div className="container mx-auto">Loading...</div>;
+
+  if (user) {
+    navLinks = navLinks.filter(
+      ({ role }) => role === "PUBLIC" || role === user.role
+    );
+  } else {
+    navLinks = navLinks.filter(({ role }) => role === "PUBLIC");
+  }
 
   return (
     <header className="border-b px-4 sm:px-6 lg:px-8 container mx-auto">
@@ -35,37 +48,13 @@ export default function Navbar() {
             <Popover>
               <PopoverTrigger asChild>
                 <Button className="group size-8" variant="ghost" size="icon">
-                  <svg
-                    className="pointer-events-none"
-                    width={16}
-                    height={16}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 12L20 12"
-                      className="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
-                    />
-                    <path
-                      d="M4 12H20"
-                      className="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
-                    />
-                    <path
-                      d="M4 12H20"
-                      className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
-                    />
-                  </svg>
+                  <Logo />
                 </Button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-36 p-1 md:hidden">
                 <NavigationMenu className="max-w-none *:w-full">
                   <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                    {navigationLinks.map(({ label, href }, index) => (
+                    {navLinks.map(({ label, href }, index) => (
                       <NavigationMenuItem key={index} className="w-full">
                         <NavigationMenuLink asChild className="py-1.5">
                           <Link to={href}>{label}</Link>
@@ -80,13 +69,13 @@ export default function Navbar() {
 
           {/* Main nav */}
           <div className="flex items-center gap-6">
-            <a href="#" className="text-primary hover:text-primary/90">
+            <Link to="/" className="text-primary hover:text-primary/90">
               <Logo />
-            </a>
+            </Link>
             {/* Navigation menu */}
             <NavigationMenu className="h-full *:h-full max-md:hidden">
               <NavigationMenuList className="h-full gap-2">
-                {navigationLinks.map(({ label, href }, index) => (
+                {navLinks.map(({ label, href }, index) => (
                   <NavigationMenuItem key={index} className="h-full">
                     <NavigationMenuLink
                       asChild

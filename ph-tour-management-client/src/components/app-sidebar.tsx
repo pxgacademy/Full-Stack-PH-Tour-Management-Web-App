@@ -13,21 +13,19 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { UserIntro } from "@/components/UserIntro";
-import { ROLES } from "@/constants/role";
 import useAuth from "@/hooks/useAuth";
+import type { tRole } from "@/types";
 import { getSidebarItems } from "@/utils/getSidebarItems";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, Navigate, useLocation } from "react-router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
   const { user, isLoading } = useAuth();
 
   if (isLoading) return <div>Loading...</div>;
-  if (!user) return navigate("/login", { state: { dest: pathname } });
+  if (!user) return <Navigate to="/login" state={{ dest: pathname }} />;
 
-  // const navItems = getSidebarItems(user.role as tRole);
-  const navItems = getSidebarItems(ROLES.SUPER_ADMIN);
+  const navItems = getSidebarItems(user.role as tRole);
 
   return (
     <Sidebar {...props}>
