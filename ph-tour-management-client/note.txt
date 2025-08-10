@@ -13,3 +13,13 @@ export const baseApi = createApi({
   }),
   endpoints: () => ({}),
 });
+
+SUPER_ADMIN
+ADMIN
+MODERATOR
+USER
+
+super_admin@mail.com
+admin@mail.com
+moderator@mail.com
+user@mail.com

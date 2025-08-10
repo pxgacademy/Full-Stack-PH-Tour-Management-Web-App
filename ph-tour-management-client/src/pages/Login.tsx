@@ -2,10 +2,11 @@ import Logo from "@/assets/icons/logo";
 import TravelLogin from "@/assets/images/travel-login.jpg";
 import { LoginForm } from "@/components/modules/authentication/LoginForm";
 import useAuth from "@/hooks/useAuth";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const { user, isLoading } = useAuth();
 
   if (isLoading)
@@ -13,7 +14,7 @@ export default function Login() {
       <div className="grid place-content-center min-h-screen">Loading...</div>
     );
 
-  if (user) navigate("/");
+  if (user) navigate(state.dest || "/");
 
   return (
     <div className="grid min-h-svh lg:grid-cols-2">

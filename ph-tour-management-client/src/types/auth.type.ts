@@ -1,5 +1,9 @@
 //
 
+import type { ROLES } from "@/constants/role";
+
+export type tRole = (typeof ROLES)[keyof typeof ROLES];
+
 export interface iLogin {
   email: string;
   password: string;
