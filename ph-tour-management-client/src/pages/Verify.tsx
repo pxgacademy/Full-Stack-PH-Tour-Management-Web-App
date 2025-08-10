@@ -51,10 +51,13 @@ export default function Verify() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(320);
-  const { state: email } = useLocation();
+  const { state } = useLocation();
   const navigate = useNavigate();
   const [sendOtp] = useSendOtpMutation();
   const [verifyOtp] = useVerifyOtpMutation();
+
+  const email = state?.email;
+  const dest = state?.dest;
 
   useEffect(() => {
     if (!email) {
@@ -105,7 +108,7 @@ export default function Verify() {
 
       if (result.success) {
         toast.success(result.message, { id: toastId });
-        navigate("/login", { replace: true });
+        navigate("/login", { replace: true, state: { dest } });
       } else toast.error(result.message);
     } catch (error) {
       toast.success("Failed to verify OTP, try again", { id: toastId });

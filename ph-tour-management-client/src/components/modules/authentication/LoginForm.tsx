@@ -10,36 +10,42 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { ENV } from "@/config/env_config";
 import { cn } from "@/lib/utils";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { useState, type HTMLAttributes } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
 
 export function LoginForm({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  const [isSubmitting, setIsSubmittin] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { state } = useLocation();
   const form = useForm();
   const [login] = useLoginMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      setIsSubmittin(true);
-      const res = await login(data).unwrap();
-      console.log(res);
-      toast.success("User logged in successfully");
+      setIsSubmitting(true);
+      const result = await login(data).unwrap();
+      if (result.success) {
+        toast.success("User logged in successfully");
+        navigate(state?.dest || "/");
+      } else toast.error(result.message);
     } catch (err: any) {
       console.error(err);
       if (err?.data?.message === "User is not verified") {
         toast.error("Your account is not verified");
-        navigate("/verify", { state: data.email });
+        navigate("/verify", {
+          state: { dest: state?.dest, email: data.email },
+        });
       } else toast.error(err?.data?.message || err?.message);
     } finally {
-      setIsSubmittin(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -111,13 +117,19 @@ export function LoginForm({
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
+          onClick={() => window.open(`${ENV.BASE_URL}/auth/google`)}
         >
           Login with Google
         </Button>
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <Link to="/register" replace className="underline underline-offset-4">
+        <Link
+          to="/register"
+          state={{ dest: state?.dest }}
+          replace
+          className="underline underline-offset-4"
+        >
           Register
         </Link>
       </div>

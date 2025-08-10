@@ -17,7 +17,7 @@ import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -59,6 +59,7 @@ export function RegisterForm({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [register] = useRegisterMutation();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(registerSchema),
@@ -84,9 +85,12 @@ export function RegisterForm({
 
     try {
       const result = await register(userInfo).unwrap();
-      console.log(result);
-      toast.success("User created successfully");
-      navigate("/verify");
+      if (result.success) {
+        toast.success("User created successfully");
+        navigate("/verify", {
+          state: { dest: state?.dest, email: data.email },
+        });
+      } else toast.error(result.message);
     } catch (error: any) {
       toast.error(error.data?.message || error?.message);
       console.error(error);
@@ -220,7 +224,11 @@ export function RegisterForm({
 
       <div className="text-center text-sm">
         Already have an account?{" "}
-        <Link to="/login" className="underline underline-offset-4">
+        <Link
+          to="/login"
+          state={{ dest: state?.dest }}
+          className="underline underline-offset-4"
+        >
           Login
         </Link>
       </div>

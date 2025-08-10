@@ -3,9 +3,10 @@ import axios from "axios";
 
 export const axiosInstance = axios.create({
   baseURL: ENV.BASE_URL,
+  withCredentials: true,
 });
 
-// Add a request interceptor
+// request interceptor
 axiosInstance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
@@ -17,7 +18,7 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Add a response interceptor
+// response interceptor
 axiosInstance.interceptors.response.use(
   function onFulfilled(response) {
     // Any status code that lie within the range of 2xx cause this function to trigger

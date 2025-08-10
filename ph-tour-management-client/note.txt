@@ -1,4 +1,15 @@
 
 
-
+make interface to json
 https://transform.tools/json-to-typescript
+
+
+
+export const baseApi = createApi({
+  reducerPath: "baseApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: '',
+    credentials: "include"
+  }),
+  endpoints: () => ({}),
+});
