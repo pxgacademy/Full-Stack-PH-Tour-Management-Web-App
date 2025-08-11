@@ -17,12 +17,14 @@ import useAuth from "@/hooks/useAuth";
 import type { tRole } from "@/types";
 import { getSidebarItems } from "@/utils/getSidebarItems";
 import { Link, Navigate, useLocation } from "react-router";
+import LoadingText from "./Loader/LoadingText";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { pathname } = useLocation();
   const { user, isLoading } = useAuth();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return <LoadingText className="min-h-screen flex items-center" />;
   if (!user) return <Navigate to="/login" state={{ dest: pathname }} />;
 
   const navItems = getSidebarItems(user.role as tRole);

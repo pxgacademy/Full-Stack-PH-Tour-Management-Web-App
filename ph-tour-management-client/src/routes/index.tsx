@@ -1,5 +1,8 @@
 import App from "@/App";
+import { ROLES } from "@/constants/role";
+import Unauthorized from "@/pages/Unauthorized";
 import { generateRoutes } from "@/utils/generateRoutes";
+import { withAuth } from "@/utils/withAuth";
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
 import { adminSidebarItems } from "./adminSidebarItems";
@@ -23,6 +26,8 @@ const userRoutes = [
   ...generateRoutes(userSidebarItems),
 ];
 
+const { SUPER_ADMIN, ADMIN, USER } = ROLES;
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,13 +37,13 @@ export const router = createBrowserRouter([
 
   {
     path: "admin",
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, SUPER_ADMIN, ADMIN),
     children: adminRoutes,
   },
 
   {
     path: "user",
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, SUPER_ADMIN, ADMIN, USER),
     children: userRoutes,
   },
 
@@ -55,5 +60,10 @@ export const router = createBrowserRouter([
   {
     path: "verify",
     Component: Verify,
+  },
+
+  {
+    path: "unauthorized",
+    Component: Unauthorized,
   },
 ]);

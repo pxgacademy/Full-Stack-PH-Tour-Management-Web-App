@@ -14,10 +14,10 @@ import {
 import { ROLES } from "@/constants/role";
 import useAuth from "@/hooks/useAuth";
 import { Link } from "react-router";
+import LoadingText from "../Loader/LoadingText";
 import Logout from "../modules/logout/Logout";
 import { ModeToggle } from "./Mode.Toggler";
 
-// Navigation links array to be used in both desktop and mobile menus
 let navLinks = [
   { href: "/", label: "Home", role: ROLES.PUBLIC },
   { href: "/about", label: "About", role: ROLES.PUBLIC },
@@ -28,7 +28,8 @@ let navLinks = [
 export default function Navbar() {
   const { user, isLoading } = useAuth();
 
-  if (isLoading) return <div className="container mx-auto">Loading...</div>;
+  if (isLoading)
+    return <LoadingText className="grid place-content-center mt-4" />;
 
   if (user) {
     navLinks = navLinks.filter(

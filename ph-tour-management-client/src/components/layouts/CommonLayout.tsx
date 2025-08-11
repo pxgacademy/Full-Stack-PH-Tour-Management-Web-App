@@ -7,7 +7,7 @@ export default function CommonLayout({ children }: iChildren) {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       {children}
-      <div className="grow-1" />
+      <div className="flex-1" />
       <Footer />
     </div>
   );

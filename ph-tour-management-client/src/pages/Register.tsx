@@ -1,5 +1,6 @@
 import Logo from "@/assets/icons/logo";
 import TravelRegister from "@/assets/images/travel-register.jpg";
+import Loading from "@/components/Loader/Loading";
 import { RegisterForm } from "@/components/modules/authentication/RegisterForm";
 import useAuth from "@/hooks/useAuth";
 import { Link, useNavigate } from "react-router";
@@ -8,11 +9,7 @@ export default function Register() {
   const navigate = useNavigate();
   const { user, isLoading } = useAuth();
 
-  if (isLoading)
-    return (
-      <div className="grid place-content-center min-h-screen">Loading...</div>
-    );
-
+  if (isLoading) return <Loading />;
   if (user) navigate("/");
 
   return (
