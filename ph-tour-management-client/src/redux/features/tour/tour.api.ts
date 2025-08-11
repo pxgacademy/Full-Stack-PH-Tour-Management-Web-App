@@ -1,5 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
-import type { iResponse, iTourType } from "@/types";
+import type { iResponse, iTourType, iUpdateTourType } from "@/types";
 
 export const tourApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,6 +8,23 @@ export const tourApi = baseApi.injectEndpoints({
         url: "/tours/create-tour-type",
         method: "POST",
         data,
+      }),
+      invalidatesTags: ["TOUR_TYPE"],
+    }),
+
+    updateTourType: builder.mutation<iResponse<iTourType>, iUpdateTourType>({
+      query: ({ id, name }) => ({
+        url: `/tours/tour-type/${id}`,
+        method: "PATCH",
+        data: { name },
+      }),
+      invalidatesTags: ["TOUR_TYPE"],
+    }),
+
+    deleteTourType: builder.mutation<iResponse<null>, { id: string }>({
+      query: ({ id }) => ({
+        url: `/tours/tour-type/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["TOUR_TYPE"],
     }),
@@ -23,7 +40,12 @@ export const tourApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useCreateTourTypeMutation, useTourTypesQuery } = tourApi;
+export const {
+  useCreateTourTypeMutation,
+  useDeleteTourTypeMutation,
+  useUpdateTourTypeMutation,
+  useTourTypesQuery,
+} = tourApi;
 
 /*
   RTK Query builder.query generic

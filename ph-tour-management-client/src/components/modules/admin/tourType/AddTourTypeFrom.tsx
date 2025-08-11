@@ -32,7 +32,11 @@ const formSchema = z.object({
 
 type FormValue = z.infer<typeof formSchema>;
 
-const AddTourTypeFrom = () => {
+interface iProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddTourTypeFrom = ({ setOpen }: iProps) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [addTourType] = useCreateTourTypeMutation();
 
@@ -50,6 +54,7 @@ const AddTourTypeFrom = () => {
       if (result.success) {
         toast.success("Tour Type created successfully");
         form.reset();
+        setOpen(false);
       } else toast.error(result.message);
     } catch (error) {
       console.log(error);

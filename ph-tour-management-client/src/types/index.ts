@@ -25,3 +25,8 @@ export interface iSidebarItem {
     Component: ComponentType;
   }[];
 }
+
+export interface iUpdateTourType {
+  id: string;
+  name: string;
+}
