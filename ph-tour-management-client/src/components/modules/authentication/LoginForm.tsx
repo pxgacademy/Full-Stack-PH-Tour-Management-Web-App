@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { ENV } from "@/config/env_config";
 import { cn } from "@/lib/utils";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
+import type { iLogin } from "@/types";
 import { useState, type HTMLAttributes } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -31,7 +32,7 @@ export function LoginForm({
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       setIsSubmitting(true);
-      const result = await login(data).unwrap();
+      const result = await login(data as iLogin).unwrap();
       if (result.success) {
         toast.success("User logged in successfully");
         navigate(state?.dest || "/");
