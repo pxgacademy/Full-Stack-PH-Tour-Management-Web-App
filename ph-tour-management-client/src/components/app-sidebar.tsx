@@ -40,13 +40,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {navItems.map((item) => (
-          <SidebarGroup key={item.title}>
+        {navItems.map((item, i) => (
+          <SidebarGroup key={i}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {item.items.map(({ title, url }) => (
-                  <SidebarMenuItem key={title}>
+                  <SidebarMenuItem key={url}>
                     <SidebarMenuButton asChild isActive={pathname === url}>
                       <Link to={url}>{title}</Link>
                     </SidebarMenuButton>

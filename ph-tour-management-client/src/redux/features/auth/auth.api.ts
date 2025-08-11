@@ -1,9 +1,15 @@
 import { baseApi } from "@/redux/baseApi";
-import type { iResponse, iSendOtp, iUserInfo, iVerifyOtp } from "@/types";
+import type {
+  iLogin,
+  iResponse,
+  iSendOtp,
+  iUserInfo,
+  iVerifyOtp,
+} from "@/types";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation({
+    login: builder.mutation<iResponse<iUserInfo>, iLogin>({
       query: (data) => ({
         url: "/auth/login",
         method: "POST",

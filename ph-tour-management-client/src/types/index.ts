@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
 
+export type { iTourType } from "./tour.type";
+
 export type {
   iLogin,
   iSendOtp,

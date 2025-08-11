@@ -18,10 +18,11 @@ import LoadingText from "../Loader/LoadingText";
 import Logout from "../modules/logout/Logout";
 import { ModeToggle } from "./Mode.Toggler";
 
-let navLinks = [
+const defaultLinks = [
   { href: "/", label: "Home", role: ROLES.PUBLIC },
   { href: "/about", label: "About", role: ROLES.PUBLIC },
   { href: "/admin", label: "Dashboard", role: ROLES.ADMIN },
+  { href: "/admin", label: "Dashboard", role: ROLES.SUPER_ADMIN },
   { href: "/user", label: "Dashboard", role: ROLES.USER },
 ];
 
@@ -31,13 +32,9 @@ export default function Navbar() {
   if (isLoading)
     return <LoadingText className="grid place-content-center mt-4" />;
 
-  if (user) {
-    navLinks = navLinks.filter(
-      ({ role }) => role === "PUBLIC" || role === user.role
-    );
-  } else {
-    navLinks = navLinks.filter(({ role }) => role === "PUBLIC");
-  }
+  const navLinks = user
+    ? defaultLinks.filter(({ role }) => role === "PUBLIC" || role === user.role)
+    : defaultLinks.filter(({ role }) => role === "PUBLIC");
 
   return (
     <header className="border-b px-4 sm:px-6 lg:px-8 container mx-auto">
