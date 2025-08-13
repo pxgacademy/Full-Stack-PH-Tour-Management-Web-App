@@ -1,6 +1,6 @@
+import DeleteConfirmation from "@/components/DeleteConfirmation";
 import Loading from "@/components/Loader/Loading";
 import AddTourTypeFrom from "@/components/modules/admin/tourType/AddTourTypeFrom";
-import DeleteTourTypeModal from "@/components/modules/admin/tourType/DeleteTourTypeModal";
 import UpdateTourTypeModal from "@/components/modules/admin/tourType/UpdateTourTypeModal";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
@@ -13,13 +13,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useTourTypesQuery } from "@/redux/features/tour/tour.api";
+import {
+  useDeleteTourTypeMutation,
+  useTourTypesQuery,
+} from "@/redux/features/tour/tour.api";
 import { formatDate } from "@/utils/formatDate";
+import { Trash2 } from "lucide-react";
 import { useState } from "react";
 
 export default function AddTourType() {
   const [open, setOpen] = useState<boolean>(false);
   const { data, isLoading } = useTourTypesQuery(null);
+  const [deleteTourType] = useDeleteTourTypeMutation();
+
+  const handleDelete = async (id: string) =>
+    await deleteTourType({ id }).unwrap();
 
   if (isLoading) return <Loading />;
 
@@ -54,7 +62,14 @@ export default function AddTourType() {
               </TableCell>
 
               <TableCell className="text-center">
-                <DeleteTourTypeModal id={_id} name={name} />
+                <DeleteConfirmation
+                  name={name}
+                  onConfirm={() => handleDelete(_id)}
+                >
+                  <Button variant="destructive" size="xs" className="text-sm">
+                    <Trash2 />
+                  </Button>
+                </DeleteConfirmation>
               </TableCell>
             </TableRow>
           ))}

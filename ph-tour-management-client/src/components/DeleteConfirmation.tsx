@@ -9,32 +9,35 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import { useDeleteTourTypeMutation } from "@/redux/features/tour/tour.api";
-
+import type { iChildren } from "@/global-interfaces";
+import type { iResponse } from "@/types";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-interface iProps {
-  id: string;
+interface iProps extends iChildren {
+  onConfirm: () => Promise<iResponse<null>>;
   name: string;
 }
 
-export default function DeleteTourTypeModal({ id, name }: iProps) {
+export default function DeleteConfirmation({
+  children,
+  onConfirm,
+  name,
+}: iProps) {
   const [deleting, setDeleting] = useState<boolean>(false);
-  const [deleteTourType] = useDeleteTourTypeMutation();
 
-  const handleLogout = async () => {
+  const handleConfirm = async () => {
+    const loaderId = toast.loading(`Deleting ${name}`);
+
     setDeleting(true);
-    const loaderId = toast.loading("Deleting Tour Type");
     try {
-      const result = await deleteTourType({ id }).unwrap();
+      const result = await onConfirm();
       if (result.success) {
-        toast.success("Deleted the tour type successfully", { id: loaderId });
+        toast.success(result.message, { id: loaderId });
       } else toast.error(result.message, { id: loaderId });
     } catch {
-      toast.error("Failed to delete tour type", { id: loaderId });
+      toast.error(`Failed to delete ${name}`, { id: loaderId });
     } finally {
       setDeleting(false);
     }
@@ -42,11 +45,7 @@ export default function DeleteTourTypeModal({ id, name }: iProps) {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="xs" className="text-sm">
-          <Trash2 />
-        </Button>
-      </AlertDialogTrigger>
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -58,7 +57,7 @@ export default function DeleteTourTypeModal({ id, name }: iProps) {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            onClick={handleLogout}
+            onClick={handleConfirm}
             className="bg-destructive hover:bg-destructive/90 text-white"
             disabled={deleting}
           >
