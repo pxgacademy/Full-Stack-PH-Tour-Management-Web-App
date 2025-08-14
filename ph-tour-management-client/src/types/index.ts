@@ -1,6 +1,12 @@
 import type { ComponentType } from "react";
 
-export type { iTourType } from "./tour.type";
+export type { iDivision, iDivisionResponse } from "./division.type";
+
+export type {
+  iTourType,
+  iTourTypeResponse,
+  iUpdateTourType,
+} from "./tour.type";
 
 export type {
   iLogin,
@@ -24,9 +30,4 @@ export interface iSidebarItem {
     url: string;
     Component: ComponentType;
   }[];
-}
-
-export interface iUpdateTourType {
-  id: string;
-  name: string;
 }

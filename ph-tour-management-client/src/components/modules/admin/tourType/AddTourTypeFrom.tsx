@@ -1,4 +1,5 @@
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
+import SheetWrapper from "@/components/SheetWrapper";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,12 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
 import { useCreateTourTypeMutation } from "@/redux/features/tour/tour.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -65,42 +60,37 @@ const AddTourTypeFrom = ({ setOpen }: iProps) => {
   };
 
   return (
-    <SheetContent>
-      <SheetHeader>
-        <SheetTitle className="mb-4">Create a Tour Type</SheetTitle>
-        <SheetDescription asChild>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tour Type Name</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder="Enter name here..." />
-                    </FormControl>
-                    <FormDescription>
-                      This is your public tour type name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
+    <SheetWrapper title="Create a Tour Type">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tour Type Name</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Enter name here..." />
+                </FormControl>
+                <FormDescription>
+                  This is your public tour type name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex justify-end mt-4">
+            <Button type="submit" disabled={submitting}>
+              <LoadingSpinner
+                isLoading={submitting}
+                defaultText="Submit"
+                loadingText="Submitting..."
               />
-              <div className="flex justify-end mt-4">
-                <Button type="submit" disabled={submitting}>
-                  <LoadingSpinner
-                    isLoading={submitting}
-                    defaultText="Submit"
-                    loadingText="Submitting..."
-                  />
-                </Button>
-              </div>
-            </form>
-          </Form>
-        </SheetDescription>
-      </SheetHeader>
-    </SheetContent>
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </SheetWrapper>
   );
 };
 export default AddTourTypeFrom;
