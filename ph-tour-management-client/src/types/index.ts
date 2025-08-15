@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 export type { iDivision, iDivisionResponse } from "./division.type";
 
 export type {
+  iTourResponse,
   iTourType,
   iTourTypeResponse,
   iUpdateTourType,

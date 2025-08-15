@@ -29,7 +29,7 @@ const SheetWrapper = ({
       <SheetTrigger asChild>
         <Button size="sm">{buttonText}</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="h-full min-h-screen">
         <SheetHeader>
           <SheetTitle className="mb-4">{title}</SheetTitle>
           <SheetDescription asChild>{children}</SheetDescription>

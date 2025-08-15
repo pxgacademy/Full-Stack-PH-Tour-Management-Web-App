@@ -23,3 +23,5 @@ super_admin@mail.com
 admin@mail.com
 moderator@mail.com
 user@mail.com
+
+Aa12345!

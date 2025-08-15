@@ -35,7 +35,7 @@ export default function AddDivision() {
   return (
     <div className="w-full max-w-4xl mx-auto p-5">
       <div className="flex justify-between gap-2.5 flex-wrap mb-5">
-        <h1 className="text-xl font-semibold">Tour Types</h1>
+        <h1 className="text-xl font-semibold">Divisions</h1>
         <AddDivisionForm />
       </div>
       <Table className="border border-muted">
