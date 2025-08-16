@@ -20,6 +20,7 @@ import { ModeToggle } from "./Mode.Toggler";
 
 const defaultLinks = [
   { href: "/", label: "Home", role: ROLES.PUBLIC },
+  { href: "/tours", label: "Tours", role: ROLES.PUBLIC },
   { href: "/about", label: "About", role: ROLES.PUBLIC },
   { href: "/admin", label: "Dashboard", role: ROLES.ADMIN },
   { href: "/admin", label: "Dashboard", role: ROLES.SUPER_ADMIN },
