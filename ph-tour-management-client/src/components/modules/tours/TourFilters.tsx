@@ -1,3 +1,4 @@
+import PaginationComponent from "@/components/PaginationComponent";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -62,7 +63,7 @@ export default function TourFilters() {
 
   return (
     <div className="col-span-3 w-full relative">
-      <div className="min-h-96 border border-muted rounded-md p-5 mb-5 space-y-4 sticky top-0">
+      <div className="min-h-96 flex flex-col gap-y-4 border border-muted rounded-md p-5 mb-5 sticky top-0">
         <div className="flex justify-between items-center">
           <h1>Filters</h1>
           <Button size="sm" variant="outline" onClick={handleClearFilter}>
@@ -77,7 +78,7 @@ export default function TourFilters() {
             disabled={divisionIsLoading}
           >
             <SelectTrigger className="w-full">
-              <SelectValue />
+              <SelectValue placeholder="Select a Division" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -93,7 +94,7 @@ export default function TourFilters() {
             </SelectContent>
           </Select>
         </div>
-        <div>
+        <div className="flex-1">
           <Label className="mb-2">Tour Type</Label>
           <Select
             onValueChange={handleTourTypeChange}
@@ -101,11 +102,11 @@ export default function TourFilters() {
             disabled={tourTypeIsLoading}
           >
             <SelectTrigger className="w-full">
-              <SelectValue />
+              <SelectValue placeholder="Select a Tour-Type" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Divisions</SelectLabel>
+                <SelectLabel>Tour Types</SelectLabel>
                 {tourTypeOptions?.map(
                   (item: { value: string; label: string }) => (
                     <SelectItem key={item.value} value={item.value}>
@@ -117,6 +118,8 @@ export default function TourFilters() {
             </SelectContent>
           </Select>
         </div>
+
+        <PaginationComponent totalPages={10} currentPage={3} />
       </div>
     </div>
   );

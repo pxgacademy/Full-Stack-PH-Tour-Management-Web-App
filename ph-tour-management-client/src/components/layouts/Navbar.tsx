@@ -38,8 +38,8 @@ export default function Navbar() {
     : defaultLinks.filter(({ role }) => role === "PUBLIC");
 
   return (
-    <header className="border-b px-4 sm:px-6 lg:px-8 container mx-auto">
-      <div className="flex h-16 justify-between gap-4">
+    <header className="border border-muted/70 px-4 py-5 sm:px-6 lg:px-8 container mx-auto rounded-2xl mt-3">
+      <div className="flex justify-between gap-4">
         {/* Left side */}
         <div className="flex gap-2">
           <div className="flex items-center md:hidden">

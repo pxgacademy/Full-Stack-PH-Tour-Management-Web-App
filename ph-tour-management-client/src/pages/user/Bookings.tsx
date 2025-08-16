@@ -23,10 +23,10 @@ export default function Booking() {
   });
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && !isError) {
       setTotalAmount(guestCount * tour!.costFrom);
     }
-  }, [guestCount, totalAmount, isLoading, tour]);
+  }, [guestCount, totalAmount, isLoading, tour, isError]);
 
   const incrementGuest = () => {
     setGuestCount((prv) => prv + 1);
@@ -72,11 +72,7 @@ export default function Booking() {
           {/* Left Section - Tour Summary */}
           <div className="flex-1 space-y-6">
             <div>
-              <img
-                src={tour?.images[0]}
-                alt={tour?.title}
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <img src={tour?.images[0]} alt={tour?.title} className="w-full h-64 object-cover rounded-lg" />
             </div>
 
             <div>
@@ -88,8 +84,7 @@ export default function Booking() {
                   <strong>Location:</strong> {tour?.location}
                 </div>
                 <div>
-                  <strong>Duration:</strong> {tour?.startDate} to{" "}
-                  {tour?.endDate}
+                  <strong>Duration:</strong> {tour?.startDate} to {tour?.endDate}
                 </div>
                 <div>
                   <strong>Tour Type:</strong> {tourType.name}
@@ -111,9 +106,11 @@ export default function Booking() {
 
             <div>
               <h3 className="text-xl font-semibold mb-2">Tour Plan</h3>
-              <ol className="list-decimal list-inside text-sm space-y-1">
+              <ol className="list-decimal list-inside text-sm space-y-3">
                 {tour?.tourPlane.map((plan, index) => (
-                  <li key={index}>{plan}</li>
+                  <li key={index} className="border rounded-xl p-1.5">
+                    {plan}
+                  </li>
                 ))}
               </ol>
             </div>
@@ -126,15 +123,9 @@ export default function Booking() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Number of Guests
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Number of Guests</label>
                   <div className="flex items-center space-x-3">
-                    <button
-                      onClick={decrementGuest}
-                      disabled={guestCount <= 1}
-                      className={guestButtonClass}
-                    >
+                    <button onClick={decrementGuest} disabled={guestCount <= 1} className={guestButtonClass}>
                       <Minus size={16} />
                     </button>
 
@@ -143,9 +134,7 @@ export default function Booking() {
                       value={guestCount}
                       onChange={(e) => {
                         const value = Number(e.target.value);
-                        setGuestCount(
-                          value > tour.maxGuest ? tour.maxGuest : value
-                        );
+                        setGuestCount(value > tour.maxGuest ? tour.maxGuest : value);
                       }}
                       className="text-lg font-medium w-8 text-center focus:border-none focus:outline-none"
                     />

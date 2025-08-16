@@ -25,3 +25,15 @@ moderator@mail.com
 user@mail.com
 
 Aa12345!
+
+
+
+
+
+
+
+
+
+
+
+bun add @tiptap/extension-heading @tiptap/extension-highlight @tiptap/extension-list @tiptap/extension-text-align @tiptap/pm @tiptap/react @tiptap/starter-kit

@@ -29,7 +29,9 @@ export default function Tours() {
             </div>
             <div className="p-6 flex-1">
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-muted-foreground mb-3">{item.description}</p>
+              <p className="text-muted-foreground mb-3 line-clamp-3">
+                {item.description}
+              </p>
 
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xl font-bold text-primary">
