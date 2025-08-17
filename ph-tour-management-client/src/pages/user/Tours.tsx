@@ -4,19 +4,33 @@ import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useGetToursQuery } from "@/redux/features/tour/tour.api";
 import DOMPurify from "isomorphic-dompurify";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 export default function Tours() {
-  const { data, isLoading } = useGetToursQuery(null);
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search") || undefined;
+  const division = searchParams.get("division") || undefined;
+  const tourType = searchParams.get("tourType") || undefined;
+  const sort = searchParams.get("sort") || undefined;
+  const page = searchParams.get("page") || undefined;
+  const limit = searchParams.get("limit") || undefined;
+
+  const { data, isLoading } = useGetToursQuery({ search, division, tourType, sort, page, limit });
 
   if (isLoading) return <Loading />;
 
+  const tours = data?.data;
+  const totalPages = data?.meta?.total_page;
+  const currentPage = data?.meta?.present_page;
+
+  console.log(data?.meta);
+
   return (
     <div className="container mx-auto px-5 py-8 grid grid-cols-12 gap-5">
-      <TourFilters />
+      <TourFilters totalPages={totalPages!} currentPage={currentPage!} />
 
       <div className="col-span-12 lg:col-span-9 w-full">
-        {data?.map((item) => (
+        {tours?.map((item) => (
           <div
             key={item.slug}
             className="border border-muted rounded-lg shadow-md overflow-hidden mb-6 flex flex-col md:flex-row"

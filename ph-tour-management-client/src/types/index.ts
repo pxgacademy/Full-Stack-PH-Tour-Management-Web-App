@@ -7,18 +7,13 @@ export type { iDivision, iDivisionResponse } from "./division.type";
 
 export type {
   iTourResponse,
+  iTourSearchParams,
   iTourType,
   iTourTypeResponse,
   iUpdateTourType,
 } from "./tour.type";
 
-export type {
-  iLogin,
-  iSendOtp,
-  iUserInfo,
-  iVerifyOtp,
-  tRole,
-} from "./auth.type";
+export type { iLogin, iSendOtp, iUserInfo, iVerifyOtp, tRole } from "./auth.type";
 
 export interface iResponse<T> {
   statusCode: number;

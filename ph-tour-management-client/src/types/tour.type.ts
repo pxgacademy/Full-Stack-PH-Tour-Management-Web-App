@@ -38,3 +38,12 @@ export interface iTourResponse {
   division: string | iDivisionResponse;
   tourType: string | iTourTypeResponse;
 }
+
+export interface iTourSearchParams {
+  search?: string;
+  sort?: string;
+  division?: string;
+  tourType?: string;
+  page?: string;
+  limit?: string;
+}

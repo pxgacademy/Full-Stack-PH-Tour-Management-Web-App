@@ -1,9 +1,4 @@
-import {
-  ChevronFirstIcon,
-  ChevronLastIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react";
+import { ChevronFirstIcon, ChevronLastIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import {
   Pagination,
@@ -13,6 +8,7 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 import { usePagination } from "@/hooks/use-pagination";
+import { useSearchParams } from "react-router";
 
 type PaginationProps = {
   currentPage: number;
@@ -23,7 +19,7 @@ type PaginationProps = {
 export default function PaginationComponent({
   currentPage,
   totalPages,
-  paginationItemsToDisplay = 5,
+  paginationItemsToDisplay = 10,
 }: PaginationProps) {
   const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
     currentPage,
@@ -31,33 +27,45 @@ export default function PaginationComponent({
     paginationItemsToDisplay,
   });
 
+  //
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handlePageChange = (value: number | undefined) => {
+    if (value) {
+      const params = new URLSearchParams(searchParams);
+      params.set("page", String(value));
+      setSearchParams(params);
+    }
+  };
+
   return (
     <Pagination>
       <PaginationContent>
         {/* First page button */}
         <PaginationItem>
-          <PaginationLink
+          <button
             className="aria-disabled:pointer-events-none aria-disabled:opacity-50"
-            href={currentPage === 1 ? undefined : `#/page/${currentPage - 1}`}
             aria-label="Go to first page"
             aria-disabled={currentPage === 1 ? true : undefined}
-            role={currentPage === 1 ? "link" : undefined}
+            role={currentPage === 1 ? "button" : undefined}
+            onClick={() => handlePageChange(currentPage === 1 ? undefined : 1)}
           >
             <ChevronFirstIcon size={16} aria-hidden="true" />
-          </PaginationLink>
+          </button>
         </PaginationItem>
 
         {/* Previous page button */}
         <PaginationItem>
-          <PaginationLink
+          <button
             className="aria-disabled:pointer-events-none aria-disabled:opacity-50"
-            href={currentPage === 1 ? undefined : `?page/${currentPage - 1}`}
             aria-label="Go to previous page"
             aria-disabled={currentPage === 1 ? true : undefined}
-            role={currentPage === 1 ? "link" : undefined}
+            role={currentPage === 1 ? "button" : undefined}
+            onClick={() => handlePageChange(currentPage === 1 ? undefined : currentPage - 1)}
           >
             <ChevronLeftIcon size={16} aria-hidden="true" />
-          </PaginationLink>
+          </button>
         </PaginationItem>
 
         {/* Left ellipsis (...) */}
@@ -70,10 +78,7 @@ export default function PaginationComponent({
         {/* Page number links */}
         {pages.map((page) => (
           <PaginationItem key={page}>
-            <PaginationLink
-              href={`#/page/${page}`}
-              isActive={page === currentPage}
-            >
+            <PaginationLink onClick={() => handlePageChange(page)} isActive={page === currentPage}>
               {page}
             </PaginationLink>
           </PaginationItem>
@@ -88,34 +93,30 @@ export default function PaginationComponent({
 
         {/* Next page button */}
         <PaginationItem>
-          <PaginationLink
+          <button
             className="aria-disabled:pointer-events-none aria-disabled:opacity-50"
-            href={
-              currentPage === totalPages
-                ? undefined
-                : `#/page/${currentPage + 1}`
-            }
             aria-label="Go to next page"
             aria-disabled={currentPage === totalPages ? true : undefined}
-            role={currentPage === totalPages ? "link" : undefined}
+            role={currentPage === totalPages ? "button" : undefined}
+            onClick={() =>
+              handlePageChange(currentPage === totalPages ? undefined : currentPage + 1)
+            }
           >
             <ChevronRightIcon size={16} aria-hidden="true" />
-          </PaginationLink>
+          </button>
         </PaginationItem>
 
         {/* Last page button */}
         <PaginationItem>
-          <PaginationLink
+          <button
             className="aria-disabled:pointer-events-none aria-disabled:opacity-50"
-            href={
-              currentPage === totalPages ? undefined : `#/page/${totalPages}`
-            }
             aria-label="Go to last page"
             aria-disabled={currentPage === totalPages ? true : undefined}
-            role={currentPage === totalPages ? "link" : undefined}
+            role={currentPage === totalPages ? "button" : undefined}
+            onClick={() => handlePageChange(currentPage === totalPages ? undefined : totalPages)}
           >
             <ChevronLastIcon size={16} aria-hidden="true" />
-          </PaginationLink>
+          </button>
         </PaginationItem>
       </PaginationContent>
     </Pagination>
