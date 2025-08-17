@@ -1,4 +1,5 @@
 import Loading from "@/components/Loader/Loading";
+import RichTextEditor from "@/components/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -10,11 +11,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Label } from "@/components/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -22,18 +20,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { useGetDivisionsQuery } from "@/redux/features/division/division.api";
 import { useTourTypesQuery } from "@/redux/features/tour/tour.api";
 import { format } from "date-fns";
 import { CalendarIcon, Plus, X } from "lucide-react";
 import { useState } from "react";
-import {
-  useFieldArray,
-  type SubmitHandler,
-  type UseFormReturn,
-} from "react-hook-form";
+import { useFieldArray, type SubmitHandler, type UseFormReturn } from "react-hook-form";
 import type { TourFormValues } from "./tourValidation";
 
 const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -41,15 +34,22 @@ const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 interface AddTourFormProps {
   form: UseFormReturn<TourFormValues>;
   onSubmit: SubmitHandler<TourFormValues>;
+  descriptionContent: string;
+  setDescriptionContent: React.Dispatch<React.SetStateAction<string>>;
+  descriptionError?: boolean;
 }
 
 // Add Tour Form
 
-const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
-  const { data: divisions, isLoading: divisionLoading } =
-    useGetDivisionsQuery(null);
-  const { data: tourTypes, isLoading: tourTypeLoading } =
-    useTourTypesQuery(null);
+const AddTourForm = ({
+  form,
+  onSubmit,
+  descriptionContent,
+  setDescriptionContent,
+  descriptionError,
+}: AddTourFormProps) => {
+  const { data: divisions, isLoading: divisionLoading } = useGetDivisionsQuery(null);
+  const { data: tourTypes, isLoading: tourTypeLoading } = useTourTypesQuery(null);
 
   const [isStartDateOpen, setIsStartDateOpen] = useState(false);
   const [isEndDateOpen, setIsEndDateOpen] = useState(false);
@@ -94,11 +94,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6"
-        id="addTourForm"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" id="addTourForm">
         <FormField
           control={form.control}
           name="title"
@@ -113,23 +109,23 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tour description</FormLabel>
-              <FormControl>
-                <Textarea
-                  {...field}
-                  placeholder="Enter description here..."
-                  className="min-h-40 max-h-96"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+        <div>
+          <Label
+            className={`mb-2 ${descriptionError && (!descriptionContent || descriptionContent === "<p></p>") && "text-destructive"}`}
+          >
+            Tour Description
+          </Label>
+          <RichTextEditor
+            content={descriptionContent}
+            onChange={setDescriptionContent}
+            error={descriptionError}
+          />
+          {descriptionError && (!descriptionContent || descriptionContent === "<p></p>") && (
+            <span className="text-destructive text-sm mt-2 inline-block">
+              Description is required
+            </span>
           )}
-        />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
           <FormField
@@ -138,10 +134,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Start Date</FormLabel>
-                <Popover
-                  open={isStartDateOpen}
-                  onOpenChange={setIsStartDateOpen}
-                >
+                <Popover open={isStartDateOpen} onOpenChange={setIsStartDateOpen}>
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -151,11 +144,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
                           !field.value && "text-muted-foreground"
                         )}
                       >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
+                        {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
@@ -192,11 +181,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
                           !field.value && "text-muted-foreground"
                         )}
                       >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
+                        {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
@@ -297,10 +282,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
               <FormItem>
                 <FormLabel>Departure Location</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter departure location here..."
-                  />
+                  <Input {...field} placeholder="Enter departure location here..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -314,10 +296,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
               <FormItem>
                 <FormLabel>Arrival Location</FormLabel>
                 <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Enter arrival location here..."
-                  />
+                  <Input {...field} placeholder="Enter arrival location here..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -332,10 +311,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Division</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a division" />
@@ -360,10 +336,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Tour Type</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a tour type" />
@@ -523,10 +496,7 @@ const AddTourForm = ({ form, onSubmit }: AddTourFormProps) => {
                     <FormItem>
                       <FormControl>
                         <span className="inline-flex items-center relative">
-                          <Input
-                            {...field}
-                            placeholder="Enter tour plan item"
-                          />
+                          <Input {...field} placeholder="Enter tour plan item" />
                           <button
                             type="button"
                             onClick={() => tourPlaneRemove(index)}

@@ -1,4 +1,5 @@
 import Loading from "@/components/Loader/Loading";
+import RichTextEditor from "@/components/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import { useGetSingleTourQuery } from "@/redux/features/tour/tour.api";
 import type { iDivisionResponse, iTourTypeResponse } from "@/types";
@@ -60,7 +61,8 @@ export default function TourDetails() {
           <h2 className="text-xl font-semibold mb-4">Tour Details</h2>
           <div className="space-y-2">
             <p>
-              <strong>Dates:</strong> {format(new Date(tour?.startDate ? tour?.startDate : new Date()), "PP")} -{" "}
+              <strong>Dates:</strong>{" "}
+              {format(new Date(tour?.startDate ? tour?.startDate : new Date()), "PP")} -{" "}
               {format(new Date(tour?.endDate ? tour?.endDate : new Date()), "PP")}
             </p>
             <p>
@@ -83,7 +85,8 @@ export default function TourDetails() {
 
         <div className="lg:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Description</h2>
-          <p className="text-muted-foreground">{tour?.description}</p>
+          {/* <p className="text-muted-foreground">{tour?.description}</p> */}
+          <RichTextEditor content={tour!.description} editable={false} />
         </div>
       </div>
 

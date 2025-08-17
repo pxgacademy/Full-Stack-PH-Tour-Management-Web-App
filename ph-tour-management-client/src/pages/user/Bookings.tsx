@@ -1,4 +1,5 @@
 import Loading from "@/components/Loader/Loading";
+import RichTextEditor from "@/components/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import { useCreateBookingMutation } from "@/redux/features/booking/booking.api";
 import { useGetSingleTourQuery } from "@/redux/features/tour/tour.api";
@@ -28,12 +29,8 @@ export default function Booking() {
     }
   }, [guestCount, totalAmount, isLoading, tour, isError]);
 
-  const incrementGuest = () => {
-    setGuestCount((prv) => prv + 1);
-  };
-
-  const decrementGuest = () => {
-    setGuestCount((prv) => prv - 1);
+  const handleGuestCount = (param: string) => {
+    setGuestCount((prv) => (param === "+" ? prv + 1 : prv - 1));
   };
 
   const handleBooking = async () => {
@@ -61,6 +58,12 @@ export default function Booking() {
 
   return (
     <div className="flex flex-col md:flex-row gap-8 p-6 container mx-auto">
+      {!isLoading && isError && (
+        <div>
+          <p>Something went wrong</p>
+        </div>
+      )}
+
       {!isLoading && !tour && (
         <div>
           <p>No Data Found</p>
@@ -72,14 +75,19 @@ export default function Booking() {
           {/* Left Section - Tour Summary */}
           <div className="flex-1 space-y-6">
             <div>
-              <img src={tour?.images[0]} alt={tour?.title} className="w-full h-64 object-cover rounded-lg" />
+              <img
+                src={tour?.images[0]}
+                alt={tour?.title}
+                className="w-full h-64 object-cover rounded-lg"
+              />
             </div>
 
             <div>
               <h1 className="text-3xl font-bold mb-2">{tour?.title}</h1>
-              <p className="text-gray-600 mb-4">{tour?.description}</p>
+              {/* <p className="text-gray-600 mb-4">{tour?.description}</p> */}
+              <RichTextEditor content={tour!.description} editable={false} />
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-2 gap-4 text-sm mt-6">
                 <div>
                   <strong>Location:</strong> {tour?.location}
                 </div>
@@ -108,7 +116,7 @@ export default function Booking() {
               <h3 className="text-xl font-semibold mb-2">Tour Plan</h3>
               <ol className="list-decimal list-inside text-sm space-y-3">
                 {tour?.tourPlane.map((plan, index) => (
-                  <li key={index} className="border rounded-xl p-1.5">
+                  <li key={index} className="py-2">
                     {plan}
                   </li>
                 ))}
@@ -125,7 +133,11 @@ export default function Booking() {
                 <div>
                   <label className="block text-sm font-medium mb-2">Number of Guests</label>
                   <div className="flex items-center space-x-3">
-                    <button onClick={decrementGuest} disabled={guestCount <= 1} className={guestButtonClass}>
+                    <button
+                      onClick={() => handleGuestCount("-")}
+                      disabled={guestCount <= 1}
+                      className={guestButtonClass}
+                    >
                       <Minus size={16} />
                     </button>
 
@@ -139,7 +151,7 @@ export default function Booking() {
                       className="text-lg font-medium w-8 text-center focus:border-none focus:outline-none"
                     />
                     <button
-                      onClick={incrementGuest}
+                      onClick={() => handleGuestCount("+")}
                       disabled={guestCount >= tour!.maxGuest}
                       className={guestButtonClass}
                     >
@@ -151,7 +163,7 @@ export default function Booking() {
                 <div className="border-t pt-4">
                   <div className="flex justify-between text-sm mb-2">
                     <span>Price per person:</span>
-                    <span>${tour?.costFrom}</span>
+                    <span>৳{tour?.costFrom}</span>
                   </div>
                   <div className="flex justify-between text-sm mb-2">
                     <span>Guests:</span>

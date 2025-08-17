@@ -1,9 +1,8 @@
-//
-
 import Loading from "@/components/Loader/Loading";
 import TourFilters from "@/components/modules/tours/TourFilters";
 import { Button } from "@/components/ui/button";
 import { useGetToursQuery } from "@/redux/features/tour/tour.api";
+import DOMPurify from "isomorphic-dompurify";
 import { Link } from "react-router";
 
 export default function Tours() {
@@ -29,31 +28,30 @@ export default function Tours() {
             </div>
             <div className="p-6 flex-1">
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-muted-foreground mb-3 line-clamp-3">
-                {item.description}
-              </p>
+              {/* <p className="text-muted-foreground mb-3 line-clamp-3">{item.description}</p> */}
+
+              <div className="text-muted-foreground mb-3 line-clamp-2">
+                {DOMPurify.sanitize(item.description, {
+                  ALLOWED_TAGS: [],
+                })}
+              </div>
 
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xl font-bold text-primary">
                   From ৳{item.costFrom.toLocaleString()}
                 </span>
-                <span className="text-sm text-muted-foreground">
-                  Max {item.maxGuest} guests
-                </span>
+                <span className="text-sm text-muted-foreground">Max {item.maxGuest} guests</span>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                 <div>
-                  <span className="font-medium">From:</span>{" "}
-                  {item.departureLocation}
+                  <span className="font-medium">From:</span> {item.departureLocation}
                 </div>
                 <div>
-                  <span className="font-medium">To:</span>{" "}
-                  {item.arrivalLocation}
+                  <span className="font-medium">To:</span> {item.arrivalLocation}
                 </div>
                 <div>
-                  <span className="font-medium">Duration:</span>{" "}
-                  {item.tourPlane.length} days
+                  <span className="font-medium">Duration:</span> {item.tourPlane.length} days
                 </div>
                 <div>
                   <span className="font-medium">Min Age:</span> {item.minAge}+
