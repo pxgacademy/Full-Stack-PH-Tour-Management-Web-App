@@ -103,6 +103,7 @@ export default function TourFilters({ totalPages, currentPage }: iProps) {
     params.delete("division");
     params.delete("tourType");
     params.delete("sort");
+    params.set("page", "1");
     setSearchParams(params);
   };
 

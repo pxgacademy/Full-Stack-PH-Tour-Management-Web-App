@@ -3,7 +3,7 @@ import TourFilters from "@/components/modules/tours/TourFilters";
 import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useGetToursQuery } from "@/redux/features/tour/tour.api";
-import DOMPurify from "isomorphic-dompurify";
+import { htmlToPlainText } from "@/utils/htmlToPlainText";
 import { Link, useSearchParams } from "react-router";
 
 export default function Tours() {
@@ -22,8 +22,6 @@ export default function Tours() {
   const tours = data?.data;
   const totalPages = data?.meta?.total_page;
   const currentPage = data?.meta?.present_page;
-
-  console.log(data?.meta);
 
   return (
     <div className="container mx-auto px-5 py-8 grid grid-cols-12 gap-5">
@@ -47,13 +45,16 @@ export default function Tours() {
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <ShareButton variant="ghost" url={`http://localhost:3000/tours/${item.slug}`} />
               </div>
-              {/* <p className="text-muted-foreground mb-3 line-clamp-3">{item.description}</p> */}
 
-              <div className="text-muted-foreground mb-3 line-clamp-2">
+              <p className="text-muted-foreground mb-3 line-clamp-3">
+                {htmlToPlainText(item.description)}
+              </p>
+
+              {/* <div className="text-muted-foreground mb-3 line-clamp-2">
                 {DOMPurify.sanitize(item.description, {
                   ALLOWED_TAGS: [],
                 })}
-              </div>
+              </div> */}
 
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xl font-bold text-primary">
