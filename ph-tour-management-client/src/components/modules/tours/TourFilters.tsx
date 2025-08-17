@@ -21,26 +21,20 @@ export default function TourFilters() {
   const selectedDivision = searchParams.get("division") || undefined;
   const selectedTourType = searchParams.get("tourType") || undefined;
 
-  const { data: divisionData, isLoading: divisionIsLoading } =
-    useGetDivisionsQuery(null);
+  const { data: divisionData, isLoading: divisionIsLoading } = useGetDivisionsQuery(null);
 
-  const { data: tourTypeData, isLoading: tourTypeIsLoading } =
-    useTourTypesQuery(null);
+  const { data: tourTypeData, isLoading: tourTypeIsLoading } = useTourTypesQuery(null);
   // useTourTypesQuery({ limit: 1000, fields: "_id,name" });
 
-  const divisionOption = divisionData?.map(
-    (item: { _id: string; name: string }) => ({
-      label: item.name,
-      value: item._id,
-    })
-  );
+  const divisionOption = divisionData?.map((item: { _id: string; name: string }) => ({
+    label: item.name,
+    value: item._id,
+  }));
 
-  const tourTypeOptions = tourTypeData?.map(
-    (item: { _id: string; name: string }) => ({
-      label: item.name,
-      value: item._id,
-    })
-  );
+  const tourTypeOptions = tourTypeData?.map((item: { _id: string; name: string }) => ({
+    label: item.name,
+    value: item._id,
+  }));
 
   const handleDivisionChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -62,8 +56,8 @@ export default function TourFilters() {
   };
 
   return (
-    <div className="col-span-3 w-full relative">
-      <div className="min-h-96 flex flex-col gap-y-4 border border-muted rounded-md p-5 mb-5 sticky top-0">
+    <div className="col-span-12 lg:col-span-3 w-full relative">
+      <div className="min-h-80 flex flex-col gap-y-4 border border-muted rounded-md p-5 mb-5 sticky top-0">
         <div className="flex justify-between items-center">
           <h1>Filters</h1>
           <Button size="sm" variant="outline" onClick={handleClearFilter}>
@@ -83,13 +77,11 @@ export default function TourFilters() {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Divisions</SelectLabel>
-                {divisionOption?.map(
-                  (item: { value: string; label: string }) => (
-                    <SelectItem key={item.value} value={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  )
-                )}
+                {divisionOption?.map((item: { value: string; label: string }) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -107,13 +99,11 @@ export default function TourFilters() {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Tour Types</SelectLabel>
-                {tourTypeOptions?.map(
-                  (item: { value: string; label: string }) => (
-                    <SelectItem key={item.value} value={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  )
-                )}
+                {tourTypeOptions?.map((item: { value: string; label: string }) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>

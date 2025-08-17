@@ -1,5 +1,6 @@
 import Loading from "@/components/Loader/Loading";
 import RichTextEditor from "@/components/rich-text-editor";
+import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useCreateBookingMutation } from "@/redux/features/booking/booking.api";
 import { useGetSingleTourQuery } from "@/redux/features/tour/tour.api";
@@ -15,13 +16,7 @@ export default function Booking() {
 
   const { slug } = useParams();
   const [createBooking] = useCreateBookingMutation();
-  const {
-    data: tour,
-    isLoading,
-    isError,
-  } = useGetSingleTourQuery({
-    slug: slug as string,
-  });
+  const { data: tour, isLoading, isError } = useGetSingleTourQuery({ slug: slug! });
 
   useEffect(() => {
     if (!isLoading && !isError) {
@@ -43,7 +38,7 @@ export default function Booking() {
     try {
       const res = await createBooking(bookingData).unwrap();
       const pUrl = res?.meta?.options?.paymentURL;
-      if (res.success && pUrl) window.open(pUrl);
+      if (res.success && pUrl) window.open(pUrl, "_self");
     } catch (err) {
       console.log(err);
     }
@@ -116,9 +111,7 @@ export default function Booking() {
               <h3 className="text-xl font-semibold mb-2">Tour Plan</h3>
               <ol className="list-decimal list-inside text-sm space-y-3">
                 {tour?.tourPlane.map((plan, index) => (
-                  <li key={index} className="py-2">
-                    {plan}
-                  </li>
+                  <li key={index}>{plan}</li>
                 ))}
               </ol>
             </div>
@@ -178,6 +171,8 @@ export default function Booking() {
                 <Button onClick={handleBooking} className="w-full" size="lg">
                   Book Now
                 </Button>
+
+                <ShareButton className="w-full" />
               </div>
             </div>
           </div>

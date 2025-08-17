@@ -14,8 +14,10 @@ export const withAuth = (Component: ComponentType, ...roles: string[]) => {
       return <Navigate to="/login" state={{ dest: pathname }} />;
     }
 
-    if (!roles.includes(user.role)) {
-      return <Navigate to="/unauthorized" replace />;
+    if (roles.length !== 0) {
+      if (!roles.includes(user.role)) {
+        return <Navigate to="/unauthorized" replace />;
+      }
     }
 
     return <Component />;

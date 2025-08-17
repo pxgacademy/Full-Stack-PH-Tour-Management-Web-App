@@ -3,6 +3,7 @@ import Home from "@/pages/Home";
 import Bookings from "@/pages/user/Bookings";
 import TourDetails from "@/pages/user/TourDetails";
 import Tours from "@/pages/user/Tours";
+import { withAuth } from "@/utils/withAuth";
 
 export const publicRoutes = [
   {
@@ -18,7 +19,7 @@ export const publicRoutes = [
     path: "tours/:slug",
   },
   {
-    Component: Bookings,
+    Component: withAuth(Bookings),
     path: "bookings/:slug",
   },
   {

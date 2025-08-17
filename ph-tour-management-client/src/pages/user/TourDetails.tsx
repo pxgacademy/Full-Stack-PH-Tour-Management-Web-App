@@ -1,5 +1,6 @@
 import Loading from "@/components/Loader/Loading";
 import RichTextEditor from "@/components/rich-text-editor";
+import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useGetSingleTourQuery } from "@/redux/features/tour/tour.api";
 import type { iDivisionResponse, iTourTypeResponse } from "@/types";
@@ -27,7 +28,7 @@ export default function TourDetails() {
   return (
     <div className="container mx-auto p-6">
       {/* Header */}
-      <div className="flex justify-between items-center  mb-8">
+      <div className="flex flex-col-reverse lg:flex-row justify-between mb-8 gap-y-5">
         <div>
           <h1 className="text-3xl font-bold mb-2">{tour?.title}</h1>
           <div className="flex gap-4 text-gray-600 mb-4">
@@ -40,6 +41,8 @@ export default function TourDetails() {
           <Button asChild>
             <Link to={`/bookings/${tour?.slug}`}>Book Now</Link>
           </Button>
+
+          <ShareButton className="ml-3" variant="secondary" />
         </div>
       </div>
 

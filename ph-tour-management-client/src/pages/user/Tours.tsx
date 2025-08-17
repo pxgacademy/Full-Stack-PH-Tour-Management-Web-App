@@ -1,5 +1,6 @@
 import Loading from "@/components/Loader/Loading";
 import TourFilters from "@/components/modules/tours/TourFilters";
+import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useGetToursQuery } from "@/redux/features/tour/tour.api";
 import DOMPurify from "isomorphic-dompurify";
@@ -13,13 +14,14 @@ export default function Tours() {
   return (
     <div className="container mx-auto px-5 py-8 grid grid-cols-12 gap-5">
       <TourFilters />
-      <div className="col-span-9 w-full">
+
+      <div className="col-span-12 lg:col-span-9 w-full">
         {data?.map((item) => (
           <div
             key={item.slug}
-            className="border border-muted rounded-lg shadow-md overflow-hidden mb-6 flex"
+            className="border border-muted rounded-lg shadow-md overflow-hidden mb-6 flex flex-col md:flex-row"
           >
-            <div className="w-2/5 bg-red-500 flex-shrink-0">
+            <div className="w-full md:w-2/5 max-h-52 md:max-h-max flex-shrink-0 overflow-hidden">
               <img
                 src={item.images?.[0]}
                 alt={item.title}
@@ -27,7 +29,10 @@ export default function Tours() {
               />
             </div>
             <div className="p-6 flex-1">
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              <div className="flex justify-between">
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <ShareButton variant="ghost" url={`http://localhost:3000/tours/${item.slug}`} />
+              </div>
               {/* <p className="text-muted-foreground mb-3 line-clamp-3">{item.description}</p> */}
 
               <div className="text-muted-foreground mb-3 line-clamp-2">
