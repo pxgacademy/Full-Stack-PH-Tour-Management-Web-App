@@ -140,7 +140,7 @@ const AddTourForm = ({
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "pl-3 text-left font-normal",
+                          "pl-3 text-left font-normal dark:bg-background",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -177,7 +177,7 @@ const AddTourForm = ({
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "pl-3 text-left font-normal",
+                          "pl-3 text-left font-normal dark:bg-background",
                           !field.value && "text-muted-foreground"
                         )}
                       >

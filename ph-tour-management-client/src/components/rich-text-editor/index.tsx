@@ -46,7 +46,7 @@ export default function RichTextEditor({
       attributes: {
         class: editable
           ? cn(
-              "min-h-96 border rounded-md p-3 bg-background focus:outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] dark:bg-input/30",
+              "min-h-96 border rounded-md p-3 bg-background focus:outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] ",
               {
                 "border-destructive": error && (!content || content === "<p></p>"),
               }

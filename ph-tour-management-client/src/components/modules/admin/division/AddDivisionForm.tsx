@@ -21,10 +21,7 @@ import { toast } from "sonner";
 import z from "zod";
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .min(5, { message: "Division name must be at least 2 characters!" })
-    .max(50),
+  name: z.string().min(5, { message: "Division name must be at least 2 characters!" }).max(50),
   description: z
     .string()
     .min(5, { message: "Description must be at least 2 characters!" })
@@ -74,18 +71,14 @@ const AddDivisionForm = () => {
 
   return (
     <SheetWrapper
-      buttonText="Create Division"
+      buttonText="+ Create Division"
       title="Create a Division"
       setOpen={setOpen}
       open={open}
     >
       <div>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-            id="addDivisionForm"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" id="addDivisionForm">
             <FormField
               control={form.control}
               name="name"
@@ -123,9 +116,7 @@ const AddDivisionForm = () => {
         <div className="mt-4">
           <Label className="mb-1.5">Select an Image</Label>
           <SingleImageUploader onChange={setImage} />
-          {errMsg && !image && (
-            <span className="text-destructive text-sm">Image is required</span>
-          )}
+          {errMsg && !image && <span className="text-destructive text-sm">Image is required</span>}
         </div>
 
         {/* submit button */}
