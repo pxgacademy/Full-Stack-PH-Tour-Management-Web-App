@@ -19,19 +19,14 @@ import { toast } from "sonner";
 import z from "zod";
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .min(5, { message: "Tour Type Name must be at least 2 characters!" })
-    .max(50),
+  name: z.string().min(5, { message: "Tour Type Name must be at least 2 characters!" }).max(50),
 });
 
 type FormValue = z.infer<typeof formSchema>;
 
-interface iProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const AddTourTypeFrom = () => {
+  const [open, setOpen] = useState<boolean>(false);
 
-const AddTourTypeFrom = ({ setOpen }: iProps) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [addTourType] = useCreateTourTypeMutation();
 
@@ -60,7 +55,12 @@ const AddTourTypeFrom = ({ setOpen }: iProps) => {
   };
 
   return (
-    <SheetWrapper title="Create a Tour Type">
+    <SheetWrapper
+      title="Create a Tour Type"
+      buttonText="Add Tour Type"
+      open={open}
+      setOpen={setOpen}
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -72,9 +72,7 @@ const AddTourTypeFrom = ({ setOpen }: iProps) => {
                 <FormControl>
                   <Input {...field} placeholder="Enter name here..." />
                 </FormControl>
-                <FormDescription>
-                  This is your public tour type name.
-                </FormDescription>
+                <FormDescription>This is your public tour type name.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
