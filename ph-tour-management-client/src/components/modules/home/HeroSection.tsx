@@ -2,9 +2,23 @@ import { ExternalLink } from "lucide-react";
 
 import Logo from "@/assets/icons/logo";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useGetDivisionsQuery } from "@/redux/features/division/division.api";
+import { useState } from "react";
 import { Link } from "react-router";
 
 const HeroSection = () => {
+  const [division, setDivision] = useState<string>("");
+  const { data: divisions, isLoading: divisionIsLoading } = useGetDivisionsQuery(null);
+
   return (
     <section className="relative overflow-hidden py-32">
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
@@ -22,25 +36,43 @@ const HeroSection = () => {
             </div>
             <div>
               <h1 className="mb-6 text-2xl font-bold tracking-tight text-pretty lg:text-5xl">
-                Explore the beauty of{" "}
-                <span className="text-primary">Bangladesh</span>
+                Explore the beauty of <span className="text-primary">Bangladesh</span>
               </h1>
               <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
-                doloremque mollitia fugiat omnis! Porro facilis quo animi
-                consequatur. Explicabo.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia
+                fugiat omnis! Porro facilis quo animi consequatur. Explicabo.
               </p>
             </div>
-            <div className="mt-6 flex justify-center gap-3">
-              <Button
-                asChild
-                className="shadow-sm transition-shadow hover:shadow"
-              >
-                <Link to="/tours">
-                  Explore
-                  <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-              </Button>
+            <div className="mt-6 space-y-3 w-[350px]">
+              <div>
+                <Button asChild className="shadow-sm transition-shadow hover:shadow w-full">
+                  <Link to="/tours">
+                    Explore More Tours to Visit
+                    <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="flex justify-between gap-3">
+                <Select onValueChange={setDivision} value={division} disabled={divisionIsLoading}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a Division" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Divisions</SelectLabel>
+                      {divisions?.map((item: { name: string; _id: string }) => (
+                        <SelectItem key={item._id} value={item._id}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+
+                <Button variant={"outline"}>
+                  <Link to={division ? `/tours?division=${division}` : "/tours"}>Search</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
