@@ -1,4 +1,3 @@
-import PaginationComponent from "@/components/PaginationComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,12 +26,7 @@ search = "",
     ...filters
 */
 
-export interface iProps {
-  totalPages: number;
-  currentPage: number;
-}
-
-export default function TourFilters({ totalPages, currentPage }: iProps) {
+export default function TourFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState<string>("");
   const [sortType, setSortType] = useState<string>("ascending");
@@ -214,8 +208,6 @@ export default function TourFilters({ totalPages, currentPage }: iProps) {
             </Select>
           </div>
         </div>
-
-        <PaginationComponent totalPages={totalPages!} currentPage={currentPage!} />
       </div>
     </div>
   );

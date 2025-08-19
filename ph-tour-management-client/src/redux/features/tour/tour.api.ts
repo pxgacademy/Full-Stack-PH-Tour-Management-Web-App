@@ -45,6 +45,19 @@ export const tourApi = baseApi.injectEndpoints({
       transformResponse: (res) => res.data,
     }),
 
+    getSingleTourTypes: builder.query<
+      iTourTypeResponse,
+      { id: string },
+      iResponse<iTourTypeResponse>
+    >({
+      query: ({ id }) => ({
+        url: `/tours/tour-type/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["TOUR_TYPE"],
+      transformResponse: (res) => res.data,
+    }),
+
     // tour endpoints
 
     createTour: builder.mutation<iResponse<iTourResponse>, FormData>({
@@ -74,6 +87,14 @@ export const tourApi = baseApi.injectEndpoints({
       transformResponse: (res) => res.data,
     }),
 
+    deleteTour: builder.mutation<iResponse<null>, { id: string }>({
+      query: ({ id }) => ({
+        url: `/tours/tour/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["TOUR"],
+    }),
+
     //
   }),
 });
@@ -83,10 +104,12 @@ export const {
   useDeleteTourTypeMutation,
   useUpdateTourTypeMutation,
   useTourTypesQuery,
+  useGetSingleTourTypesQuery,
   //
   useCreateTourMutation,
   useGetToursQuery,
   useGetSingleTourQuery,
+  useDeleteTourMutation,
 } = tourApi;
 
 /*

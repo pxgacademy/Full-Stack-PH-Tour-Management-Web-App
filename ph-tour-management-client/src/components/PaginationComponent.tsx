@@ -7,7 +7,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/components/ui/pagination";
-import { usePagination } from "@/hooks/use-pagination";
+import { getPagination } from "@/utils/getPagination";
 import { useSearchParams } from "react-router";
 
 type PaginationProps = {
@@ -16,18 +16,10 @@ type PaginationProps = {
   paginationItemsToDisplay?: number;
 };
 
-export default function PaginationComponent({
-  currentPage,
-  totalPages,
-  paginationItemsToDisplay = 10,
-}: PaginationProps) {
-  const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
-    currentPage,
-    totalPages,
-    paginationItemsToDisplay,
-  });
-
+export default function PaginationComponent({ currentPage, totalPages }: PaginationProps) {
   //
+
+  const pages = getPagination(currentPage, totalPages);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -40,7 +32,7 @@ export default function PaginationComponent({
   };
 
   return (
-    <Pagination>
+    <Pagination className="w-auto">
       <PaginationContent>
         {/* First page button */}
         <PaginationItem>
@@ -68,27 +60,22 @@ export default function PaginationComponent({
           </button>
         </PaginationItem>
 
-        {/* Left ellipsis (...) */}
-        {showLeftEllipsis && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
-
         {/* Page number links */}
-        {pages.map((page) => (
-          <PaginationItem key={page}>
-            <PaginationLink onClick={() => handlePageChange(page)} isActive={page === currentPage}>
-              {page}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-
-        {/* Right ellipsis (...) */}
-        {showRightEllipsis && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+        {pages.map((page, i) =>
+          page === "..." ? (
+            <PaginationItem key={i}>
+              <PaginationEllipsis />
+            </PaginationItem>
+          ) : (
+            <PaginationItem key={i}>
+              <PaginationLink
+                onClick={() => handlePageChange(Number(page))}
+                isActive={page === currentPage}
+              >
+                {page}
+              </PaginationLink>
+            </PaginationItem>
+          )
         )}
 
         {/* Next page button */}

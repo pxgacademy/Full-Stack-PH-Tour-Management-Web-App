@@ -1,5 +1,6 @@
 import Loading from "@/components/Loader/Loading";
 import TourFilters from "@/components/modules/tours/TourFilters";
+import PaginationComponent from "@/components/PaginationComponent";
 import ShareButton from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import { useGetToursQuery } from "@/redux/features/tour/tour.api";
@@ -12,10 +13,18 @@ export default function Tours() {
   const division = searchParams.get("division") || undefined;
   const tourType = searchParams.get("tourType") || undefined;
   const sort = searchParams.get("sort") || undefined;
-  const page = searchParams.get("page") || undefined;
+  // const page = searchParams.get("page") || undefined;
   const limit = searchParams.get("limit") || undefined;
 
-  const { data, isLoading } = useGetToursQuery({ search, division, tourType, sort, page, limit });
+  const pageParam = searchParams.get("page");
+  const page = pageParam ? Number(pageParam) : 1; // default 1
+
+  console.log(page);
+
+  const { data, isLoading } = useGetToursQuery(
+    { search, division, tourType, sort, page, limit },
+    { refetchOnMountOrArgChange: true }
+  );
 
   if (isLoading) return <Loading />;
 
@@ -25,7 +34,7 @@ export default function Tours() {
 
   return (
     <div className="container mx-auto px-5 py-8 grid grid-cols-12 gap-5">
-      <TourFilters totalPages={totalPages!} currentPage={currentPage!} />
+      <TourFilters />
 
       <div className="col-span-12 lg:col-span-9 w-full">
         {tours?.map((item) => (
@@ -100,6 +109,10 @@ export default function Tours() {
             </div>
           </div>
         ))}
+
+        <div>
+          <PaginationComponent totalPages={totalPages!} currentPage={currentPage!} />
+        </div>
       </div>
     </div>
   );

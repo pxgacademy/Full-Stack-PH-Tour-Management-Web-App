@@ -33,13 +33,22 @@ export const divisionApi = baseApi.injectEndpoints({
       invalidatesTags: ["DIVISION"],
     }),
 
-    getDivisions: builder.query<
-      iDivisionResponse[],
-      null,
-      iResponse<iDivisionResponse[]>
-    >({
+    getDivisions: builder.query<iDivisionResponse[], null, iResponse<iDivisionResponse[]>>({
       query: () => ({
         url: "/division/all-divisions",
+        method: "GET",
+      }),
+      providesTags: ["DIVISION"],
+      transformResponse: (res) => res.data,
+    }),
+
+    getSingleDivision: builder.query<
+      iDivisionResponse,
+      { id: string },
+      iResponse<iDivisionResponse>
+    >({
+      query: ({ id }) => ({
+        url: `/division/${id}`,
         method: "GET",
       }),
       providesTags: ["DIVISION"],
@@ -55,4 +64,5 @@ export const {
   useUpdateDivisionMutation,
   useDeleteDivisionMutation,
   useGetDivisionsQuery,
+  useGetSingleDivisionQuery,
 } = divisionApi;

@@ -37,6 +37,7 @@ export interface iTourResponse {
   minAge: number;
   division: string | iDivisionResponse;
   tourType: string | iTourTypeResponse;
+  createdAt?: string;
 }
 
 export interface iTourSearchParams {
@@ -44,6 +45,6 @@ export interface iTourSearchParams {
   sort?: string;
   division?: string;
   tourType?: string;
-  page?: string;
-  limit?: string;
+  page?: string | number;
+  limit?: string | number;
 }
