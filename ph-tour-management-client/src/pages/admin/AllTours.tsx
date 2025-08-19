@@ -2,7 +2,6 @@
 
 import DeleteConfirmation from "@/components/DeleteConfirmation";
 import Loading from "@/components/Loader/Loading";
-import UpdateTourTypeModal from "@/components/modules/admin/tourType/UpdateTourTypeModal";
 import PaginationComponent from "@/components/PaginationComponent";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,10 +14,10 @@ import {
 } from "@/components/ui/table";
 import { useDeleteTourMutation, useGetToursQuery } from "@/redux/features/tour/tour.api";
 import { format } from "date-fns";
-import { Trash2 } from "lucide-react";
-import { useSearchParams } from "react-router";
-import DivisionViewer from "./viewer/DivisionViewer";
-import TourTypeViewer from "./viewer/TourTypeViewer";
+import { Edit, Trash2 } from "lucide-react";
+import { Link, useSearchParams } from "react-router";
+import DivisionViewer from "../../components/modules/viewer/DivisionViewer";
+import TourTypeViewer from "../../components/modules/viewer/TourTypeViewer";
 
 const limits = [5, 10, 20, 30, 40, 50, 100];
 
@@ -58,10 +57,10 @@ export default function AllTours() {
               <TableHead>Cost</TableHead>
               <TableHead>Start Date</TableHead>
               <TableHead>End Date</TableHead>
-              <TableHead>Guest</TableHead>
-              <TableHead>Min Age</TableHead>
-              <TableHead>Division</TableHead>
-              <TableHead>Tour Type</TableHead>
+              <TableHead className="text-center">Guest</TableHead>
+              <TableHead className="text-center">Min Age</TableHead>
+              <TableHead className="text-center">Division</TableHead>
+              <TableHead className="text-center">Tour Type</TableHead>
               <TableHead className="text-center">Edit</TableHead>
               <TableHead className="text-center">Delete</TableHead>
             </TableRow>
@@ -74,18 +73,22 @@ export default function AllTours() {
                 <TableCell> ৳ {tour.costFrom}</TableCell>
                 <TableCell>{format(tour.startDate, "PP")}</TableCell>
                 <TableCell>{format(tour.endDate, "PP")}</TableCell>
-                <TableCell>{tour.maxGuest}</TableCell>
-                <TableCell>{tour.minAge}</TableCell>
+                <TableCell className="text-center">{tour.maxGuest}</TableCell>
+                <TableCell className="text-center">{tour.minAge}</TableCell>
 
-                <TableCell>
+                <TableCell className="text-center">
                   <DivisionViewer id={tour.division as string} />
                 </TableCell>
-                <TableCell>
+                <TableCell className="text-center">
                   <TourTypeViewer id={tour.tourType as string} />
                 </TableCell>
 
                 <TableCell className="text-center">
-                  <UpdateTourTypeModal id={tour._id} name={tour.title} />
+                  <Link to={`/admin/update-tour/${tour.slug}`}>
+                    <Button variant="outline" size="xs" className="text-sm">
+                      <Edit />
+                    </Button>
+                  </Link>
                 </TableCell>
 
                 <TableCell className="text-center">

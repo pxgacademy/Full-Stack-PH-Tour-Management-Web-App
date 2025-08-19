@@ -49,9 +49,7 @@ const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
     excel: {
       icon: FileSpreadsheetIcon,
       conditions: (type: string, name: string) =>
-        type.includes("excel") ||
-        name.endsWith(".xls") ||
-        name.endsWith(".xlsx"),
+        type.includes("excel") || name.endsWith(".xls") || name.endsWith(".xlsx"),
     },
     video: {
       icon: VideoIcon,
@@ -76,18 +74,12 @@ const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
   return <FileIcon className="size-5 opacity-60" />;
 };
 
-const getFilePreview = (file: {
-  file: File | { type: string; name: string; url?: string };
-}) => {
+const getFilePreview = (file: { file: File | { type: string; name: string; url?: string } }) => {
   const fileType = file.file instanceof File ? file.file.type : file.file.type;
   const fileName = file.file instanceof File ? file.file.name : file.file.name;
 
   const renderImage = (src: string) => (
-    <img
-      src={src}
-      alt={fileName}
-      className="size-full rounded-t-[inherit] object-cover"
-    />
+    <img src={src} alt={fileName} className="size-full rounded-t-[inherit] object-cover" />
   );
 
   return (
@@ -112,6 +104,7 @@ const getFilePreview = (file: {
 
 interface iProps {
   onChange: Dispatch<SetStateAction<File[]>>;
+  defaultFiles?: number;
 }
 
 export interface MultipleImageUploaderRef {
@@ -119,10 +112,10 @@ export interface MultipleImageUploaderRef {
 }
 
 const MultipleImageUploader = forwardRef<MultipleImageUploaderRef, iProps>(
-  ({ onChange }, ref) => {
+  ({ onChange, defaultFiles }, ref) => {
     const maxSizeMB = 5;
     const maxSize = maxSizeMB * 1024 * 1024; // 5MB default
-    const maxFiles = 6;
+    const maxFiles = 6 - (defaultFiles || 0);
 
     const [
       { files, isDragging, errors },
@@ -167,30 +160,18 @@ const MultipleImageUploader = forwardRef<MultipleImageUploaderRef, iProps>(
           data-files={files.length > 0 || undefined}
           className="border-input data-[dragging=true]:bg-accent/50 has-[input:focus]:border-ring has-[input:focus]:ring-ring/50 relative flex min-h-52 flex-col items-center overflow-hidden rounded-xl border p-4 transition-colors not-data-[files]:justify-center has-[input:focus]:ring-[3px]"
         >
-          <input
-            {...getInputProps()}
-            className="sr-only"
-            aria-label="Upload image file"
-          />
+          <input {...getInputProps()} className="sr-only" aria-label="Upload image file" />
           {files.length > 0 ? (
             <div className="flex w-full flex-col gap-3">
               <div className="flex items-center justify-between gap-2">
-                <h3 className="truncate text-sm font-medium">
-                  Files ({files.length})
-                </h3>
+                <h3 className="truncate text-sm font-medium">Files ({files.length})</h3>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" onClick={openFileDialog}>
-                    <UploadIcon
-                      className="-ms-0.5 size-3.5 opacity-60"
-                      aria-hidden="true"
-                    />
+                    <UploadIcon className="-ms-0.5 size-3.5 opacity-60" aria-hidden="true" />
                     Add files
                   </Button>
                   <Button variant="outline" size="sm" onClick={clearFiles}>
-                    <Trash2Icon
-                      className="-ms-0.5 size-3.5 opacity-60"
-                      aria-hidden="true"
-                    />
+                    <Trash2Icon className="-ms-0.5 size-3.5 opacity-60" aria-hidden="true" />
                     Remove all
                   </Button>
                 </div>
@@ -212,9 +193,7 @@ const MultipleImageUploader = forwardRef<MultipleImageUploaderRef, iProps>(
                       <XIcon className="size-3.5" />
                     </Button>
                     <div className="flex min-w-0 flex-col gap-0.5 border-t p-3">
-                      <p className="truncate text-[13px] font-medium">
-                        {file.file.name}
-                      </p>
+                      <p className="truncate text-[13px] font-medium">{file.file.name}</p>
                       <p className="text-muted-foreground truncate text-xs">
                         {formatBytes(file.file.size)}
                       </p>
@@ -235,11 +214,7 @@ const MultipleImageUploader = forwardRef<MultipleImageUploaderRef, iProps>(
               <p className="text-muted-foreground text-xs">
                 Max {maxFiles} files ∙ Up to {maxSizeMB}MB
               </p>
-              <Button
-                variant="outline"
-                className="mt-4"
-                onClick={openFileDialog}
-              >
+              <Button variant="outline" className="mt-4" onClick={openFileDialog}>
                 <UploadIcon className="-ms-1 opacity-60" aria-hidden="true" />
                 Select images
               </Button>
@@ -248,10 +223,7 @@ const MultipleImageUploader = forwardRef<MultipleImageUploaderRef, iProps>(
         </div>
 
         {errors.length > 0 && (
-          <div
-            className="text-destructive flex items-center gap-1 text-xs"
-            role="alert"
-          >
+          <div className="text-destructive flex items-center gap-1 text-xs" role="alert">
             <AlertCircleIcon className="size-3 shrink-0" />
             <span>{errors[0]}</span>
           </div>

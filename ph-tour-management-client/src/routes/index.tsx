@@ -1,5 +1,6 @@
 import App from "@/App";
 import { ROLES } from "@/constants/role";
+import UpdateTour from "@/pages/admin/UpdateTour";
 import Payment from "@/pages/payment/Payment";
 import Unauthorized from "@/pages/Unauthorized";
 import { generateRoutes } from "@/utils/generateRoutes";
@@ -18,6 +19,7 @@ const Verify = lazy(() => import("@/pages/Verify"));
 
 const adminRoutes = [
   { index: true, element: <Navigate to="/admin/analytics" /> },
+  { Component: UpdateTour, path: "update-tour/:slug" },
   ...generateRoutes(adminSidebarItems),
 ];
 

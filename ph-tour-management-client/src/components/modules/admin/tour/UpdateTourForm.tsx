@@ -41,13 +41,13 @@ interface AddTourFormProps {
 
 // Add Tour Form
 
-export default function TourForm({
+const UpdateTourForm = ({
   form,
   onSubmit,
   descriptionContent,
   setDescriptionContent,
   descriptionError,
-}: AddTourFormProps) {
+}: AddTourFormProps) => {
   const { data: divisions, isLoading: divisionLoading } = useGetDivisionsQuery(null);
   const { data: tourTypes, isLoading: tourTypeLoading } = useTourTypesQuery(null);
 
@@ -374,11 +374,9 @@ export default function TourForm({
                           <button
                             type="button"
                             onClick={() => includedRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-700 h-full"
                           >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
+                            <X size={16} />
                           </button>
                         </span>
                       </FormControl>
@@ -418,11 +416,9 @@ export default function TourForm({
                           <button
                             type="button"
                             onClick={() => excludedRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-700 h-full"
                           >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
+                            <X size={16} />
                           </button>
                         </span>
                       </FormControl>
@@ -462,11 +458,9 @@ export default function TourForm({
                           <button
                             type="button"
                             onClick={() => amenitiesRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-700 h-full"
                           >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
+                            <X size={16} />
                           </button>
                         </span>
                       </FormControl>
@@ -506,11 +500,9 @@ export default function TourForm({
                           <button
                             type="button"
                             onClick={() => tourPlaneRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-700 h-full"
                           >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
+                            <X size={16} />
                           </button>
                         </span>
                       </FormControl>
@@ -536,4 +528,6 @@ export default function TourForm({
       </form>
     </Form>
   );
-}
+};
+
+export default UpdateTourForm;

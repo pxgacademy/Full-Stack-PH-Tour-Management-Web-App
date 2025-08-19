@@ -1,6 +1,6 @@
 // src/pages/admin/AddTour.tsx
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
-import AddTourForm from "@/components/modules/admin/tour/AddTourForm";
+import TourForm from "@/components/modules/admin/tour/AddTourForm";
 import {
   tourFormSchema,
   type TourFormValues,
@@ -25,9 +25,6 @@ const AddTour = () => {
   const [descriptionError, setDescriptionError] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<boolean>(false);
   const [createTour] = useCreateTourMutation();
-
-  console.log(descriptionContent);
-  console.log(descriptionError);
 
   const uploaderRef = useRef<MultipleImageUploaderRef>(null);
 
@@ -116,7 +113,7 @@ const AddTour = () => {
         Enter all valid values to create a Tour; the tour will then be made public.
       </p>
       <div className="w-full max-w-4xl mx-auto border p-5 rounded-2xl">
-        <AddTourForm
+        <TourForm
           form={form}
           onSubmit={onSubmit}
           descriptionContent={descriptionContent}

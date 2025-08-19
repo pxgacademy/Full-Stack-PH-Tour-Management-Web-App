@@ -3,6 +3,7 @@ import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { useEffect } from "react";
 import MenuBar from "./menu_bar";
 
 interface RichTextEditorProps {
@@ -64,6 +65,12 @@ export default function RichTextEditor({
     // Don't render immediately on the server to avoid SSR issues
     immediatelyRender: false,
   });
+
+  useEffect(() => {
+    if (editor && content) {
+      editor.commands.setContent(content);
+    }
+  }, [editor, content]);
 
   return (
     <div>
