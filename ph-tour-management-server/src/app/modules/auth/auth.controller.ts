@@ -19,99 +19,87 @@ import {
 } from "./auth.service";
 
 //
-export const credentialLoginController = catchAsync(
-  async (req: Request, res: Response, next) => {
-    passport.authenticate(
-      "local",
-      async (
-        error: Error,
-        user: Partial<iUserResponse>,
-        { message }: { message: string }
-      ) => {
-        if (error) return next(error);
-        if (!user) return next(new AppError(sCode.NOT_FOUND, message));
+export const credentialLoginController = catchAsync(async (req, res, next) => {
+  passport.authenticate(
+    "local",
+    async (
+      error: Error,
+      user: Partial<iUserResponse>,
+      { message }: { message: string }
+    ) => {
+      if (error) return next(error);
+      if (!user) return next(new AppError(sCode.NOT_FOUND, message));
 
-        const { accessToken, refreshToken } = generateAllTokens(user);
-        setCookie.allTokens(res, accessToken, refreshToken);
+      const { accessToken, refreshToken } = generateAllTokens(user);
+      setCookie.allTokens(res, accessToken, refreshToken);
 
-        sendResponse(res, {
-          statusCode: sCode.OK,
-          message: message,
-          data: user,
-        });
-      }
-    )(req, res);
-  }
-);
+      sendResponse(res, {
+        statusCode: sCode.OK,
+        message: message,
+        data: user,
+      });
+    }
+  )(req, res);
+});
 
 //
-export const googleLoginUserController = catchAsync(
-  async (req: Request, res: Response) => {
-    const { redirect } = req.query || "/";
+export const googleLoginUserController = catchAsync(async (req, res) => {
+  const { redirect } = req.query || "/";
 
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
-      state: redirect as string,
-    })(req, res);
-  }
-);
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    state: redirect as string,
+  })(req, res);
+});
 
 //
-export const googleCallbackController = catchAsync(
-  async (req: Request, res: Response) => {
-    const redirectTo = req.query?.state || "";
+export const googleCallbackController = catchAsync(async (req, res) => {
+  const redirectTo = req.query?.state || "";
 
-    const user = req.user;
-    if (!user) throw new AppError(sCode.NOT_FOUND, "User not found!");
+  const user = req.user;
+  if (!user) throw new AppError(sCode.NOT_FOUND, "User not found!");
 
-    const { accessToken, refreshToken } = generateAllTokens(user);
-    setCookie.allTokens(res, accessToken, refreshToken);
+  const { accessToken, refreshToken } = generateAllTokens(user);
+  setCookie.allTokens(res, accessToken, refreshToken);
 
-    res.redirect(`${env_config.FRONTEND_URL}${redirectTo}`);
-  }
-);
+  res.redirect(`${env_config.FRONTEND_URL}${redirectTo}`);
+});
 
 //
-export const getNewAccessTokenController = catchAsync(
-  async (req: Request, res: Response) => {
-    const refreshToken = req.cookies?.refreshToken;
-    if (!refreshToken)
-      throw new AppError(sCode.BAD_REQUEST, "Refresh token not found");
-    const token = await generateAccessTokenByRefreshToken(refreshToken);
-    setCookie.accessToken(res, token);
+export const getNewAccessTokenController = catchAsync(async (req, res) => {
+  const refreshToken = req.cookies?.refreshToken;
+  if (!refreshToken)
+    throw new AppError(sCode.BAD_REQUEST, "Refresh token not found");
+  const token = await generateAccessTokenByRefreshToken(refreshToken);
+  setCookie.accessToken(res, token);
 
-    sendResponse(res, {
-      statusCode: sCode.OK,
-      message: "New access token retrieved successfully",
-      data: token,
-    });
-  }
-);
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "New access token retrieved successfully",
+    data: null,
+  });
+});
 
 //
-export const userLogoutController = catchAsync(
-  async (req: Request, res: Response) => {
-    setCookie.clearCookies(res);
+export const userLogoutController = catchAsync(async (req, res) => {
+  setCookie.clearCookies(res);
 
-    sendResponse(res, {
-      statusCode: sCode.OK,
-      message: "User logged out successfully",
-    });
-  }
-);
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "User logged out successfully",
+  });
+});
 
 //
-export const changePasswordController = catchAsync(
-  async (req: Request, res: Response) => {
-    const password = await changePasswordService(req);
+export const changePasswordController = catchAsync(async (req, res) => {
+  const password = await changePasswordService(req);
 
-    sendResponse(res, {
-      statusCode: sCode.OK,
-      message: "Password updated successfully",
-      data: password,
-    });
-  }
-);
+  sendResponse(res, {
+    statusCode: sCode.OK,
+    message: "Password updated successfully",
+    data: password,
+  });
+});
 
 //
 export const forgotPasswordController = catchAsync(async (req, res) => {

@@ -10,16 +10,13 @@ import {
   getSingleDivisionController,
   updateDivisionController,
 } from "./division.controller";
-import {
-  createDivisionZodSchema,
-  updateDivisionZodSchema,
-} from "./division.validation";
+import { createDivisionZodSchema, updateDivisionZodSchema } from "./division.validation";
 
 const divisionRoutes = Router();
 
 divisionRoutes.post(
   "/create",
-  // roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
   uploadImage.single("file"),
   zodBodyValidator(createDivisionZodSchema),
   createDivisionController
@@ -30,6 +27,7 @@ divisionRoutes.get("/all-divisions", getAllDivisionsController);
 divisionRoutes.patch(
   "/:divisionId",
   roleVerifier(eUserRoles.SUPER_ADMIN, eUserRoles.ADMIN),
+  uploadImage.single("file"),
   zodBodyValidator(updateDivisionZodSchema),
   updateDivisionController
 );
@@ -40,6 +38,6 @@ divisionRoutes.delete(
   deleteDivisionController
 );
 
-divisionRoutes.get("/:slug", getSingleDivisionController);
+divisionRoutes.get("/:divisionId", getSingleDivisionController);
 
 export default divisionRoutes;

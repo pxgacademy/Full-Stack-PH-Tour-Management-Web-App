@@ -27,6 +27,7 @@ userRoutes.get(
 );
 
 userRoutes.get("/me", tokenVerifier, getMeController);
+
 userRoutes.get(
   "/:userId",
   roleVerifier(eUserRoles.ADMIN, eUserRoles.SUPER_ADMIN),

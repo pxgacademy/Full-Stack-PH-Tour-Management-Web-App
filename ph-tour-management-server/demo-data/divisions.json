@@ -1,227 +1,137 @@
 [
   {
-    "_id": {
-      "$oid": "6bfe1671c4634e5b819e131f"
-    },
+    "_id": { "$oid": "6bfe1671c4634e5b819e131f" },
     "name": "Dhaka",
     "slug": "dhaka-division",
-    "thumbnail": "https://example.com/thumbs/1.jpg",
+    "thumbnail": "https://i.ibb.co.com/xKb0b9yZ/19.jpg",
     "description": "Explore the beauty of Dhaka.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "63cd8330e51c43e79ffc3196"
-    },
+    "_id": { "$oid": "63cd8330e51c43e79ffc3196" },
     "name": "Chattogram",
     "slug": "chattogram-division",
-    "thumbnail": "https://example.com/thumbs/2.jpg",
+    "thumbnail": "https://i.ibb.co.com/TqtLYw9G/45.jpg",
     "description": "Explore the beauty of Chattogram.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "59bc91ba56104ca39f2183b7"
-    },
+    "_id": { "$oid": "59bc91ba56104ca39f2183b7" },
     "name": "Sylhet",
     "slug": "sylhet-division",
-    "thumbnail": "https://example.com/thumbs/3.jpg",
+    "thumbnail": "https://i.ibb.co.com/HLvSm6KP/24.jpg",
     "description": "Explore the beauty of Sylhet.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "ab8b0ec291034ed0815c2b8f"
-    },
+    "_id": { "$oid": "ab8b0ec291034ed0815c2b8f" },
     "name": "Rajshahi",
     "slug": "rajshahi-division",
-    "thumbnail": "https://example.com/thumbs/4.jpg",
+    "thumbnail": "https://i.ibb.co.com/nNTRLKCh/47.jpg",
     "description": "Explore the beauty of Rajshahi.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "ed4ef5406f264cb8b64d75f5"
-    },
+    "_id": { "$oid": "ed4ef5406f264cb8b64d75f5" },
     "name": "Khulna",
     "slug": "khulna-division",
-    "thumbnail": "https://example.com/thumbs/5.jpg",
+    "thumbnail": "https://i.ibb.co.com/fYfqKzS4/49.jpg",
     "description": "Explore the beauty of Khulna.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "401fc625c9ec47489e992f7c"
-    },
+    "_id": { "$oid": "401fc625c9ec47489e992f7c" },
     "name": "Barishal",
     "slug": "barishal-division",
-    "thumbnail": "https://example.com/thumbs/6.jpg",
+    "thumbnail": "https://i.ibb.co.com/LdJSFmXy/39.jpg",
     "description": "Explore the beauty of Barishal.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "14cc7e2ef985421b9eb946f1"
-    },
+    "_id": { "$oid": "14cc7e2ef985421b9eb946f1" },
     "name": "Rangpur",
     "slug": "rangpur-division",
-    "thumbnail": "https://example.com/thumbs/7.jpg",
+    "thumbnail": "https://i.ibb.co.com/j9YrnwCd/30.jpg",
     "description": "Explore the beauty of Rangpur.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "290778feecd34efea5c0da6e"
-    },
+    "_id": { "$oid": "290778feecd34efea5c0da6e" },
     "name": "Mymensingh",
     "slug": "mymensingh-division",
-    "thumbnail": "https://example.com/thumbs/8.jpg",
+    "thumbnail": "https://i.ibb.co.com/k2fnWFKp/51.jpg",
     "description": "Explore the beauty of Mymensingh.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "2050e30f124e4479a7ad5508"
-    },
+    "_id": { "$oid": "2050e30f124e4479a7ad5508" },
     "name": "Comilla",
     "slug": "comilla-division",
-    "thumbnail": "https://example.com/thumbs/9.jpg",
+    "thumbnail": "https://i.ibb.co.com/9H12t7Kd/36.jpg",
     "description": "Explore the beauty of Comilla.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "acecbc8e74f546049b59a9b5"
-    },
+    "_id": { "$oid": "acecbc8e74f546049b59a9b5" },
     "name": "Jessore",
     "slug": "jessore-division",
-    "thumbnail": "https://example.com/thumbs/10.jpg",
+    "thumbnail": "https://i.ibb.co.com/v66W8dYy/7.jpg",
     "description": "Explore the beauty of Jessore.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "66f2f6efdd7d4814a458fc2e"
-    },
+    "_id": { "$oid": "66f2f6efdd7d4814a458fc2e" },
     "name": "Narayanganj",
     "slug": "narayanganj-division",
-    "thumbnail": "https://example.com/thumbs/11.jpg",
+    "thumbnail": "https://i.ibb.co.com/MkLXjx4y/41.jpg",
     "description": "Explore the beauty of Narayanganj.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "a9107a9bfba34aa785591788"
-    },
+    "_id": { "$oid": "a9107a9bfba34aa785591788" },
     "name": "Cox's Bazar",
     "slug": "cox's-bazar-division",
-    "thumbnail": "https://example.com/thumbs/12.jpg",
+    "thumbnail": "https://i.ibb.co.com/PZ5dYDLY/43.jpg",
     "description": "Explore the beauty of Cox's Bazar.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "f3d3726f7fc64efbb2df09dc"
-    },
+    "_id": { "$oid": "f3d3726f7fc64efbb2df09dc" },
     "name": "Bandarban",
     "slug": "bandarban-division",
-    "thumbnail": "https://example.com/thumbs/13.jpg",
+    "thumbnail": "https://i.ibb.co.com/YsBY0bc/10.jpg",
     "description": "Explore the beauty of Bandarban.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "46a15184f2da41f19b4b914e"
-    },
+    "_id": { "$oid": "46a15184f2da41f19b4b914e" },
     "name": "Khagrachari",
     "slug": "khagrachari-division",
-    "thumbnail": "https://example.com/thumbs/14.jpg",
+    "thumbnail": "https://i.ibb.co.com/PSkPCmV/35.jpg",
     "description": "Explore the beauty of Khagrachari.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   },
   {
-    "_id": {
-      "$oid": "61bb178f50e54fb4afeda028"
-    },
+    "_id": { "$oid": "61bb178f50e54fb4afeda028" },
     "name": "Bogura",
     "slug": "bogura-division",
-    "thumbnail": "https://example.com/thumbs/15.jpg",
+    "thumbnail": "https://i.ibb.co.com/60KpHBc6/5.jpg",
     "description": "Explore the beauty of Bogura.",
-    "createdAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    },
-    "updatedAt": {
-      "$date": "2025-07-08T15:56:45.551000"
-    }
+    "createdAt": { "$date": "2025-07-08T15:56:45.551000" },
+    "updatedAt": { "$date": "2025-07-08T15:56:45.551000" }
   }
 ]

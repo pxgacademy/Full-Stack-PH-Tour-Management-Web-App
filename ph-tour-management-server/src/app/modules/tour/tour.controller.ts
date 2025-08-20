@@ -17,7 +17,7 @@ import {
 } from "./tour.service";
 
 export const createTourController = catchAsync(async (req, res) => {
-  req.body.images = getPathsFromMulterFiles(req.body.files);
+  req.body.images = getPathsFromMulterFiles(req.files as Express.Multer.File[]);
 
   const { data } = await createTourService(req.body);
   sendResponse(res, {
@@ -29,7 +29,7 @@ export const createTourController = catchAsync(async (req, res) => {
 
 //
 export const updateTourController = catchAsync(async (req, res) => {
-  const files = getPathsFromMulterFiles(req.body.files);
+  const files = getPathsFromMulterFiles(req.files as Express.Multer.File[]);
   if (files.length > 0) req.body.images = files;
 
   const { data } = await updateTourService(req);
@@ -64,7 +64,7 @@ export const getAllToursController = catchAsync(async (req, res) => {
 
 //
 export const getSingleTourController = catchAsync(async (req, res) => {
-  const { data } = await getSingleTourService(req.params.slug);
+  const { data } = await getSingleTourService(req.params?.slug);
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Tour retrieved successfully",
@@ -97,7 +97,7 @@ export const updateTourTypeController = catchAsync(async (req, res) => {
 
 //
 export const deleteTourTypeController = catchAsync(async (req, res) => {
-  await deleteTourTypeService(req.params.tourTypeId);
+  await deleteTourTypeService(req.params?.tourTypeId);
 
   sendResponse(res, {
     statusCode: sCode.OK,

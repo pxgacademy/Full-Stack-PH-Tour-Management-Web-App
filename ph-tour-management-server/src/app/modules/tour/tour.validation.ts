@@ -30,10 +30,10 @@ export const createTourZodSchema = z.object({
     .optional(),
 
   startDate: z
-    .date({ invalid_type_error: "Start date must be date type" })
+    .string({ invalid_type_error: "Start date must be string type" })
     .optional(),
   endDate: z
-    .date({ invalid_type_error: "End date must be date type" })
+    .string({ invalid_type_error: "End date must be string type" })
     .optional(),
 
   /*

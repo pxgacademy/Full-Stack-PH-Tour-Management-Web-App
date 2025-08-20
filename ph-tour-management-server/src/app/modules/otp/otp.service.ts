@@ -1,4 +1,3 @@
-import { JwtPayload } from "jsonwebtoken";
 import { redisClient } from "../../../config/redis.config";
 import { AppError } from "../../../errors/AppError";
 import sCode from "../../statusCode";
@@ -6,12 +5,10 @@ import { OTP } from "../../utils/generateOtp";
 import { sendEmail } from "../../utils/sendEmail";
 import { User } from "../user/user.model";
 
-export const sendOtpService = async (name: string, decoded: JwtPayload) => {
+export const sendOtpService = async (email: string) => {
   // TODO: if user request several times in a short time, it can be a hacker, we should stop requesting.
 
-  const { _id, email } = decoded;
-
-  const user = await User.findById(_id).select("+isVerified");
+  const user = await User.findOne({ email }).select("+isVerified");
 
   if (!user) throw new AppError(sCode.NOT_FOUND, "User does not exist");
   if (user.isVerified)
@@ -33,7 +30,6 @@ export const sendOtpService = async (name: string, decoded: JwtPayload) => {
       subject: "Your OTP | PH Tour",
       templateName: "otp",
       templateData: {
-        name,
         otp,
       },
     }),
@@ -41,8 +37,7 @@ export const sendOtpService = async (name: string, decoded: JwtPayload) => {
 };
 
 //
-export const verifyOtpService = async (otp: string, decoded: JwtPayload) => {
-  const { _id, email } = decoded;
+export const verifyOtpService = async (otp: string, email: string) => {
   const redisKey = `otp:${email}`;
 
   const savedOtp = await redisClient.get(redisKey);
@@ -50,7 +45,7 @@ export const verifyOtpService = async (otp: string, decoded: JwtPayload) => {
   if (savedOtp !== otp) throw new AppError(sCode.UNAUTHORIZED, "Invalid OTP");
 
   await Promise.all([
-    User.findByIdAndUpdate(_id, { isVerified: true }),
+    User.findOneAndUpdate({ email }, { isVerified: true }),
     redisClient.del([redisKey]),
   ]);
 };

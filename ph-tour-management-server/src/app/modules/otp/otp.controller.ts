@@ -1,11 +1,10 @@
-import { JwtPayload } from "jsonwebtoken";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
 import { sendOtpService, verifyOtpService } from "./otp.service";
 
 export const sendOtpController = catchAsync(async (req, res) => {
-  await sendOtpService(req.body.name, req.decoded as JwtPayload);
+  await sendOtpService(req.body?.email);
 
   sendResponse(res, {
     statusCode: sCode.OK,
@@ -14,7 +13,9 @@ export const sendOtpController = catchAsync(async (req, res) => {
 });
 
 export const verifyOtpController = catchAsync(async (req, res) => {
-  await verifyOtpService(req.body.otp, req.decoded as JwtPayload);
+  const { otp, email } = req.body;
+
+  await verifyOtpService(otp, email);
 
   sendResponse(res, {
     statusCode: sCode.OK,
