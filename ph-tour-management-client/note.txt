@@ -1,0 +1,29 @@
+
+
+make interface to json
+https://transform.tools/json-to-typescript
+
+
+
+export const baseApi = createApi({
+  reducerPath: "baseApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: '',
+    credentials: "include"
+  }),
+  endpoints: () => ({}),
+});
+
+SUPER_ADMIN
+ADMIN
+MODERATOR
+USER
+
+super_admin@mail.com
+admin@mail.com
+moderator@mail.com
+user@mail.com
+
+Aa12345!
+
+
