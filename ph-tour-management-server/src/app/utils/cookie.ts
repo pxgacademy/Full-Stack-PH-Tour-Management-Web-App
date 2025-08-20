@@ -8,17 +8,17 @@ const cookieOptions = {
 };
 
 export const setCookie = {
-  accessToken(res: Response, token: string) {
+  accessToken(res: Response, token: string, maxAge?: number) {
     res.cookie("accessToken", token, {
       ...cookieOptions,
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      maxAge: maxAge || 1000 * 60 * 60 * 24, // 1 day
     });
   },
 
-  refreshToken(res: Response, token: string) {
+  refreshToken(res: Response, token: string, maxAge?: number) {
     res.cookie("refreshToken", token, {
       ...cookieOptions,
-      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+      maxAge: maxAge || 1000 * 60 * 60 * 24 * 30, // 30 days
     });
   },
 

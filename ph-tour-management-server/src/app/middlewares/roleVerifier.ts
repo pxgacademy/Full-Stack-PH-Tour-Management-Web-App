@@ -7,13 +7,9 @@ import { verifyToken } from "../utils/jwt";
 export const roleVerifier =
   (...roles: string[]) =>
   (req: Request, res: Response, next: NextFunction) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader?.startsWith("Bearer ")) {
-      return next(new AppError(sCode.UNAUTHORIZED, "Unauthorized"));
-    }
+    const token = req.cookies.accessToken;
 
     try {
-      const token = authHeader.split(" ")[1];
       if (!token)
         return next(new AppError(sCode.FORBIDDEN, "Token did not arrive"));
       const decoded = verifyToken(token);
@@ -23,7 +19,7 @@ export const roleVerifier =
 
       req.decoded = decoded as JwtPayload;
       next();
-    } catch (error) {
-      next(error);
+    } catch {
+      next(new AppError(sCode.UNAUTHORIZED, "Invalid token"));
     }
   };

@@ -62,7 +62,7 @@ export const deleteTourService = async (id: string) => {
 // --- GET ALL TOURS ---
 
 /*
-export const getAllToursService = async (query: TourQueryParams) => {
+export const getAllToursService2 = async (query) => {
   const {
     search = "",
     sort = "-createdAt",
@@ -71,6 +71,8 @@ export const getAllToursService = async (query: TourQueryParams) => {
     limit = "12",
     ...filters
   } = query;
+
+
 
   const pageNum = Math.max(Number(page), 1);
   const limitNum = Math.max(Number(limit), 1);
@@ -109,19 +111,16 @@ export const getAllToursService = async (query: TourQueryParams) => {
       limit: limitNum,
     },
   };
-};*/
+};
+*/
+
+//
 
 export const getAllToursService = async (query: iReqQueryParams) => {
   const queryBuilder = new QueryBuilder(Tour, query);
 
   const [tours, meta] = await Promise.all([
-    queryBuilder
-      .search(tourSearchFields)
-      .filter()
-      .sort()
-      .select()
-      .paginate()
-      .build(),
+    queryBuilder.search(tourSearchFields).filter().sort().select().paginate().build(),
     queryBuilder.meta(tourSearchFields),
   ]);
 
@@ -134,8 +133,8 @@ export const getAllToursService = async (query: iReqQueryParams) => {
 // --- GET SINGLE TOUR ---
 
 export const getSingleTourService = async (slug: string) => {
-  const tour = await Tour.findOne({ slug });
-  if (!tour) throw new AppError(sCode.NOT_FOUND, "Tour not found with this ID");
+  const tour = await Tour.findOne({ slug }).populate("division").populate("tourType");
+  if (!tour) throw new AppError(sCode.NOT_FOUND, "Tour not found with this slug");
   return { data: tour };
 };
 
@@ -144,18 +143,23 @@ export const getSingleTourService = async (slug: string) => {
 // --- CREATE TOUR TYPE ---
 
 export const createTourTypeService = async (payload: iTourType) => {
-  const tourType = await TourType.create(payload);
+  const tourType = await TourType.create({ name: payload.name });
   return { data: tourType };
 };
 
 // --- UPDATE TOUR TYPE ---
 
 export const updateTourTypeService = async (req: Request) => {
-  const id = req.params.tourTypeId;
-  const tourType = await TourType.findByIdAndUpdate(id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const id = req.params?.tourTypeId;
+  const { name } = req.body;
+  const tourType = await TourType.findByIdAndUpdate(
+    id,
+    { name },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   return { data: tourType };
 };
@@ -169,7 +173,7 @@ export const deleteTourTypeService = async (id: string) => {
 // --- GET ALL TOUR TYPES ---
 
 export const getAllTourTypesService = async () => {
-  const tourTypes = await TourType.find();
+  const tourTypes = await TourType.find().sort("-createdAt");
   const total = await TourType.countDocuments();
   return { data: tourTypes, total };
 };
@@ -177,8 +181,7 @@ export const getAllTourTypesService = async () => {
 // --- GET SINGLE TOUR TYPE ---
 
 export const getSingleTourTypeService = async (_id: string) => {
-  const tourType = await TourType.findOne({ _id });
-  if (!tourType)
-    throw new AppError(sCode.NOT_FOUND, "TourType not found with this ID");
+  const tourType = await TourType.findById(_id);
+  if (!tourType) throw new AppError(sCode.NOT_FOUND, "TourType not found with this ID");
   return { data: tourType };
 };

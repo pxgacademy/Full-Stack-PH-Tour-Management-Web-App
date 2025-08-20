@@ -5,11 +5,14 @@
     },
     "title": "Into the Wild: A Journey Through Nature",
     "slug": "into-the-wild-a-journey-through-nature",
-    "description": "Into the Wild: A Journey Through Nature in Cox's Bazar awaits you!",
+    "description": "Into the Wild: A Journey Through Nature is more than just a tour—it’s an immersive experience that takes you deep into the heart of Cox's Bazar. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Into the Wild: A Journey Through Nature promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/0_0.jpg",
-      "https://example.com/images/0_1.jpg",
-      "https://example.com/images/0_2.jpg"
+      "https://i.ibb.co.com/tPY61yTL/37.jpg",
+      "https://i.ibb.co.com/pBj5tCZP/31.jpg",
+      "https://i.ibb.co.com/PZH8SVJW/38.jpg",
+      "https://i.ibb.co.com/YBKk0PFK/3.jpg",
+      "https://i.ibb.co.com/q389Fmkc/11.jpg",
+      "https://i.ibb.co.com/ZRG5Nc8W/18.jpg"
     ],
     "location": "Cox's Bazar",
     "departureLocation": "Dhaka",
@@ -24,7 +27,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 19, 2025): Arrival at Cox's Bazar, check-in, welcome briefing, and introduction to Into the Wild: A Journey Through Nature. Relax and explore the nearby surroundings.",
+      "Day 2 (July 20, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 21, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 22, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 23, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 24, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 25, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 26, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 27, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (July 28, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 23,
     "minAge": 14,
     "division": {
@@ -46,11 +60,14 @@
     },
     "title": "Sunset Paradise on the Bay",
     "slug": "sunset-paradise-on-the-bay",
-    "description": "Sunset Paradise on the Bay in Mymensingh awaits you!",
+    "description": "Sunset Paradise on the Bay is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Sunset Paradise on the Bay promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/1_0.jpg",
-      "https://example.com/images/1_1.jpg",
-      "https://example.com/images/1_2.jpg"
+      "https://i.ibb.co.com/Fbx5SRLq/46.jpg",
+      "https://i.ibb.co.com/N2cjBPbY/1.jpg",
+      "https://i.ibb.co.com/HLvSm6KP/24.jpg",
+      "https://i.ibb.co.com/hJbDf0kD/15.jpg",
+      "https://i.ibb.co.com/S4XzFr3h/2.jpg",
+      "https://i.ibb.co.com/mjQ9Bmr/50.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -65,7 +82,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 28, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to Sunset Paradise on the Bay. Relax and explore the nearby surroundings.",
+      "Day 2 (August 29, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 30, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 31, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 01, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 02, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (September 03, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (September 04, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (September 05, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (September 06, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 24,
     "minAge": 13,
     "division": {
@@ -87,11 +115,14 @@
     },
     "title": "Lost Cities of the Ancient World",
     "slug": "lost-cities-of-the-ancient-world",
-    "description": "Lost Cities of the Ancient World in Chattogram awaits you!",
+    "description": "Lost Cities of the Ancient World is more than just a tour—it’s an immersive experience that takes you deep into the heart of Chattogram. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Lost Cities of the Ancient World promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/2_0.jpg",
-      "https://example.com/images/2_1.jpg",
-      "https://example.com/images/2_2.jpg"
+      "https://i.ibb.co.com/KpW9NBYH/53.jpg",
+      "https://i.ibb.co.com/s4MRCCk/29.jpg",
+      "https://i.ibb.co.com/nsJ2KHsW/12.jpg",
+      "https://i.ibb.co.com/B5BfdnpR/22.jpg",
+      "https://i.ibb.co.com/4wjdR55y/32.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg"
     ],
     "location": "Chattogram",
     "departureLocation": "Dhaka",
@@ -106,7 +137,16 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 19, 2025): Arrival at Chattogram, check-in, welcome briefing, and introduction to Lost Cities of the Ancient World. Relax and explore the nearby surroundings.",
+      "Day 2 (July 20, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 21, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 22, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 23, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 24, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 25, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 26, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 25,
     "minAge": 16,
     "division": {
@@ -128,11 +168,14 @@
     },
     "title": "Taste of Traditions: Culture & Cuisine",
     "slug": "taste-of-traditions-culture-and-cuisine",
-    "description": "Taste of Traditions: Culture & Cuisine in Barishal awaits you!",
+    "description": "Taste of Traditions: Culture & Cuisine is more than just a tour—it’s an immersive experience that takes you deep into the heart of Barishal. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Taste of Traditions: Culture & Cuisine promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/3_0.jpg",
-      "https://example.com/images/3_1.jpg",
-      "https://example.com/images/3_2.jpg"
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg",
+      "https://i.ibb.co.com/MkLXjx4y/41.jpg",
+      "https://i.ibb.co.com/S4k8mBRy/8.jpg",
+      "https://i.ibb.co.com/gFvqCsbh/55.jpg",
+      "https://i.ibb.co.com/PSkPCmV/35.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg"
     ],
     "location": "Barishal",
     "departureLocation": "Dhaka",
@@ -147,7 +190,14 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 25, 2025): Arrival at Barishal, check-in, welcome briefing, and introduction to Taste of Traditions: Culture & Cuisine. Relax and explore the nearby surroundings.",
+      "Day 2 (August 26, 2025): Enjoy a full-day itinerary in Barishal: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 27, 2025): Enjoy a full-day itinerary in Barishal: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 28, 2025): Enjoy a full-day itinerary in Barishal: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 29, 2025): Enjoy a full-day itinerary in Barishal: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 30, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 23,
     "minAge": 12,
     "division": {
@@ -169,11 +219,14 @@
     },
     "title": "Jungle Trails & Wildlife Encounters",
     "slug": "jungle-trails-and-wildlife-encounters",
-    "description": "Jungle Trails & Wildlife Encounters in Jessore awaits you!",
+    "description": "Jungle Trails & Wildlife Encounters is more than just a tour—it’s an immersive experience that takes you deep into the heart of Jessore. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Jungle Trails & Wildlife Encounters promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/4_0.jpg",
-      "https://example.com/images/4_1.jpg",
-      "https://example.com/images/4_2.jpg"
+      "https://i.ibb.co.com/vxJBftLk/14.jpg",
+      "https://i.ibb.co.com/84bjw3hT/57.jpg",
+      "https://i.ibb.co.com/TqtLYw9G/45.jpg",
+      "https://i.ibb.co.com/YBKk0PFK/3.jpg",
+      "https://i.ibb.co.com/4wjdR55y/32.jpg",
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg"
     ],
     "location": "Jessore",
     "departureLocation": "Dhaka",
@@ -188,7 +241,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 28, 2025): Arrival at Jessore, check-in, welcome briefing, and introduction to Jungle Trails & Wildlife Encounters. Relax and explore the nearby surroundings.",
+      "Day 2 (August 29, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 30, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 31, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 01, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 02, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (September 03, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (September 04, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (September 05, 2025): Enjoy a full-day itinerary in Jessore: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (September 06, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 17,
     "minAge": 12,
     "division": {
@@ -210,11 +274,14 @@
     },
     "title": "Peaks and Valleys: A Mountain Adventure",
     "slug": "peaks-and-valleys-a-mountain-adventure",
-    "description": "Peaks and Valleys: A Mountain Adventure in Mymensingh awaits you!",
+    "description": "Peaks and Valleys: A Mountain Adventure is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Peaks and Valleys: A Mountain Adventure promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/5_0.jpg",
-      "https://example.com/images/5_1.jpg",
-      "https://example.com/images/5_2.jpg"
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg",
+      "https://i.ibb.co.com/xKb0b9yZ/19.jpg",
+      "https://i.ibb.co.com/4wjdR55y/32.jpg",
+      "https://i.ibb.co.com/gM0ZM3Qp/34.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg",
+      "https://i.ibb.co.com/v66W8dYy/7.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -229,7 +296,14 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 19, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to Peaks and Valleys: A Mountain Adventure. Relax and explore the nearby surroundings.",
+      "Day 2 (August 20, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 21, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 22, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 23, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 24, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 11,
     "minAge": 13,
     "division": {
@@ -251,11 +325,14 @@
     },
     "title": "Sailing Through Serenity",
     "slug": "sailing-through-serenity",
-    "description": "Sailing Through Serenity in Mymensingh awaits you!",
+    "description": "Sailing Through Serenity is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Sailing Through Serenity promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/6_0.jpg",
-      "https://example.com/images/6_1.jpg",
-      "https://example.com/images/6_2.jpg"
+      "https://i.ibb.co.com/nsJ2KHsW/12.jpg",
+      "https://i.ibb.co.com/TqtLYw9G/45.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg",
+      "https://i.ibb.co.com/YsBY0bc/10.jpg",
+      "https://i.ibb.co.com/4Z7XjYK7/4.jpg",
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -270,7 +347,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (September 06, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to Sailing Through Serenity. Relax and explore the nearby surroundings.",
+      "Day 2 (September 07, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (September 08, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (September 09, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 10, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 11, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (September 12, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (September 13, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (September 14, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 15,
     "minAge": 12,
     "division": {
@@ -292,11 +379,14 @@
     },
     "title": "Family Adventures in the Heartland",
     "slug": "family-adventures-in-the-heartland",
-    "description": "Family Adventures in the Heartland in Cox's Bazar awaits you!",
+    "description": "Family Adventures in the Heartland is more than just a tour—it’s an immersive experience that takes you deep into the heart of Cox's Bazar. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Family Adventures in the Heartland promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/7_0.jpg",
-      "https://example.com/images/7_1.jpg",
-      "https://example.com/images/7_2.jpg"
+      "https://i.ibb.co.com/Y76KZvjS/9.jpg",
+      "https://i.ibb.co.com/k2fnWFKp/51.jpg",
+      "https://i.ibb.co.com/MkLXjx4y/41.jpg",
+      "https://i.ibb.co.com/tPY61yTL/37.jpg",
+      "https://i.ibb.co.com/pBD6qJYh/26.jpg",
+      "https://i.ibb.co.com/B5BfdnpR/22.jpg"
     ],
     "location": "Cox's Bazar",
     "departureLocation": "Dhaka",
@@ -311,7 +401,14 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 31, 2025): Arrival at Cox's Bazar, check-in, welcome briefing, and introduction to Family Adventures in the Heartland. Relax and explore the nearby surroundings.",
+      "Day 2 (September 01, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (September 02, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (September 03, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 04, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 05, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 19,
     "minAge": 18,
     "division": {
@@ -333,11 +430,14 @@
     },
     "title": "Romantic Nights Under the Stars",
     "slug": "romantic-nights-under-the-stars",
-    "description": "Romantic Nights Under the Stars in Dhaka awaits you!",
+    "description": "Romantic Nights Under the Stars is more than just a tour—it’s an immersive experience that takes you deep into the heart of Dhaka. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Romantic Nights Under the Stars promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/8_0.jpg",
-      "https://example.com/images/8_1.jpg",
-      "https://example.com/images/8_2.jpg"
+      "https://i.ibb.co.com/q3R1Pq9p/54.jpg",
+      "https://i.ibb.co.com/84bjw3hT/57.jpg",
+      "https://i.ibb.co.com/TBCM92yG/28.jpg",
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg",
+      "https://i.ibb.co.com/gFvqCsbh/55.jpg"
     ],
     "location": "Dhaka",
     "departureLocation": "Dhaka",
@@ -352,7 +452,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 20, 2025): Arrival at Dhaka, check-in, welcome briefing, and introduction to Romantic Nights Under the Stars. Relax and explore the nearby surroundings.",
+      "Day 2 (August 21, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 22, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 23, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 24, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 25, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 26, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 27, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (August 28, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 10,
     "minAge": 13,
     "division": {
@@ -374,11 +484,14 @@
     },
     "title": "Backpacking Across the Borderlands",
     "slug": "backpacking-across-the-borderlands",
-    "description": "Backpacking Across the Borderlands in Cox's Bazar awaits you!",
+    "description": "Backpacking Across the Borderlands is more than just a tour—it’s an immersive experience that takes you deep into the heart of Cox's Bazar. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Backpacking Across the Borderlands promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/9_0.jpg",
-      "https://example.com/images/9_1.jpg",
-      "https://example.com/images/9_2.jpg"
+      "https://i.ibb.co.com/JFKPtwMV/27.jpg",
+      "https://i.ibb.co.com/Y76KZvjS/9.jpg",
+      "https://i.ibb.co.com/PZ5dYDLY/43.jpg",
+      "https://i.ibb.co.com/93BVyvqK/13.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg",
+      "https://i.ibb.co.com/WNYCyXgg/42.jpg"
     ],
     "location": "Cox's Bazar",
     "departureLocation": "Dhaka",
@@ -393,7 +506,19 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 11, 2025): Arrival at Cox's Bazar, check-in, welcome briefing, and introduction to Backpacking Across the Borderlands. Relax and explore the nearby surroundings.",
+      "Day 2 (August 12, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 13, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 14, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 15, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 16, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 17, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 18, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (August 19, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (August 20, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 11 (August 21, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 19,
     "minAge": 16,
     "division": {
@@ -415,11 +540,14 @@
     },
     "title": "Mystical Forests and Sacred Temples",
     "slug": "mystical-forests-and-sacred-temples",
-    "description": "Mystical Forests and Sacred Temples in Dhaka awaits you!",
+    "description": "Mystical Forests and Sacred Temples is more than just a tour—it’s an immersive experience that takes you deep into the heart of Dhaka. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Mystical Forests and Sacred Temples promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/10_0.jpg",
-      "https://example.com/images/10_1.jpg",
-      "https://example.com/images/10_2.jpg"
+      "https://i.ibb.co.com/mjQ9Bmr/50.jpg",
+      "https://i.ibb.co.com/CKt9qWxT/16.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg",
+      "https://i.ibb.co.com/WNYCyXgg/42.jpg",
+      "https://i.ibb.co.com/jk0YSLDY/40.jpg",
+      "https://i.ibb.co.com/YBKk0PFK/3.jpg"
     ],
     "location": "Dhaka",
     "departureLocation": "Dhaka",
@@ -434,7 +562,14 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 29, 2025): Arrival at Dhaka, check-in, welcome briefing, and introduction to Mystical Forests and Sacred Temples. Relax and explore the nearby surroundings.",
+      "Day 2 (August 30, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 31, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (September 01, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 02, 2025): Enjoy a full-day itinerary in Dhaka: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 03, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 25,
     "minAge": 12,
     "division": {
@@ -456,11 +591,14 @@
     },
     "title": "Urban Explorations: Hidden Gems",
     "slug": "urban-explorations-hidden-gems",
-    "description": "Urban Explorations: Hidden Gems in Cox's Bazar awaits you!",
+    "description": "Urban Explorations: Hidden Gems is more than just a tour—it’s an immersive experience that takes you deep into the heart of Cox's Bazar. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Urban Explorations: Hidden Gems promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/11_0.jpg",
-      "https://example.com/images/11_1.jpg",
-      "https://example.com/images/11_2.jpg"
+      "https://i.ibb.co.com/whRBKwZs/48.jpg",
+      "https://i.ibb.co.com/rRCK3j80/33.jpg",
+      "https://i.ibb.co.com/ZRG5Nc8W/18.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg",
+      "https://i.ibb.co.com/hJbDf0kD/15.jpg",
+      "https://i.ibb.co.com/KpW9NBYH/53.jpg"
     ],
     "location": "Cox's Bazar",
     "departureLocation": "Dhaka",
@@ -475,7 +613,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 29, 2025): Arrival at Cox's Bazar, check-in, welcome briefing, and introduction to Urban Explorations: Hidden Gems. Relax and explore the nearby surroundings.",
+      "Day 2 (July 30, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 31, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 01, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 02, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 03, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 04, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 05, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (August 06, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (August 07, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 12,
     "minAge": 12,
     "division": {
@@ -497,11 +646,14 @@
     },
     "title": "Tides and Times: Coastal Discovery",
     "slug": "tides-and-times-coastal-discovery",
-    "description": "Tides and Times: Coastal Discovery in Bandarban awaits you!",
+    "description": "Tides and Times: Coastal Discovery is more than just a tour—it’s an immersive experience that takes you deep into the heart of Bandarban. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Tides and Times: Coastal Discovery promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/12_0.jpg",
-      "https://example.com/images/12_1.jpg",
-      "https://example.com/images/12_2.jpg"
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg",
+      "https://i.ibb.co.com/mjQ9Bmr/50.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg",
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg",
+      "https://i.ibb.co.com/PZH8SVJW/38.jpg"
     ],
     "location": "Bandarban",
     "departureLocation": "Dhaka",
@@ -516,7 +668,15 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 11, 2025): Arrival at Bandarban, check-in, welcome briefing, and introduction to Tides and Times: Coastal Discovery. Relax and explore the nearby surroundings.",
+      "Day 2 (July 12, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 13, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 14, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 15, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 16, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 17, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 12,
     "minAge": 18,
     "division": {
@@ -538,11 +698,14 @@
     },
     "title": "Legends of the North: A Heritage Tour",
     "slug": "legends-of-the-north-a-heritage-tour",
-    "description": "Legends of the North: A Heritage Tour in Bogura awaits you!",
+    "description": "Legends of the North: A Heritage Tour is more than just a tour—it’s an immersive experience that takes you deep into the heart of Bogura. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Legends of the North: A Heritage Tour promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/13_0.jpg",
-      "https://example.com/images/13_1.jpg",
-      "https://example.com/images/13_2.jpg"
+      "https://i.ibb.co.com/gFvqCsbh/55.jpg",
+      "https://i.ibb.co.com/PZ5dYDLY/43.jpg",
+      "https://i.ibb.co.com/pBD6qJYh/26.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg",
+      "https://i.ibb.co.com/TqtLYw9G/45.jpg",
+      "https://i.ibb.co.com/PGmfvQgN/58.jpg"
     ],
     "location": "Bogura",
     "departureLocation": "Dhaka",
@@ -557,7 +720,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 15, 2025): Arrival at Bogura, check-in, welcome briefing, and introduction to Legends of the North: A Heritage Tour. Relax and explore the nearby surroundings.",
+      "Day 2 (August 16, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 17, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 18, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 19, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 20, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 21, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 22, 2025): Enjoy a full-day itinerary in Bogura: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (August 23, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 14,
     "minAge": 18,
     "division": {
@@ -579,11 +752,14 @@
     },
     "title": "Tranquil Retreats in Countryside",
     "slug": "tranquil-retreats-in-countryside",
-    "description": "Tranquil Retreats in Countryside in Khulna awaits you!",
+    "description": "Tranquil Retreats in Countryside is more than just a tour—it’s an immersive experience that takes you deep into the heart of Khulna. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Tranquil Retreats in Countryside promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/14_0.jpg",
-      "https://example.com/images/14_1.jpg",
-      "https://example.com/images/14_2.jpg"
+      "https://i.ibb.co.com/MygZY80b/21.jpg",
+      "https://i.ibb.co.com/JFKPtwMV/27.jpg",
+      "https://i.ibb.co.com/HLvSm6KP/24.jpg",
+      "https://i.ibb.co.com/4wjdR55y/32.jpg",
+      "https://i.ibb.co.com/nsJ2KHsW/12.jpg",
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg"
     ],
     "location": "Khulna",
     "departureLocation": "Dhaka",
@@ -598,7 +774,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 10, 2025): Arrival at Khulna, check-in, welcome briefing, and introduction to Tranquil Retreats in Countryside. Relax and explore the nearby surroundings.",
+      "Day 2 (July 11, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 12, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 13, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 14, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 15, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 16, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 17, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 18, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 10,
     "minAge": 12,
     "division": {
@@ -620,11 +806,14 @@
     },
     "title": "Underwater Wonders: Diving Safari",
     "slug": "underwater-wonders-diving-safari",
-    "description": "Underwater Wonders: Diving Safari in Khulna awaits you!",
+    "description": "Underwater Wonders: Diving Safari is more than just a tour—it’s an immersive experience that takes you deep into the heart of Khulna. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Underwater Wonders: Diving Safari promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/15_0.jpg",
-      "https://example.com/images/15_1.jpg",
-      "https://example.com/images/15_2.jpg"
+      "https://i.ibb.co.com/CKt9qWxT/16.jpg",
+      "https://i.ibb.co.com/s4MRCCk/29.jpg",
+      "https://i.ibb.co.com/KpW9NBYH/53.jpg",
+      "https://i.ibb.co.com/PGmfvQgN/58.jpg",
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg"
     ],
     "location": "Khulna",
     "departureLocation": "Dhaka",
@@ -639,7 +828,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 25, 2025): Arrival at Khulna, check-in, welcome briefing, and introduction to Underwater Wonders: Diving Safari. Relax and explore the nearby surroundings.",
+      "Day 2 (August 26, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 27, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 28, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 29, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 30, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 31, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (September 01, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (September 02, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (September 03, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 12,
     "minAge": 15,
     "division": {
@@ -661,11 +861,14 @@
     },
     "title": "Nomadic Life: Desert Experience",
     "slug": "nomadic-life-desert-experience",
-    "description": "Nomadic Life: Desert Experience in Mymensingh awaits you!",
+    "description": "Nomadic Life: Desert Experience is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Nomadic Life: Desert Experience promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/16_0.jpg",
-      "https://example.com/images/16_1.jpg",
-      "https://example.com/images/16_2.jpg"
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg",
+      "https://i.ibb.co.com/nsJ2KHsW/12.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg",
+      "https://i.ibb.co.com/CKt9qWxT/16.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -680,7 +883,14 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 27, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to Nomadic Life: Desert Experience. Relax and explore the nearby surroundings.",
+      "Day 2 (August 28, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 29, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 30, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 31, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 01, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 11,
     "minAge": 17,
     "division": {
@@ -702,11 +912,14 @@
     },
     "title": "Islands in the Sun: Beach Escape",
     "slug": "islands-in-the-sun-beach-escape",
-    "description": "Islands in the Sun: Beach Escape in Bandarban awaits you!",
+    "description": "Islands in the Sun: Beach Escape is more than just a tour—it’s an immersive experience that takes you deep into the heart of Bandarban. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Islands in the Sun: Beach Escape promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/17_0.jpg",
-      "https://example.com/images/17_1.jpg",
-      "https://example.com/images/17_2.jpg"
+      "https://i.ibb.co.com/fYfqKzS4/49.jpg",
+      "https://i.ibb.co.com/TBCM92yG/28.jpg",
+      "https://i.ibb.co.com/vxJBftLk/14.jpg",
+      "https://i.ibb.co.com/cc9419Mr/6.jpg",
+      "https://i.ibb.co.com/4Z7XjYK7/4.jpg",
+      "https://i.ibb.co.com/ZRG5Nc8W/18.jpg"
     ],
     "location": "Bandarban",
     "departureLocation": "Dhaka",
@@ -721,7 +934,16 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 17, 2025): Arrival at Bandarban, check-in, welcome briefing, and introduction to Islands in the Sun: Beach Escape. Relax and explore the nearby surroundings.",
+      "Day 2 (August 18, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 19, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 20, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 21, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 22, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 23, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 24, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 14,
     "minAge": 18,
     "division": {
@@ -743,11 +965,14 @@
     },
     "title": "Epic Escapades: Action Packed Days",
     "slug": "epic-escapades-action-packed-days",
-    "description": "Epic Escapades: Action Packed Days in Comilla awaits you!",
+    "description": "Epic Escapades: Action Packed Days is more than just a tour—it’s an immersive experience that takes you deep into the heart of Comilla. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Epic Escapades: Action Packed Days promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/18_0.jpg",
-      "https://example.com/images/18_1.jpg",
-      "https://example.com/images/18_2.jpg"
+      "https://i.ibb.co.com/84bjw3hT/57.jpg",
+      "https://i.ibb.co.com/fYfqKzS4/49.jpg",
+      "https://i.ibb.co.com/Y76KZvjS/9.jpg",
+      "https://i.ibb.co.com/j9YrnwCd/30.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg",
+      "https://i.ibb.co.com/gFvqCsbh/55.jpg"
     ],
     "location": "Comilla",
     "departureLocation": "Dhaka",
@@ -762,7 +987,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 13, 2025): Arrival at Comilla, check-in, welcome briefing, and introduction to Epic Escapades: Action Packed Days. Relax and explore the nearby surroundings.",
+      "Day 2 (July 14, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 15, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 16, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 17, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 18, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 19, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 20, 2025): Enjoy a full-day itinerary in Comilla: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 21, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 26,
     "minAge": 13,
     "division": {
@@ -784,11 +1019,14 @@
     },
     "title": "Wonders of Waterfalls & Valleys",
     "slug": "wonders-of-waterfalls-and-valleys",
-    "description": "Wonders of Waterfalls & Valleys in Sylhet awaits you!",
+    "description": "Wonders of Waterfalls & Valleys is more than just a tour—it’s an immersive experience that takes you deep into the heart of Sylhet. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Wonders of Waterfalls & Valleys promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/19_0.jpg",
-      "https://example.com/images/19_1.jpg",
-      "https://example.com/images/19_2.jpg"
+      "https://i.ibb.co.com/93BVyvqK/13.jpg",
+      "https://i.ibb.co.com/Y76KZvjS/9.jpg",
+      "https://i.ibb.co.com/S4k8mBRy/8.jpg",
+      "https://i.ibb.co.com/PGmfvQgN/58.jpg",
+      "https://i.ibb.co.com/YsBY0bc/10.jpg",
+      "https://i.ibb.co.com/mjQ9Bmr/50.jpg"
     ],
     "location": "Sylhet",
     "departureLocation": "Dhaka",
@@ -803,7 +1041,16 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (September 05, 2025): Arrival at Sylhet, check-in, welcome briefing, and introduction to Wonders of Waterfalls & Valleys. Relax and explore the nearby surroundings.",
+      "Day 2 (September 06, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (September 07, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (September 08, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 09, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 10, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (September 11, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (September 12, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 28,
     "minAge": 13,
     "division": {
@@ -825,11 +1072,14 @@
     },
     "title": "Colors of Culture & Tradition",
     "slug": "colors-of-culture-and-tradition",
-    "description": "Colors of Culture & Tradition in Khulna awaits you!",
+    "description": "Colors of Culture & Tradition is more than just a tour—it’s an immersive experience that takes you deep into the heart of Khulna. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Colors of Culture & Tradition promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/20_0.jpg",
-      "https://example.com/images/20_1.jpg",
-      "https://example.com/images/20_2.jpg"
+      "https://i.ibb.co.com/WNYCyXgg/42.jpg",
+      "https://i.ibb.co.com/JRsJV1V2/52.jpg",
+      "https://i.ibb.co.com/gM0ZM3Qp/34.jpg",
+      "https://i.ibb.co.com/Y7zxfBfw/59.jpg",
+      "https://i.ibb.co.com/hJbDf0kD/15.jpg",
+      "https://i.ibb.co.com/PGmfvQgN/58.jpg"
     ],
     "location": "Khulna",
     "departureLocation": "Dhaka",
@@ -844,7 +1094,15 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 02, 2025): Arrival at Khulna, check-in, welcome briefing, and introduction to Colors of Culture & Tradition. Relax and explore the nearby surroundings.",
+      "Day 2 (August 03, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 04, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 05, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 06, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 07, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 08, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 18,
     "minAge": 15,
     "division": {
@@ -866,11 +1124,14 @@
     },
     "title": "Trails of the Ancients: Historical Tour",
     "slug": "trails-of-the-ancients-historical-tour",
-    "description": "Trails of the Ancients: Historical Tour in Sylhet awaits you!",
+    "description": "Trails of the Ancients: Historical Tour is more than just a tour—it’s an immersive experience that takes you deep into the heart of Sylhet. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Trails of the Ancients: Historical Tour promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/21_0.jpg",
-      "https://example.com/images/21_1.jpg",
-      "https://example.com/images/21_2.jpg"
+      "https://i.ibb.co.com/v66W8dYy/7.jpg",
+      "https://i.ibb.co.com/S4k8mBRy/8.jpg",
+      "https://i.ibb.co.com/Y76KZvjS/9.jpg",
+      "https://i.ibb.co.com/S4XzFr3h/2.jpg",
+      "https://i.ibb.co.com/CKt9qWxT/16.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg"
     ],
     "location": "Sylhet",
     "departureLocation": "Dhaka",
@@ -885,7 +1146,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 10, 2025): Arrival at Sylhet, check-in, welcome briefing, and introduction to Trails of the Ancients: Historical Tour. Relax and explore the nearby surroundings.",
+      "Day 2 (July 11, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 12, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 13, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 14, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 15, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 16, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 17, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 18, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (July 19, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 29,
     "minAge": 16,
     "division": {
@@ -907,11 +1179,14 @@
     },
     "title": "Hearts and Highlands: Romantic Retreat",
     "slug": "hearts-and-highlands-romantic-retreat",
-    "description": "Hearts and Highlands: Romantic Retreat in Mymensingh awaits you!",
+    "description": "Hearts and Highlands: Romantic Retreat is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Hearts and Highlands: Romantic Retreat promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/22_0.jpg",
-      "https://example.com/images/22_1.jpg",
-      "https://example.com/images/22_2.jpg"
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/fYfqKzS4/49.jpg",
+      "https://i.ibb.co.com/MygZY80b/21.jpg",
+      "https://i.ibb.co.com/HLvSm6KP/24.jpg",
+      "https://i.ibb.co.com/k2fnWFKp/51.jpg",
+      "https://i.ibb.co.com/XrLMNNHq/25.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -926,7 +1201,15 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 29, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to Hearts and Highlands: Romantic Retreat. Relax and explore the nearby surroundings.",
+      "Day 2 (August 30, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 31, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (September 01, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (September 02, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (September 03, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (September 04, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 25,
     "minAge": 13,
     "division": {
@@ -948,11 +1231,14 @@
     },
     "title": "Glamping in the Wild",
     "slug": "glamping-in-the-wild",
-    "description": "Glamping in the Wild in Khulna awaits you!",
+    "description": "Glamping in the Wild is more than just a tour—it’s an immersive experience that takes you deep into the heart of Khulna. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Glamping in the Wild promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/23_0.jpg",
-      "https://example.com/images/23_1.jpg",
-      "https://example.com/images/23_2.jpg"
+      "https://i.ibb.co.com/93BVyvqK/13.jpg",
+      "https://i.ibb.co.com/S4k8mBRy/8.jpg",
+      "https://i.ibb.co.com/pBj5tCZP/31.jpg",
+      "https://i.ibb.co.com/rRCK3j80/33.jpg",
+      "https://i.ibb.co.com/LdJSFmXy/39.jpg",
+      "https://i.ibb.co.com/PGmfvQgN/58.jpg"
     ],
     "location": "Khulna",
     "departureLocation": "Dhaka",
@@ -967,7 +1253,18 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 24, 2025): Arrival at Khulna, check-in, welcome briefing, and introduction to Glamping in the Wild. Relax and explore the nearby surroundings.",
+      "Day 2 (July 25, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 26, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 27, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 28, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 29, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 30, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 31, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (August 01, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (August 02, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 21,
     "minAge": 15,
     "division": {
@@ -989,11 +1286,14 @@
     },
     "title": "Castles, Forts, and Fairytales",
     "slug": "castles-forts-and-fairytales",
-    "description": "Castles, Forts, and Fairytales in Cox's Bazar awaits you!",
+    "description": "Castles, Forts, and Fairytales is more than just a tour—it’s an immersive experience that takes you deep into the heart of Cox's Bazar. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Castles, Forts, and Fairytales promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/24_0.jpg",
-      "https://example.com/images/24_1.jpg",
-      "https://example.com/images/24_2.jpg"
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/TBCM92yG/28.jpg",
+      "https://i.ibb.co.com/N2cjBPbY/1.jpg",
+      "https://i.ibb.co.com/nsJ2KHsW/12.jpg",
+      "https://i.ibb.co.com/4wjdR55y/32.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg"
     ],
     "location": "Cox's Bazar",
     "departureLocation": "Dhaka",
@@ -1008,7 +1308,16 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 12, 2025): Arrival at Cox's Bazar, check-in, welcome briefing, and introduction to Castles, Forts, and Fairytales. Relax and explore the nearby surroundings.",
+      "Day 2 (August 13, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 14, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 15, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 16, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 17, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 18, 2025): Enjoy a full-day itinerary in Cox's Bazar: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 19, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 18,
     "minAge": 15,
     "division": {
@@ -1030,11 +1339,14 @@
     },
     "title": "Night Markets & City Lights",
     "slug": "night-markets-and-city-lights",
-    "description": "Night Markets & City Lights in Sylhet awaits you!",
+    "description": "Night Markets & City Lights is more than just a tour—it’s an immersive experience that takes you deep into the heart of Sylhet. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Night Markets & City Lights promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/25_0.jpg",
-      "https://example.com/images/25_1.jpg",
-      "https://example.com/images/25_2.jpg"
+      "https://i.ibb.co.com/YsBY0bc/10.jpg",
+      "https://i.ibb.co.com/hJbDf0kD/15.jpg",
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg",
+      "https://i.ibb.co.com/s4MRCCk/29.jpg",
+      "https://i.ibb.co.com/S4k8mBRy/8.jpg",
+      "https://i.ibb.co.com/BHHgH0c3/60.jpg"
     ],
     "location": "Sylhet",
     "departureLocation": "Dhaka",
@@ -1049,7 +1361,17 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 18, 2025): Arrival at Sylhet, check-in, welcome briefing, and introduction to Night Markets & City Lights. Relax and explore the nearby surroundings.",
+      "Day 2 (July 19, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 20, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 21, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 22, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 23, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 24, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 25, 2025): Enjoy a full-day itinerary in Sylhet: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 26, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 15,
     "minAge": 16,
     "division": {
@@ -1071,11 +1393,14 @@
     },
     "title": "The River and the Ridge",
     "slug": "the-river-and-the-ridge",
-    "description": "The River and the Ridge in Mymensingh awaits you!",
+    "description": "The River and the Ridge is more than just a tour—it’s an immersive experience that takes you deep into the heart of Mymensingh. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, The River and the Ridge promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/26_0.jpg",
-      "https://example.com/images/26_1.jpg",
-      "https://example.com/images/26_2.jpg"
+      "https://i.ibb.co.com/TBCM92yG/28.jpg",
+      "https://i.ibb.co.com/xKb0b9yZ/19.jpg",
+      "https://i.ibb.co.com/k2fnWFKp/51.jpg",
+      "https://i.ibb.co.com/JFKPtwMV/27.jpg",
+      "https://i.ibb.co.com/Fbx5SRLq/46.jpg",
+      "https://i.ibb.co.com/wZQC1fJg/44.jpg"
     ],
     "location": "Mymensingh",
     "departureLocation": "Dhaka",
@@ -1090,7 +1415,19 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 09, 2025): Arrival at Mymensingh, check-in, welcome briefing, and introduction to The River and the Ridge. Relax and explore the nearby surroundings.",
+      "Day 2 (July 10, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 11, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 12, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 13, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (July 14, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (July 15, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (July 16, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 9 (July 17, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 10 (July 18, 2025): Enjoy a full-day itinerary in Mymensingh: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 11 (July 19, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 19,
     "minAge": 14,
     "division": {
@@ -1112,11 +1449,14 @@
     },
     "title": "Enchanted Hills & Mystic Views",
     "slug": "enchanted-hills-and-mystic-views",
-    "description": "Enchanted Hills & Mystic Views in Bandarban awaits you!",
+    "description": "Enchanted Hills & Mystic Views is more than just a tour—it’s an immersive experience that takes you deep into the heart of Bandarban. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Enchanted Hills & Mystic Views promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/27_0.jpg",
-      "https://example.com/images/27_1.jpg",
-      "https://example.com/images/27_2.jpg"
+      "https://i.ibb.co.com/rRCK3j80/33.jpg",
+      "https://i.ibb.co.com/fYfqKzS4/49.jpg",
+      "https://i.ibb.co.com/4Z7XjYK7/4.jpg",
+      "https://i.ibb.co.com/R4kmZt14/56.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg",
+      "https://i.ibb.co.com/v66W8dYy/7.jpg"
     ],
     "location": "Bandarban",
     "departureLocation": "Dhaka",
@@ -1131,7 +1471,15 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 12, 2025): Arrival at Bandarban, check-in, welcome briefing, and introduction to Enchanted Hills & Mystic Views. Relax and explore the nearby surroundings.",
+      "Day 2 (August 13, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 14, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 15, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 16, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 17, 2025): Enjoy a full-day itinerary in Bandarban: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 18, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 18,
     "minAge": 15,
     "division": {
@@ -1153,11 +1501,14 @@
     },
     "title": "A Week in Wonderland",
     "slug": "a-week-in-wonderland",
-    "description": "A Week in Wonderland in Khulna awaits you!",
+    "description": "A Week in Wonderland is more than just a tour—it’s an immersive experience that takes you deep into the heart of Khulna. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, A Week in Wonderland promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/28_0.jpg",
-      "https://example.com/images/28_1.jpg",
-      "https://example.com/images/28_2.jpg"
+      "https://i.ibb.co.com/cc9419Mr/6.jpg",
+      "https://i.ibb.co.com/TBCM92yG/28.jpg",
+      "https://i.ibb.co.com/WNYCyXgg/42.jpg",
+      "https://i.ibb.co.com/CKt9qWxT/16.jpg",
+      "https://i.ibb.co.com/60KpHBc6/5.jpg",
+      "https://i.ibb.co.com/Fbx5SRLq/46.jpg"
     ],
     "location": "Khulna",
     "departureLocation": "Dhaka",
@@ -1172,7 +1523,16 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (July 27, 2025): Arrival at Khulna, check-in, welcome briefing, and introduction to A Week in Wonderland. Relax and explore the nearby surroundings.",
+      "Day 2 (July 28, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (July 29, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (July 30, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (July 31, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 01, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 02, 2025): Enjoy a full-day itinerary in Khulna: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 8 (August 03, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 13,
     "minAge": 14,
     "division": {
@@ -1194,11 +1554,14 @@
     },
     "title": "Uncharted Adventures Await",
     "slug": "uncharted-adventures-await",
-    "description": "Uncharted Adventures Await in Chattogram awaits you!",
+    "description": "Uncharted Adventures Await is more than just a tour—it’s an immersive experience that takes you deep into the heart of Chattogram. On this journey, you’ll witness breathtaking landscapes, engage with local traditions, and discover hidden gems that most travelers never see. From scenic views and cultural encounters to adventurous moments and peaceful retreats, this tour offers the perfect balance of excitement and relaxation. Whether you’re a nature lover, history enthusiast, or simply seeking an escape, Uncharted Adventures Await promises unforgettable memories that will stay with you long after the trip ends.",
     "images": [
-      "https://example.com/images/29_0.jpg",
-      "https://example.com/images/29_1.jpg",
-      "https://example.com/images/29_2.jpg"
+      "https://i.ibb.co.com/4Z7XjYK7/4.jpg",
+      "https://i.ibb.co.com/vxJBftLk/14.jpg",
+      "https://i.ibb.co.com/KpW9NBYH/53.jpg",
+      "https://i.ibb.co.com/JRsJV1V2/52.jpg",
+      "https://i.ibb.co.com/k2fnWFKp/51.jpg",
+      "https://i.ibb.co.com/nNTRLKCh/47.jpg"
     ],
     "location": "Chattogram",
     "departureLocation": "Dhaka",
@@ -1213,7 +1576,15 @@
     "included": ["Accommodation", "Guide", "Transport"],
     "excluded": ["Visa", "Flights"],
     "amenities": ["WiFi", "Breakfast", "Swimming Pool"],
-    "tourPlane": ["Day 1: Arrival", "Day 2: Adventure", "Day 3: Departure"],
+    "tourPlane": [
+      "Day 1 (August 04, 2025): Arrival at Chattogram, check-in, welcome briefing, and introduction to Uncharted Adventures Await. Relax and explore the nearby surroundings.",
+      "Day 2 (August 05, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 3 (August 06, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 4 (August 07, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 5 (August 08, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 6 (August 09, 2025): Enjoy a full-day itinerary in Chattogram: guided sightseeing, cultural experiences, outdoor adventures, and delicious local cuisine. Evening leisure and group activities to unwind.",
+      "Day 7 (August 10, 2025): Departure day. Breakfast in the morning, free time for shopping or photography, then transfer back to Dhaka with farewell memories."
+    ],
     "maxGuest": 15,
     "minAge": 13,
     "division": {

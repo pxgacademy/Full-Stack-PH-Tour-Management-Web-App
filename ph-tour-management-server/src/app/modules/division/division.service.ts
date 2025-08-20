@@ -1,13 +1,10 @@
 import { Request } from "express";
 import { deleteImageFromCloud } from "../../../config/cloudinary/deleteImageFromCloud";
 import { AppError } from "../../../errors/AppError";
-import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { checkMongoId } from "../../utils/checkMongoId";
-import { QueryBuilder } from "../../utils/queryBuilder";
 import { slugMaker } from "../../utils/slugMaker";
 import { transactionRollback } from "../../utils/transactionRollback";
-import { divisionSearchFields } from "./division.constant";
 import { iDivision } from "./division.interface";
 import { Division } from "./division.model";
 
@@ -51,10 +48,11 @@ export const deleteDivisionService = async (id: string) => {
 };
 
 //
+/*
 export const getAllDivisionsService = async (query: iReqQueryParams) => {
   const queryBuilder = new QueryBuilder(Division, query);
 
-  const [tours, meta] = await Promise.all([
+  const [divisions, meta] = await Promise.all([
     queryBuilder
       .search(divisionSearchFields)
       .filter()
@@ -64,17 +62,28 @@ export const getAllDivisionsService = async (query: iReqQueryParams) => {
       .build(),
     queryBuilder.meta(divisionSearchFields),
   ]);
+  return {
+    data: divisions,
+    meta,
+  };
+};
+  */
+
+export const getAllDivisionsService = async () => {
+  const divisions = await Division.find();
+  const total = await Division.estimatedDocumentCount();
 
   return {
-    data: tours,
-    meta,
+    data: divisions,
+    meta: {
+      total_data: total,
+    },
   };
 };
 
 //
-export const getSingleDivisionService = async (slug: string) => {
-  const division = await Division.findOne({ slug });
-  if (!division)
-    throw new AppError(sCode.NOT_FOUND, "Division not found with this ID");
+export const getSingleDivisionService = async (id: string) => {
+  const division = await Division.findById(id);
+  if (!division) throw new AppError(sCode.NOT_FOUND, "Division not found with this ID");
   return { data: division };
 };

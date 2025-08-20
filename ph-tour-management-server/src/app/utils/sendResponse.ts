@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Response } from "express";
 
 interface iApiResponse<T> {
@@ -13,7 +14,7 @@ interface iApiResponse<T> {
     present_page?: number;
     skip?: number;
     limit?: number;
-    options?: object;
+    options?: Record<string, any>;
   };
 }
 

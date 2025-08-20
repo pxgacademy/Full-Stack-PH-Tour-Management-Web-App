@@ -1,4 +1,3 @@
-import { iReqQueryParams } from "../../global-interfaces";
 import sCode from "../../statusCode";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
@@ -45,9 +44,9 @@ export const deleteDivisionController = catchAsync(async (req, res) => {
 
 //
 export const getAllDivisionsController = catchAsync(async (req, res) => {
-  const { data, meta } = await getAllDivisionsService(
-    req.query as iReqQueryParams
-  );
+  // const { data, meta } = await getAllDivisionsService(req.query as iReqQueryParams);
+  const { data, meta } = await getAllDivisionsService();
+
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Divisions retrieved successfully",
@@ -58,7 +57,7 @@ export const getAllDivisionsController = catchAsync(async (req, res) => {
 
 //
 export const getSingleDivisionController = catchAsync(async (req, res) => {
-  const { data } = await getSingleDivisionService(req.params.slug);
+  const { data } = await getSingleDivisionService(req.params.divisionId);
   sendResponse(res, {
     statusCode: sCode.OK,
     message: "Division retrieved successfully",
