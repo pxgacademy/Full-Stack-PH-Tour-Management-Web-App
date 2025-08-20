@@ -1,6 +1,6 @@
 // src/pages/admin/AddTour.tsx
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
-import TourForm from "@/components/modules/admin/tour/AddTourForm";
+import TourForm from "@/components/modules/admin/tour/TourForm";
 import {
   tourFormSchema,
   type TourFormValues,
@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formatISO } from "date-fns";
 
 import Loading from "@/components/Loader/Loading";
+import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useGetSingleTourQuery } from "@/redux/features/tour/tour.api";
 import type { iDivisionResponse, iTourResponse, iTourTypeResponse } from "@/types";
@@ -197,7 +198,7 @@ const UpdateTour = () => {
       <p className="text-center text-muted-foreground mt-1 mb-7">
         Enter all valid values to update the Tour; the tour will then be made public again.
       </p>
-      <div className="w-full max-w-6xl mx-auto border p-5 rounded-2xl">
+      <div className="w-full max-w-6xl mx-auto ">
         <TourForm
           form={form}
           onSubmit={onSubmit}
@@ -246,11 +247,22 @@ const UpdateTour = () => {
                   <button
                     key={i}
                     onClick={() => handleSelectImage(image)}
-                    className={cn("w-full h-full cursor-pointer", {
-                      "opacity-40": selectedImages.some((link) => image === link),
-                    })}
+                    className="w-full h-full cursor-pointer relative"
                   >
-                    <img src={image} alt="img" className="w-full h-full object-cover" />
+                    <img
+                      src={image}
+                      alt="img"
+                      className={cn("w-full h-full object-cover", {
+                        "opacity-40": selectedImages.some((link) => image === link),
+                      })}
+                    />
+                    <span className="inline-flex items-center justify-center rounded-md p-1.5 absolute top-2 right-2 bg-background/60">
+                      <Checkbox
+                        id={image}
+                        checked={selectedImages.some((link) => image === link)}
+                        className="cursor-pointer"
+                      />
+                    </span>
                   </button>
                 ))}
               </div>

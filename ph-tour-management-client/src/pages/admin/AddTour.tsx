@@ -1,6 +1,6 @@
 // src/pages/admin/AddTour.tsx
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
-import TourForm from "@/components/modules/admin/tour/AddTourForm";
+import TourForm from "@/components/modules/admin/tour/TourForm";
 import {
   tourFormSchema,
   type TourFormValues,

@@ -260,50 +260,6 @@ export default function TourForm({
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="location"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Location</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="Enter location here..." />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-          <FormField
-            control={form.control}
-            name="departureLocation"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Departure Location</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="Enter departure location here..." />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="arrivalLocation"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Arrival Location</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="Enter arrival location here..." />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
           <FormField
             control={form.control}
@@ -356,181 +312,213 @@ export default function TourForm({
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-          <div>
-            <div className="space-y-2 border p-2 rounded-lg">
-              <FormLabel>Included</FormLabel>
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Location</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Enter location here..." />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-              {includedFields.map((item, index) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name={`included.${index}.value`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <span className="inline-flex items-center relative">
-                          <Input {...field} placeholder="Enter included item" />
-                          <button
-                            type="button"
-                            onClick={() => includedRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
-                          >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
-                          </button>
+        <FormField
+          control={form.control}
+          name="departureLocation"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Departure Location</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Enter departure location here..." />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="arrivalLocation"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Arrival Location</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Enter arrival location here..." />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="space-y-2">
+          <FormLabel>Included</FormLabel>
+
+          {includedFields.map((item, index) => (
+            <FormField
+              key={item.id}
+              control={form.control}
+              name={`included.${index}.value`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <span className="inline-flex items-center relative">
+                      <Input {...field} placeholder="Enter included item" className="pr-8" />
+                      <button
+                        type="button"
+                        onClick={() => includedRemove(index)}
+                        className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                      >
+                        <span className="bg-background p-1 rounded inline-block">
+                          <X size={16} />
                         </span>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              ))}
+                      </button>
+                    </span>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
 
-              <div className="flex justify-end">
-                <Button
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => includedAppend({ value: "" })}
-                >
-                  <Plus /> Add More
-                </Button>
-              </div>
-            </div>
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              size="xs"
+              type="button"
+              onClick={() => includedAppend({ value: "" })}
+            >
+              <Plus /> Add More
+            </Button>
           </div>
+        </div>
 
-          <div>
-            <div className="space-y-2 border p-2 rounded-lg">
-              <FormLabel>Excluded</FormLabel>
+        <div className="space-y-2">
+          <FormLabel>Excluded</FormLabel>
 
-              {excludedFields.map((item, index) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name={`excluded.${index}.value`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <span className="inline-flex items-center relative">
-                          <Input {...field} placeholder="Enter excluded item" />
-                          <button
-                            type="button"
-                            onClick={() => excludedRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
-                          >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
-                          </button>
+          {excludedFields.map((item, index) => (
+            <FormField
+              key={item.id}
+              control={form.control}
+              name={`excluded.${index}.value`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <span className="inline-flex items-center relative">
+                      <Input {...field} placeholder="Enter excluded item" className="pr-8" />
+                      <button
+                        type="button"
+                        onClick={() => excludedRemove(index)}
+                        className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                      >
+                        <span className="bg-background p-1 rounded inline-block">
+                          <X size={16} />
                         </span>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              ))}
+                      </button>
+                    </span>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
 
-              <div className="flex justify-end">
-                <Button
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => excludedAppend({ value: "" })}
-                >
-                  <Plus /> Add More
-                </Button>
-              </div>
-            </div>
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              size="xs"
+              type="button"
+              onClick={() => excludedAppend({ value: "" })}
+            >
+              <Plus /> Add More
+            </Button>
           </div>
+        </div>
 
-          <div>
-            <div className="space-y-2 border p-2 rounded-lg">
-              <FormLabel>Amenities</FormLabel>
+        <div className="space-y-2">
+          <FormLabel>Amenities</FormLabel>
 
-              {amenitiesFields.map((item, index) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name={`amenities.${index}.value`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <span className="inline-flex items-center relative">
-                          <Input {...field} placeholder="Enter amenity" />
-                          <button
-                            type="button"
-                            onClick={() => amenitiesRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
-                          >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
-                          </button>
+          {amenitiesFields.map((item, index) => (
+            <FormField
+              key={item.id}
+              control={form.control}
+              name={`amenities.${index}.value`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <span className="inline-flex items-center relative">
+                      <Input {...field} placeholder="Enter amenity" className="pr-8" />
+                      <button
+                        type="button"
+                        onClick={() => amenitiesRemove(index)}
+                        className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                      >
+                        <span className="bg-background p-1 rounded inline-block">
+                          <X size={16} />
                         </span>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              ))}
+                      </button>
+                    </span>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
 
-              <div className="flex justify-end">
-                <Button
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => amenitiesAppend({ value: "" })}
-                >
-                  <Plus /> Add More
-                </Button>
-              </div>
-            </div>
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              size="xs"
+              type="button"
+              onClick={() => amenitiesAppend({ value: "" })}
+            >
+              <Plus /> Add More
+            </Button>
           </div>
+        </div>
 
-          <div>
-            <div className="space-y-2 border p-2 rounded-lg">
-              <FormLabel>Tour Plan</FormLabel>
+        <div className="space-y-2">
+          <FormLabel>Tour Plan</FormLabel>
 
-              {tourPlaneFields.map((item, index) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name={`tourPlane.${index}.value`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <span className="inline-flex items-center relative">
-                          <Input {...field} placeholder="Enter tour plan item" />
-                          <button
-                            type="button"
-                            onClick={() => tourPlaneRemove(index)}
-                            className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
-                          >
-                            <span className="bg-background p-1 rounded inline-block">
-                              <X size={16} />
-                            </span>
-                          </button>
+          {tourPlaneFields.map((item, index) => (
+            <FormField
+              key={item.id}
+              control={form.control}
+              name={`tourPlane.${index}.value`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <span className="inline-flex items-center relative">
+                      <Input {...field} placeholder="Enter tour plan item" className="pr-8" />
+                      <button
+                        type="button"
+                        onClick={() => tourPlaneRemove(index)}
+                        className="absolute right-0 pr-1.5 text-sm text-muted-foreground hover:text-red-500 h-full flex items-center cursor-pointer"
+                      >
+                        <span className="bg-background p-1 rounded inline-block">
+                          <X size={16} />
                         </span>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              ))}
+                      </button>
+                    </span>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
 
-              <div className="flex justify-end">
-                <Button
-                  variant="ghost"
-                  size="xs"
-                  type="button"
-                  onClick={() => tourPlaneAppend({ value: "" })}
-                >
-                  <Plus /> Add More
-                </Button>
-              </div>
-            </div>
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              size="xs"
+              type="button"
+              onClick={() => tourPlaneAppend({ value: "" })}
+            >
+              <Plus /> Add More
+            </Button>
           </div>
         </div>
       </form>
